@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://l6wxsy448eg2"]
 
-[ext_resource type="Script" uid="uid://dt4bbpmy2qb4p" path="res://localmpmenu.gd" id="1_gsbft"]
+[ext_resource type="Script" uid="uid://dt4bbpmy2qb4p" path="res://Scripts/localmpmenu.gd" id="1_gsbft"]
 
 [node name="Control" type="Control"]
 layout_mode = 3

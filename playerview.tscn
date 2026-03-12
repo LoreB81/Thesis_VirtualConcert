@@ -1,50 +1,53 @@
-[gd_scene load_steps=4 format=3 uid="uid://0mdpwk4h0kdj"]
+[gd_scene load_steps=5 format=3 uid="uid://0mdpwk4h0kdj"]
 
+[ext_resource type="Script" uid="uid://b1gdlnbrvtmdg" path="res://Scripts/playerview.gd" id="1_5lysk"]
 [ext_resource type="Script" uid="uid://dhmbdehilik1u" path="res://Scripts/Player/Player.gd" id="1_ocmwr"]
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_ig7tw"]
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_ocmwr"]
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_0xm2m"]
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_5lysk"]
 points = PackedVector3Array(-0.125207, -0.532801, -0.480507, 0.0227831, 0.47607, 0.498884, 0.169713, 0.559144, 0.464172, 0.231051, -0.803591, 0.320455, 0.40741, 0.651043, -0.243523, -0.482789, 0.594843, 0.0822132, -0.362868, -0.682312, 0.289697, 0.469044, -0.654529, -0.0662713, -0.127444, 0.842701, -0.338103, -0.393435, -0.683942, -0.244717, 0.438255, 0.623309, 0.200849, 0.0841477, 0.977454, 0.114795, -0.0682023, -0.976458, -0.12927, 0.20055, -0.563129, -0.451454, -0.185527, 0.595453, -0.453475, -0.273363, 0.592268, 0.407754, -0.00693649, -0.476823, 0.49966, 0.375821, -0.588614, 0.316955, 0.111579, 0.563059, -0.481177, -0.41725, 0.527866, -0.270497, -0.484546, -0.596972, -0.0665097, -0.279747, 0.908561, 0.0533361, -0.250197, -0.880712, 0.205319, 0.263647, -0.902771, -0.127394, 0.293368, 0.871526, -0.157196, 0.373412, -0.526319, -0.328246, 0.499663, 0.476641, -0.00688856, 0.0531056, 0.875001, 0.324703, -0.154543, -0.590854, 0.465879, -0.0972799, -0.782358, -0.398188, -0.387649, -0.498171, 0.31565, -0.30068, -0.587995, -0.388901)
 
-[node name="Main" type="Node3D"]
-
-[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+[node name="SubViewportContainer" type="SubViewportContainer"]
 offset_right = 40.0
 offset_bottom = 40.0
+script = ExtResource("1_5lysk")
 
-[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+[node name="SubViewport" type="SubViewport" parent="."]
+unique_name_in_owner = true
 handle_input_locally = false
 size = Vector2i(1920, 1080)
 render_target_update_mode = 4
 
-[node name="Giocatore" type="CharacterBody3D" parent="SubViewportContainer/SubViewport"]
+[node name="Giocatore" type="CharacterBody3D" parent="SubViewport"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.42021, 0)
 script = ExtResource("1_ocmwr")
 
-[node name="Modello" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/Giocatore"]
+[node name="Modello" type="MeshInstance3D" parent="SubViewport/Giocatore"]
 unique_name_in_owner = true
-mesh = SubResource("CapsuleMesh_ig7tw")
+mesh = SubResource("CapsuleMesh_ocmwr")
 
-[node name="Collo" type="Node3D" parent="SubViewportContainer/SubViewport/Giocatore/Modello"]
+[node name="Collo" type="Node3D" parent="SubViewport/Giocatore/Modello"]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.138901, 0.22693, -0.172977)
 
-[node name="CameraPOV" type="Camera3D" parent="SubViewportContainer/SubViewport/Giocatore/Modello/Collo"]
+[node name="CameraPOV" type="Camera3D" parent="SubViewport/Giocatore/Modello/Collo"]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.60242, 0)
 
-[node name="VistaInt" type="RayCast3D" parent="SubViewportContainer/SubViewport/Giocatore/Modello/Collo/CameraPOV"]
+[node name="VistaInt" type="RayCast3D" parent="SubViewport/Giocatore/Modello/Collo/CameraPOV"]
 unique_name_in_owner = true
 transform = Transform3D(1.91069e-15, 6.3163e-08, 1, 1, -6.3163e-08, -3.59989e-21, 4.37114e-08, 1.445, -4.37114e-08, 0, 0, 0)
 
-[node name="StairsBelowRayCast3D" type="RayCast3D" parent="SubViewportContainer/SubViewport/Giocatore"]
+[node name="StairsBelowRayCast3D" type="RayCast3D" parent="SubViewport/Giocatore"]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.122037, -0.954266, -0.084244)
 
-[node name="StairsAheadRayCast3D" type="RayCast3D" parent="SubViewportContainer/SubViewport/Giocatore"]
+[node name="StairsAheadRayCast3D" type="RayCast3D" parent="SubViewport/Giocatore"]
 unique_name_in_owner = true
 transform = Transform3D(1.91069e-15, 4.37114e-08, 1, 1, -4.37114e-08, 0, 4.37114e-08, 1, -4.37114e-08, 0, -0.922221, 0)
 
-[node name="Collisione" type="CollisionShape3D" parent="SubViewportContainer/SubViewport/Giocatore"]
+[node name="Collisione" type="CollisionShape3D" parent="SubViewport/Giocatore"]
 unique_name_in_owner = true
-shape = SubResource("ConvexPolygonShape3D_0xm2m")
+shape = SubResource("ConvexPolygonShape3D_5lysk")

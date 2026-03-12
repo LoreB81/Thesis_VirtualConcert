@@ -1,5 +1,6 @@
 extends CharacterBody3D
 
+@export var active = false
 
 const SPEED = 5.0
 const SPRINT = 10.0
@@ -17,14 +18,10 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 @onready var vista = %VistaInt
 @onready var is_sprinting = false
 @onready var is_reset = true
-@onready var lblint = %lblcomando
 @onready var modello = %Modello
 @onready var schand: PackedScene
 
 var interact_timeout=false
-
-func _ready():
-	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 func _process(_delta):
 	pass
@@ -41,29 +38,26 @@ func _process(_delta):
 			#is_reset = true
 
 func _unhandled_input(event):
-	if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED and event is InputEventMouseMotion:
-		modello.rotate_y(-event.relative.x*0.01)
-		pgc.rotate_x(-event.relative.y*0.01)
-		pgc.rotation.x = clamp(pgc.rotation.x, deg_to_rad(-70), deg_to_rad(70))
-		pgc.rotation.y = clamp(pgc.rotation.y, deg_to_rad(0), deg_to_rad(0))
-		pgc.rotation.z = clamp(pgc.rotation.z, deg_to_rad(0), deg_to_rad(0))
-	if event.is_action_pressed("az_inter"):
-		if vista.is_colliding():
-			var ogg :Object= vista.get_collider()
-			if ogg is StaticBody3D:
-				ogg = ogg.get_parent()
-			if ogg.has_method("interaz") and not interact_timeout:
-				interagisci(ogg)
-	if event.is_action_pressed("az_sprint"):
-		print("sprinting")
-		is_sprinting = true
-	if event.is_action_released("az_sprint"):
-		print("walking")
-		is_sprinting = false		
-	if Input.mouse_mode == Input.MOUSE_MODE_VISIBLE and event is InputEventMouseButton:
-		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-	if event.is_action_pressed("ui_cancel"):
-		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	if active:
+		if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED and event is InputEventMouseMotion:
+			modello.rotate_y(-event.relative.x*0.01)
+			pgc.rotate_x(-event.relative.y*0.01)
+			pgc.rotation.x = clamp(pgc.rotation.x, deg_to_rad(-70), deg_to_rad(70))
+			pgc.rotation.y = clamp(pgc.rotation.y, deg_to_rad(0), deg_to_rad(0))
+			pgc.rotation.z = clamp(pgc.rotation.z, deg_to_rad(0), deg_to_rad(0))
+		if event.is_action_pressed("az_inter"):
+			if vista.is_colliding():
+				var ogg :Object= vista.get_collider()
+				if ogg is StaticBody3D:
+					ogg = ogg.get_parent()
+				if ogg.has_method("interaz") and not interact_timeout:
+					interagisci(ogg)
+		if event.is_action_pressed("az_sprint"):
+			print("sprinting")
+			is_sprinting = true
+		if event.is_action_released("az_sprint"):
+			print("walking")
+			is_sprinting = false
 
 func _physics_process(delta):
 	# Add the gravity.
@@ -78,12 +72,13 @@ func _physics_process(delta):
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var input_dir = Input.get_vector("mv_sinistra", "mv_destra", "mv_avanti", "mv_dietro")
 	var direction = (modello.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-	if direction:
-		velocity.x = direction.x * locspeed
-		velocity.z = direction.z * locspeed
-	else:
-		velocity.x = move_toward(velocity.x, 0, locspeed)
-		velocity.z = move_toward(velocity.z, 0, locspeed)
+	if active:
+		if direction:
+			velocity.x = direction.x * locspeed
+			velocity.z = direction.z * locspeed
+		else:
+			velocity.x = move_toward(velocity.x, 0, locspeed)
+			velocity.z = move_toward(velocity.z, 0, locspeed)
 	if not _snap_up_stairs_check(delta):
 		move_and_slide()
 		_snap_down_to_stairs_check()
