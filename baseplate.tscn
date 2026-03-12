@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://ch7wfnks6lhr5"]
+
+[ext_resource type="PackedScene" uid="uid://rxciul80fix1" path="res://player.tscn" id="1_soyuy"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_wtk66"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_soyuy"]
+albedo_texture = SubResource("PlaceholderTexture2D_wtk66")
+uv1_scale = Vector3(10, 10, 10)
+texture_filter = 0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_4muuu"]
+material = SubResource("StandardMaterial3D_soyuy")
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_icd88"]
+data = PackedVector3Array(1, 0, 1, -1, 0, 1, 1, 0, -1, -1, 0, 1, -1, 0, -1, 1, 0, -1)
+
+[node name="Base" type="Node3D"]
+
+[node name="Floor" type="MeshInstance3D" parent="."]
+transform = Transform3D(10, 0, 0, 0, 1, 0, 0, 0, 10, 0, 0, 0)
+mesh = SubResource("PlaneMesh_4muuu")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Floor"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_icd88")
+
+[node name="Giocatore" parent="." instance=ExtResource("1_soyuy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.29855, 0)
