@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://ch7wfnks6lhr5"]
+[gd_scene load_steps=12 format=3 uid="uid://ch7wfnks6lhr5"]
 
 [ext_resource type="Script" uid="uid://mvabuffvcrwn" path="res://Scripts/baseplate.gd" id="1_icd88"]
 [ext_resource type="PackedScene" uid="uid://rxciul80fix1" path="res://player.tscn" id="1_soyuy"]
 [ext_resource type="Script" uid="uid://b1gdlnbrvtmdg" path="res://Scripts/playerview.gd" id="2_2vqvh"]
+[ext_resource type="PackedScene" uid="uid://qpb6esww1evi" path="res://PG/UomoLowPoly.blend" id="4_2vqvh"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_soyuy"]
 
@@ -47,6 +48,9 @@ grow_vertical = 2
 [node name="MainSubViewPort" type="SubViewportContainer" parent="GridContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+stretch = true
 script = ExtResource("2_2vqvh")
 
 [node name="SubViewport" type="SubViewport" parent="GridContainer/MainSubViewPort"]
@@ -78,3 +82,6 @@ environment = SubResource("Environment_icd88")
 transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
 light_color = Color(0.693229, 0.352423, 0.490804, 1)
 shadow_enabled = true
+
+[node name="UomoLowPoly" parent="GridContainer/MainSubViewPort" instance=ExtResource("4_2vqvh")]
+transform = Transform3D(0.165, 0, 0, 0, 0.165, 0, 0, 0, 0.165, -3.17397, -0.537589, -16.9231)
