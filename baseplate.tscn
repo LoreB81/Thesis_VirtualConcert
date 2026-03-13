@@ -1,9 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://ch7wfnks6lhr5"]
+[gd_scene load_steps=11 format=3 uid="uid://ch7wfnks6lhr5"]
 
 [ext_resource type="Script" uid="uid://mvabuffvcrwn" path="res://Scripts/baseplate.gd" id="1_icd88"]
 [ext_resource type="PackedScene" uid="uid://rxciul80fix1" path="res://player.tscn" id="1_soyuy"]
 [ext_resource type="Script" uid="uid://b1gdlnbrvtmdg" path="res://Scripts/playerview.gd" id="2_2vqvh"]
-[ext_resource type="PackedScene" uid="uid://0mdpwk4h0kdj" path="res://playerview.tscn" id="2_4muuu"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_soyuy"]
 
@@ -44,18 +43,16 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-columns = 2
 
 [node name="MainSubViewPort" type="SubViewportContainer" parent="GridContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 script = ExtResource("2_2vqvh")
-width = 960
 
 [node name="SubViewport" type="SubViewport" parent="GridContainer/MainSubViewPort"]
 unique_name_in_owner = true
 handle_input_locally = false
-size = Vector2i(960, 1080)
+size = Vector2i(1920, 1080)
 render_target_update_mode = 4
 
 [node name="Floor" type="MeshInstance3D" parent="GridContainer/MainSubViewPort/SubViewport"]
@@ -81,8 +78,3 @@ environment = SubResource("Environment_icd88")
 transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
 light_color = Color(0.693229, 0.352423, 0.490804, 1)
 shadow_enabled = true
-
-[node name="Playerview" parent="GridContainer" instance=ExtResource("2_4muuu")]
-unique_name_in_owner = true
-layout_mode = 2
-width = 960

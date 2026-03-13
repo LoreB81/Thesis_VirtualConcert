@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="ThesisMusicTogether"
-run/main_scene="uid://ch7wfnks6lhr5"
+run/main_scene="uid://l6wxsy448eg2"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -23,7 +23,8 @@ PlayerCount="*res://Scripts/player_count.gd"
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
-window/size/borderless=true
+window/stretch/mode="viewport"
+window/stretch/aspect="expand"
 
 [input]
 

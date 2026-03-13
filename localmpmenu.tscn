@@ -7,43 +7,56 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_bottom = 16.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_gsbft")
 
-[node name="Background" type="ColorRect" parent="."]
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
 layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1088.0
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(1920, 1088)
+render_target_update_mode = 4
+
+[node name="Background" type="ColorRect" parent="SubViewportContainer/SubViewport"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
 color = Color(0.380392, 0.647059, 0.737255, 1)
 
-[node name="btnstart" type="Button" parent="."]
+[node name="btnstart" type="Button" parent="SubViewportContainer/SubViewport"]
 unique_name_in_owner = true
-layout_mode = 0
-offset_left = 640.0
-offset_top = 768.0
-offset_right = 1280.0
-offset_bottom = 968.0
+offset_left = 664.0
+offset_top = 712.0
+offset_right = 1304.0
+offset_bottom = 912.0
 theme_override_font_sizes/font_size = 30
 text = "Avvia"
 
-[node name="TextEdit" type="TextEdit" parent="."]
-layout_mode = 0
+[node name="txt_players" type="TextEdit" parent="SubViewportContainer/SubViewport"]
+unique_name_in_owner = true
 offset_left = 712.0
-offset_top = 440.0
+offset_top = 400.0
 offset_right = 1212.0
-offset_bottom = 640.0
+offset_bottom = 600.0
 theme_override_font_sizes/font_size = 121
 placeholder_text = "1"
 
-[node name="Label" type="Label" parent="."]
-layout_mode = 0
-offset_left = 536.0
-offset_top = 288.0
-offset_right = 1433.0
-offset_bottom = 372.0
+[node name="Label" type="Label" parent="SubViewportContainer/SubViewport"]
+offset_left = 528.0
+offset_top = 216.0
+offset_right = 1425.0
+offset_bottom = 300.0
 theme_override_font_sizes/font_size = 61
 text = "INSERIRE NUMERO GIOCATORI"
 horizontal_alignment = 1
 
-[connection signal="pressed" from="btnstart" to="." method="_on_btnstart_pressed"]
+[connection signal="pressed" from="SubViewportContainer/SubViewport/btnstart" to="." method="_on_btnstart_pressed"]

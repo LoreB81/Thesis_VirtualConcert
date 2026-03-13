@@ -15,3 +15,6 @@ func set_active(b:bool):
 
 func pass_input(event: InputEvent):
 	%SubViewport.push_input(event)
+
+func add_position(z: int):
+	%Giocatore.position.z += z

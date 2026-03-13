@@ -1,13 +1,25 @@
 extends Node3D
 
 var index = 0
-var players:Array
+var players:Array[SubViewportContainer]
+var n_players
 func _ready() -> void:
+	# prende il count dei giocatori locali dall'autoload
+	n_players = PlayerCount.get_playercount()
+	players = [%MainSubViewPort]
+	# per ogni giocatore istanzia una schermata e la aggiunge alla grid box
+	for i in n_players-1:
+		var x = preload("res://playerview.tscn").instantiate()
+		x.add_position((i+1)*3)
+		%GridContainer.add_child(x)
+		players.append(x)
+	divide_screen(players)
+	#cattura il mouse
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-	players = [%MainSubViewPort, %Playerview]
 	players[0].set_active(true)
 
 func _unhandled_input(event: InputEvent) -> void:
+	# serve per passare l'input che il mouse è stato mosso alla viewport corrispondente perché altrimenti non riceve l'input del mouse
 	if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED and event is InputEventMouseMotion:
 		players[index].pass_input(event)
 	if event.is_action_pressed("az_switch"):
@@ -19,9 +31,25 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel"):
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 
+# serve per imitare una lista circolare
 func index_next(index: int, array: Array)-> int:
 	if index < array.size()-1:
 		index+=1
 	else: 
 		index = 0
 	return index
+
+# divide lo schermo in base a quanti giocatori sono presenti
+func divide_screen(players: Array[SubViewportContainer]):
+	var sqrtsize = sqrt(players.size())
+	var size
+	if sqrtsize == floor(sqrtsize):
+		size = sqrtsize
+	else:
+		size = floor(sqrtsize)+1
+	%GridContainer.columns = size
+	var nw = DisplayServer.window_get_size().x/ size
+	var nh = DisplayServer.window_get_size().y/ floor(sqrtsize)
+	for x in players:
+		x.width = nw
+		x.height = nh

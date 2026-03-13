@@ -7,5 +7,5 @@ func changecount(num:int):
 		playercount = num
 	else: playercount = 1
 
-func get_playercount():
-	playercount
+func get_playercount()->int:
+	return playercount

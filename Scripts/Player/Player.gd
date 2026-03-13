@@ -19,7 +19,6 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 @onready var is_sprinting = false
 @onready var is_reset = true
 @onready var modello = %Modello
-@onready var schand: PackedScene
 
 var interact_timeout=false
 
