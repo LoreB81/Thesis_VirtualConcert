@@ -138,3 +138,7 @@ func interagisci(obj):
 
 func restore_interaction():
 	interact_timeout = false
+	
+func set_active(x:bool):
+	%CameraPOV.current = x
+	active = x

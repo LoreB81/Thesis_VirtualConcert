@@ -1,6 +1,7 @@
 extends Node
 
 var playercount = 1
+var splitscreen = false
 
 func changecount(num:int):
 	if num> 1:
@@ -9,3 +10,9 @@ func changecount(num:int):
 
 func get_playercount()->int:
 	return playercount
+
+func set_splitscreen(x : bool):
+	splitscreen = x
+
+func get_splitscreen()->bool:
+	return splitscreen

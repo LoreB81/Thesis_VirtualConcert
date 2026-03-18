@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://ch7wfnks6lhr5"]
+[gd_scene load_steps=13 format=3 uid="uid://ch7wfnks6lhr5"]
 
 [ext_resource type="Script" uid="uid://mvabuffvcrwn" path="res://Scripts/baseplate.gd" id="1_icd88"]
 [ext_resource type="PackedScene" uid="uid://rxciul80fix1" path="res://player.tscn" id="1_soyuy"]
 [ext_resource type="Script" uid="uid://b1gdlnbrvtmdg" path="res://Scripts/playerview.gd" id="2_2vqvh"]
 [ext_resource type="PackedScene" uid="uid://qpb6esww1evi" path="res://PG/UomoLowPoly.blend" id="4_2vqvh"]
+[ext_resource type="AudioStream" uid="uid://b46p2pf8lqraj" path="res://Sounds/Musichetta.mp3" id="4_78jex"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_soyuy"]
 
@@ -56,6 +57,7 @@ script = ExtResource("2_2vqvh")
 [node name="SubViewport" type="SubViewport" parent="GridContainer/MainSubViewPort"]
 unique_name_in_owner = true
 handle_input_locally = false
+audio_listener_enable_3d = true
 size = Vector2i(1920, 1080)
 render_target_update_mode = 4
 
@@ -83,5 +85,24 @@ transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75
 light_color = Color(0.693229, 0.352423, 0.490804, 1)
 shadow_enabled = true
 
-[node name="UomoLowPoly" parent="GridContainer/MainSubViewPort" instance=ExtResource("4_2vqvh")]
-transform = Transform3D(0.165, 0, 0, 0, 0.165, 0, 0, 0, 0.165, -3.17397, -0.537589, -16.9231)
+[node name="lbl_nplayer" type="Label" parent="GridContainer/MainSubViewPort/SubViewport"]
+unique_name_in_owner = true
+offset_right = 61.0
+offset_bottom = 146.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 167
+text = "1"
+
+[node name="AudioStream" type="AudioStreamPlayer3D" parent="GridContainer/MainSubViewPort/SubViewport"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.43583, 1.84919, -16.8336)
+stream = ExtResource("4_78jex")
+volume_db = 1.0
+autoplay = true
+max_distance = 30.0
+parameters/looping = true
+
+[node name="UomoLowPoly" parent="GridContainer/MainSubViewPort/SubViewport" instance=ExtResource("4_2vqvh")]
+transform = Transform3D(0.165, 0, 0, 0, 0.165, 0, 0, 0, 0.165, -3.17397, -0.83895, -16.9231)
