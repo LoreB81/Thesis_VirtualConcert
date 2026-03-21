@@ -20,6 +20,9 @@ func _ready() -> void:
 			%GridContainer.add_child(x)
 			players.append(x)
 		divide_screen(players)
+		players[0].set_active(true, false)
+		if controller:
+			players[index_next(index, players)].set_active(true, true)
 	else:
 		players = [%Giocatore]
 		# per ogni giocatore istanzia una schermata e la aggiunge alla grid box
@@ -29,9 +32,9 @@ func _ready() -> void:
 			x.position.y = 2
 			%SubViewport.add_child(x)
 			players.append(x)
+		players[0].set_active(true, controller)
 	#cattura il mouse
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-	players[0].set_active(true, controller)
 
 func _unhandled_input(event: InputEvent) -> void:
 	# serve per passare l'input che il mouse è stato mosso alla viewport corrispondente perché altrimenti non riceve l'input del mouse
@@ -39,16 +42,20 @@ func _unhandled_input(event: InputEvent) -> void:
 		if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED and event is InputEventMouseMotion:
 			players[index].pass_input(event)
 		if event.is_action_pressed("az_switch"):
-			players[index].set_active(false, controller)
+			players[index].set_active(false, false)
+			players[index].set_active(false, true)
 			index = index_next(index, players)
 			players[index].set_active(true, false)
 			if controller:
+				players[index].set_active(false, true)
 				players[index_next(index, players)].set_active(true, true)
 		if event.is_action_pressed("az_switch_back"):
-			players[index].set_active(false, controller)
+			players[index].set_active(false, false)
+			players[index].set_active(false, true)
 			index = index_back(index, players)
 			players[index].set_active(true, false)
 			if controller:
+				players[index].set_active(false, true)
 				players[index_next(index, players)].set_active(true, true)
 	if not splitscreen:
 		%MainSubViewPort.change_lbl_text(index+1)

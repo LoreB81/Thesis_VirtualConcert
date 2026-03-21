@@ -41,10 +41,24 @@ func _process(_delta):
 			#is_reset = true
 
 func _unhandled_input(event):
-	if event is InputEventMouseMotion or event is InputEventKey:
-		keyb = true
-	else:
+	if event is InputEventJoypadButton or event is InputEventJoypadMotion:
 		keyb = false
+	else:
+		keyb = true
+	if (active and keyb) or (controller_active and !keyb):
+		if event.is_action_pressed("az_inter"):
+			if vista.is_colliding():
+				var ogg :Object= vista.get_collider()
+				if ogg is StaticBody3D:
+					ogg = ogg.get_parent()
+				if ogg.has_method("interaz") and not interact_timeout:
+					interagisci(ogg)
+		if event.is_action_pressed("az_sprint"):
+			print("sprinting")
+			is_sprinting = true
+		if event.is_action_released("az_sprint"):
+			print("walking")
+			is_sprinting = false
 	if active:
 		if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
 			if event is InputEventMouseMotion:
@@ -53,19 +67,6 @@ func _unhandled_input(event):
 				pgc.rotation.x = clamp(pgc.rotation.x, deg_to_rad(-70), deg_to_rad(70))
 				pgc.rotation.y = clamp(pgc.rotation.y, deg_to_rad(0), deg_to_rad(0))
 				pgc.rotation.z = clamp(pgc.rotation.z, deg_to_rad(0), deg_to_rad(0))
-			if event.is_action_pressed("az_inter"):
-				if vista.is_colliding():
-					var ogg :Object= vista.get_collider()
-					if ogg is StaticBody3D:
-						ogg = ogg.get_parent()
-					if ogg.has_method("interaz") and not interact_timeout:
-						interagisci(ogg)
-			if event.is_action_pressed("az_sprint"):
-				print("sprinting")
-				is_sprinting = true
-			if event.is_action_released("az_sprint"):
-				print("walking")
-				is_sprinting = false
 	if controller_active:
 		if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
 			if event is InputEventJoypadMotion and event.axis>1:
@@ -87,18 +88,18 @@ func _physics_process(delta):
 		velocity.y -= gravity * delta
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
-	var input_dir = Input.get_vector("mv_sinistra", "mv_destra", "mv_avanti", "mv_dietro")
-	var direction = (modello.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if (active and keyb) or (controller_active and !keyb):
+		var input_dir = Input.get_vector("mv_sinistra", "mv_destra", "mv_avanti", "mv_dietro")
+		var direction = (modello.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 		if direction:
 			velocity.x = direction.x * locspeed
 			velocity.z = direction.z * locspeed
 		else:
 			velocity.x = move_toward(velocity.x, 0, locspeed)
 			velocity.z = move_toward(velocity.z, 0, locspeed)
-	else: 
-		velocity.z = 0
-		velocity.x = 0
+	if not active and not controller_active:
+		velocity.x = move_toward(velocity.x, 0, locspeed)
+		velocity.z = move_toward(velocity.z, 0, locspeed)
 	if not _snap_up_stairs_check(delta):
 		move_and_slide()
 		_snap_down_to_stairs_check()
