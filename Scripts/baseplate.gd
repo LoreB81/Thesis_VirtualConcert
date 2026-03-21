@@ -4,6 +4,9 @@ var index = 0
 var players: Array
 var n_players
 var splitscreen = PlayerCount.get_splitscreen()
+var controller = PlayerCount.get_controller()
+
+
 func _ready() -> void:
 	# prende il count dei giocatori locali dall'autoload
 	n_players = PlayerCount.get_playercount()
@@ -28,24 +31,35 @@ func _ready() -> void:
 			players.append(x)
 	#cattura il mouse
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-	players[0].set_active(true)
+	players[0].set_active(true, controller)
 
 func _unhandled_input(event: InputEvent) -> void:
 	# serve per passare l'input che il mouse è stato mosso alla viewport corrispondente perché altrimenti non riceve l'input del mouse
-	if splitscreen and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED and event is InputEventMouseMotion:
-		players[index].pass_input(event)
-	if event.is_action_pressed("az_switch"):
-		players[index].set_active(false)
-		index = index_next(index, players)
-		players[index].set_active(true)
-		if not splitscreen:
-			%MainSubViewPort.change_lbl_text(index+1)
-	if event.is_action_pressed("az_switch_back"):
-		players[index].set_active(false)
-		index = index_back(index, players)
-		players[index].set_active(true)
-		if not splitscreen:
-			%MainSubViewPort.change_lbl_text(index+1)
+	if splitscreen:
+		if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED and event is InputEventMouseMotion:
+			players[index].pass_input(event)
+		if event.is_action_pressed("az_switch"):
+			players[index].set_active(false, controller)
+			index = index_next(index, players)
+			players[index].set_active(true, false)
+			if controller:
+				players[index_next(index, players)].set_active(true, true)
+		if event.is_action_pressed("az_switch_back"):
+			players[index].set_active(false, controller)
+			index = index_back(index, players)
+			players[index].set_active(true, false)
+			if controller:
+				players[index_next(index, players)].set_active(true, true)
+	if not splitscreen:
+		%MainSubViewPort.change_lbl_text(index+1)
+		if event.is_action_pressed("az_switch"):
+			players[index].set_active(false, controller)
+			index = index_next(index, players)
+			players[index].set_active(true, controller)
+		if event.is_action_pressed("az_switch_back"):
+			players[index].set_active(false, controller)
+			index = index_back(index, players)
+			players[index].set_active(true, controller)
 	if Input.mouse_mode == Input.MOUSE_MODE_VISIBLE and event is InputEventMouseButton:
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	if event.is_action_pressed("ui_cancel"):

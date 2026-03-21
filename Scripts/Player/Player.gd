@@ -1,7 +1,11 @@
 extends CharacterBody3D
 
+#variabili per muovere i giocatori
 @export var active = false
+@export var controller_active = false
+var keyb
 
+# costanti di movimento
 const SPEED = 5.0
 const SPRINT = 10.0
 const MAX_STEP_HEIGHT = 0.4
@@ -37,27 +41,41 @@ func _process(_delta):
 			#is_reset = true
 
 func _unhandled_input(event):
+	if event is InputEventMouseMotion or event is InputEventKey:
+		keyb = true
+	else:
+		keyb = false
 	if active:
-		if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED and event is InputEventMouseMotion:
-			modello.rotate_y(-event.relative.x*0.01)
-			pgc.rotate_x(-event.relative.y*0.01)
-			pgc.rotation.x = clamp(pgc.rotation.x, deg_to_rad(-70), deg_to_rad(70))
-			pgc.rotation.y = clamp(pgc.rotation.y, deg_to_rad(0), deg_to_rad(0))
-			pgc.rotation.z = clamp(pgc.rotation.z, deg_to_rad(0), deg_to_rad(0))
-		if event.is_action_pressed("az_inter"):
-			if vista.is_colliding():
-				var ogg :Object= vista.get_collider()
-				if ogg is StaticBody3D:
-					ogg = ogg.get_parent()
-				if ogg.has_method("interaz") and not interact_timeout:
-					interagisci(ogg)
-		if event.is_action_pressed("az_sprint"):
-			print("sprinting")
-			is_sprinting = true
-		if event.is_action_released("az_sprint"):
-			print("walking")
-			is_sprinting = false
-
+		if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
+			if event is InputEventMouseMotion:
+				modello.rotate_y(-event.relative.x*0.01)
+				pgc.rotate_x(-event.relative.y*0.01)
+				pgc.rotation.x = clamp(pgc.rotation.x, deg_to_rad(-70), deg_to_rad(70))
+				pgc.rotation.y = clamp(pgc.rotation.y, deg_to_rad(0), deg_to_rad(0))
+				pgc.rotation.z = clamp(pgc.rotation.z, deg_to_rad(0), deg_to_rad(0))
+			if event.is_action_pressed("az_inter"):
+				if vista.is_colliding():
+					var ogg :Object= vista.get_collider()
+					if ogg is StaticBody3D:
+						ogg = ogg.get_parent()
+					if ogg.has_method("interaz") and not interact_timeout:
+						interagisci(ogg)
+			if event.is_action_pressed("az_sprint"):
+				print("sprinting")
+				is_sprinting = true
+			if event.is_action_released("az_sprint"):
+				print("walking")
+				is_sprinting = false
+	if controller_active:
+		if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
+			if event is InputEventJoypadMotion and event.axis>1:
+				if event.axis == 2:
+					modello.rotate_y(-event.axis_value*0.1)
+				elif event.axis == 3:
+					pgc.rotate_x(-event.axis_value*0.1)
+				pgc.rotation.x = clamp(pgc.rotation.x, deg_to_rad(-70), deg_to_rad(70))
+				pgc.rotation.y = clamp(pgc.rotation.y, deg_to_rad(0), deg_to_rad(0))
+				pgc.rotation.z = clamp(pgc.rotation.z, deg_to_rad(0), deg_to_rad(0))
 func _physics_process(delta):
 	# Add the gravity.
 	var locspeed 
@@ -71,16 +89,20 @@ func _physics_process(delta):
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var input_dir = Input.get_vector("mv_sinistra", "mv_destra", "mv_avanti", "mv_dietro")
 	var direction = (modello.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-	if active:
+	if (active and keyb) or (controller_active and !keyb):
 		if direction:
 			velocity.x = direction.x * locspeed
 			velocity.z = direction.z * locspeed
 		else:
 			velocity.x = move_toward(velocity.x, 0, locspeed)
 			velocity.z = move_toward(velocity.z, 0, locspeed)
+	else: 
+		velocity.z = 0
+		velocity.x = 0
 	if not _snap_up_stairs_check(delta):
 		move_and_slide()
 		_snap_down_to_stairs_check()
+		
 
 func _snap_down_to_stairs_check():
 	var did_snap = false
@@ -139,6 +161,9 @@ func interagisci(obj):
 func restore_interaction():
 	interact_timeout = false
 	
-func set_active(x:bool):
+func set_active(x:bool, controller: bool):
 	%CameraPOV.current = x
-	active = x
+	if controller:
+		controller_active = x
+	else:
+		active = x

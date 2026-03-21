@@ -19,3 +19,7 @@ func _on_btnstart_pressed() -> void:
 
 func _on_check_box_toggled(toggled_on: bool) -> void:
 	PlayerCount.set_splitscreen(toggled_on)
+
+
+func _controller_toggle(toggled_on: bool) -> void:
+	PlayerCount.set_controller(toggled_on)

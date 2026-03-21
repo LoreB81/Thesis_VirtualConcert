@@ -10,8 +10,12 @@ func _ready() -> void:
 func set_world3d(world: World3D):
 	%SubViewport.world_3d = world
 
-func set_active(b:bool):
-	%Giocatore.active = b
+func set_active(b:bool, controller: bool):
+	if controller:
+		%Giocatore.controller_active = b
+	else:
+		%Giocatore.active = b
+	
 
 func pass_input(event: InputEvent):
 	%SubViewport.push_input(event)

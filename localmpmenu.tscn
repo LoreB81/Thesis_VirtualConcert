@@ -52,37 +52,54 @@ text = "Avvia"
 [node name="txt_players" type="TextEdit" parent="SubViewportContainer/SubViewport"]
 unique_name_in_owner = true
 offset_left = 712.0
-offset_top = 328.0
+offset_top = 192.0
 offset_right = 1212.0
-offset_bottom = 528.0
+offset_bottom = 392.0
 theme_override_font_sizes/font_size = 121
 placeholder_text = "1"
 wrap_mode = 1
 
 [node name="Label" type="Label" parent="SubViewportContainer/SubViewport"]
 offset_left = 528.0
-offset_top = 216.0
+offset_top = 104.0
 offset_right = 1425.0
-offset_bottom = 300.0
+offset_bottom = 188.0
 theme_override_font_sizes/font_size = 61
 text = "INSERIRE NUMERO GIOCATORI"
 horizontal_alignment = 1
 
-[node name="CheckBox" type="CheckBox" parent="SubViewportContainer/SubViewport"]
+[node name="cbsplitscreen" type="CheckBox" parent="SubViewportContainer/SubViewport"]
 unique_name_in_owner = true
-offset_left = 704.0
-offset_top = 576.0
-offset_right = 728.0
-offset_bottom = 600.0
+offset_left = 712.0
+offset_top = 416.0
+offset_right = 736.0
+offset_bottom = 440.0
 scale = Vector2(2.73, 2.73)
 theme_override_font_sizes/font_size = 0
 
-[node name="Label" type="Label" parent="SubViewportContainer/SubViewport/CheckBox"]
+[node name="Label" type="Label" parent="SubViewportContainer/SubViewport/cbsplitscreen"]
 layout_mode = 0
-offset_left = 26.3736
-offset_right = 112.374
+offset_left = 24.1758
+offset_right = 110.176
 offset_bottom = 23.0
 text = "Splitscreen"
 
+[node name="cbcontroller" type="CheckBox" parent="SubViewportContainer/SubViewport"]
+unique_name_in_owner = true
+offset_left = 712.0
+offset_top = 496.0
+offset_right = 736.0
+offset_bottom = 520.0
+scale = Vector2(2.73, 2.73)
+theme_override_font_sizes/font_size = 0
+
+[node name="Label" type="Label" parent="SubViewportContainer/SubViewport/cbcontroller"]
+layout_mode = 0
+offset_left = 24.1758
+offset_right = 110.176
+offset_bottom = 23.0
+text = "Controller"
+
 [connection signal="pressed" from="SubViewportContainer/SubViewport/btnstart" to="." method="_on_btnstart_pressed"]
-[connection signal="toggled" from="SubViewportContainer/SubViewport/CheckBox" to="." method="_on_check_box_toggled"]
+[connection signal="toggled" from="SubViewportContainer/SubViewport/cbsplitscreen" to="." method="_on_check_box_toggled"]
+[connection signal="toggled" from="SubViewportContainer/SubViewport/cbcontroller" to="." method="_controller_toggle"]

@@ -2,6 +2,7 @@ extends Node
 
 var playercount = 1
 var splitscreen = false
+var controller = false
 
 func changecount(num:int):
 	if num> 1:
@@ -16,3 +17,9 @@ func set_splitscreen(x : bool):
 
 func get_splitscreen()->bool:
 	return splitscreen
+
+func set_controller(x: bool):
+	controller = x
+
+func get_controller()->bool:
+	return controller
