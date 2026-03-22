@@ -10,12 +10,16 @@ func _ready() -> void:
 func set_world3d(world: World3D):
 	%SubViewport.world_3d = world
 
-func set_active(b:bool, controller: bool):
-	if controller:
-		%Giocatore.controller_active = b
+func set_active(b:bool, controller: bool = false):
+	var move = %Giocatore.get_movement()
+	if b:
+		if controller:
+			move.add_child(ControllerComponent.new())
+		else:
+			move.add_child(KeyBoard_Component.new())
 	else:
-		%Giocatore.active = b
-	
+		for a in move.get_children():
+			a.queue_free()
 
 func pass_input(event: InputEvent):
 	%SubViewport.push_input(event)

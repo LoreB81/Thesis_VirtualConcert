@@ -14,7 +14,7 @@ func _ready() -> void:
 		players = [%MainSubViewPort]
 		# per ogni giocatore istanzia una schermata e la aggiunge alla grid box
 		for i in n_players-1:
-			var x = preload("res://playerview.tscn").instantiate()
+			var x = preload("res://Components/playerview.tscn").instantiate()
 			x.add_position((i+1)*3)
 			x.change_lbl_text(i+2)
 			%GridContainer.add_child(x)
@@ -27,7 +27,7 @@ func _ready() -> void:
 		players = [%Giocatore]
 		# per ogni giocatore istanzia una schermata e la aggiunge alla grid box
 		for i in n_players-1:
-			var x = preload("res://player.tscn").instantiate()
+			var x = preload("res://Components/Player/player.tscn").instantiate()
 			x.position.z += (i+1)*3
 			x.position.y = 2
 			%SubViewport.add_child(x)
@@ -42,29 +42,27 @@ func _unhandled_input(event: InputEvent) -> void:
 		if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED and event is InputEventMouseMotion:
 			players[index].pass_input(event)
 		if event.is_action_pressed("az_switch"):
-			players[index].set_active(false, false)
-			players[index].set_active(false, true)
+			players[index].set_active(false)
 			index = index_next(index, players)
+			players[index].set_active(false)
 			players[index].set_active(true, false)
 			if controller:
-				players[index].set_active(false, true)
 				players[index_next(index, players)].set_active(true, true)
 		if event.is_action_pressed("az_switch_back"):
-			players[index].set_active(false, false)
-			players[index].set_active(false, true)
+			players[index].set_active(false)
 			index = index_back(index, players)
+			players[index].set_active(false)
 			players[index].set_active(true, false)
 			if controller:
-				players[index].set_active(false, true)
 				players[index_next(index, players)].set_active(true, true)
 	if not splitscreen:
 		%MainSubViewPort.change_lbl_text(index+1)
 		if event.is_action_pressed("az_switch"):
-			players[index].set_active(false, controller)
+			players[index].set_active(false)
 			index = index_next(index, players)
 			players[index].set_active(true, controller)
 		if event.is_action_pressed("az_switch_back"):
-			players[index].set_active(false, controller)
+			players[index].set_active(false)
 			index = index_back(index, players)
 			players[index].set_active(true, controller)
 	if Input.mouse_mode == Input.MOUSE_MODE_VISIBLE and event is InputEventMouseButton:

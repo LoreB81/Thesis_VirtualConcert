@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://l6wxsy448eg2"]
 
-[ext_resource type="Script" uid="uid://dt4bbpmy2qb4p" path="res://Scripts/localmpmenu.gd" id="1_gsbft"]
+[ext_resource type="Script" uid="uid://dt4bbpmy2qb4p" path="res://Scripts/localmpmenu.gd" id="1_ixdv0"]
 
 [sub_resource type="InputEventKey" id="InputEventKey_gsbft"]
 device = -1
@@ -14,66 +14,100 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_bottom = 16.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_gsbft")
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_ixdv0")
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="."]
-layout_mode = 0
-offset_right = 1920.0
-offset_bottom = 1088.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 stretch = true
 
 [node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
 handle_input_locally = false
-size = Vector2i(1920, 1088)
+canvas_item_default_texture_filter = 0
+size = Vector2i(1152, 648)
 render_target_update_mode = 4
 
 [node name="Background" type="ColorRect" parent="SubViewportContainer/SubViewport"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_bottom = -8.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 color = Color(0.380392, 0.647059, 0.737255, 1)
 
 [node name="btnstart" type="Button" parent="SubViewportContainer/SubViewport"]
 unique_name_in_owner = true
-offset_left = 664.0
-offset_top = 712.0
-offset_right = 1304.0
-offset_bottom = 912.0
+anchors_preset = -1
+anchor_left = 0.367
+anchor_top = 0.741
+anchor_right = 0.596
+anchor_bottom = 0.874
+offset_left = -0.640015
+offset_top = -8.28009
+offset_right = 7.67993
+offset_bottom = 2.07996
+grow_horizontal = 2
+grow_vertical = 0
 theme_override_font_sizes/font_size = 30
 shortcut = SubResource("Shortcut_kikup")
 text = "Avvia"
 
 [node name="txt_players" type="TextEdit" parent="SubViewportContainer/SubViewport"]
 unique_name_in_owner = true
-offset_left = 712.0
-offset_top = 192.0
-offset_right = 1212.0
-offset_bottom = 392.0
+anchors_preset = -1
+anchor_left = 0.371
+anchor_top = 0.207
+anchor_right = 0.6
+anchor_bottom = 0.378
+offset_left = -8.32007
+offset_top = -7.56001
+offset_bottom = -0.240021
+grow_horizontal = 2
+pivot_offset = Vector2(248, 112)
+size_flags_horizontal = 3
+size_flags_vertical = 3
 theme_override_font_sizes/font_size = 121
 placeholder_text = "1"
 wrap_mode = 1
 
 [node name="Label" type="Label" parent="SubViewportContainer/SubViewport"]
-offset_left = 528.0
-offset_top = 104.0
-offset_right = 1425.0
-offset_bottom = 188.0
+anchors_preset = -1
+anchor_left = 0.275
+anchor_top = 0.104
+anchor_right = 0.754
+anchor_bottom = 0.178
+offset_top = -8.32
+offset_right = -22.6801
+offset_bottom = -4.24001
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_font_sizes/font_size = 61
 text = "INSERIRE NUMERO GIOCATORI"
 horizontal_alignment = 1
 
 [node name="cbsplitscreen" type="CheckBox" parent="SubViewportContainer/SubViewport"]
 unique_name_in_owner = true
-offset_left = 712.0
-offset_top = 416.0
-offset_right = 736.0
-offset_bottom = 440.0
+anchors_preset = -1
+anchor_left = 0.375
+anchor_top = 0.504
+anchor_right = 0.533
+anchor_bottom = 0.533
+offset_left = -8.00006
+offset_top = -16.32
+offset_right = -287.36
+offset_bottom = -23.6401
+grow_horizontal = 2
+grow_vertical = 2
 scale = Vector2(2.73, 2.73)
 theme_override_font_sizes/font_size = 0
 
@@ -86,10 +120,17 @@ text = "Splitscreen"
 
 [node name="cbcontroller" type="CheckBox" parent="SubViewportContainer/SubViewport"]
 unique_name_in_owner = true
-offset_left = 712.0
-offset_top = 496.0
-offset_right = 736.0
-offset_bottom = 520.0
+anchors_preset = -1
+anchor_left = 0.362
+anchor_top = 0.578
+anchor_right = 0.517
+anchor_bottom = 0.615
+offset_left = 16.96
+offset_top = -16.24
+offset_right = -256.64
+offset_bottom = -32.2
+grow_horizontal = 2
+grow_vertical = 2
 scale = Vector2(2.73, 2.73)
 theme_override_font_sizes/font_size = 0
 

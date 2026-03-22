@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=3 uid="uid://0mdpwk4h0kdj"]
+
+[ext_resource type="Script" uid="uid://b1gdlnbrvtmdg" path="res://Scripts/playerview.gd" id="1_hpnfa"]
+[ext_resource type="PackedScene" uid="uid://rxciul80fix1" path="res://Components/Player/player.tscn" id="2_hpnfa"]
+
+[node name="SubViewportContainer" type="SubViewportContainer"]
+offset_right = 1923.0
+offset_bottom = 1083.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+stretch = true
+script = ExtResource("1_hpnfa")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+unique_name_in_owner = true
+handle_input_locally = false
+audio_listener_enable_3d = true
+size = Vector2i(1923, 1083)
+render_target_update_mode = 4
+
+[node name="lbl_nplayer" type="Label" parent="SubViewport"]
+unique_name_in_owner = true
+offset_right = 128.0
+offset_bottom = 146.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 167
+text = "N°"
+
+[node name="Giocatore" parent="SubViewport" instance=ExtResource("2_hpnfa")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.42451, 0)

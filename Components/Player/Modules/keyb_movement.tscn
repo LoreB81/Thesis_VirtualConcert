@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://eywg6gomp3ho"]
+
+[ext_resource type="Script" uid="uid://blemp3npn7nq1" path="res://Components/Player/Modules/Scripts/keyb_movement.gd" id="1_ebt47"]
+
+[node name="keyb_movement" type="Node"]
+script = ExtResource("1_ebt47")
