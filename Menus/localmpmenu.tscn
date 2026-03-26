@@ -32,7 +32,7 @@ stretch = true
 [node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
 handle_input_locally = false
 canvas_item_default_texture_filter = 0
-size = Vector2i(1152, 648)
+size = Vector2i(1920, 1080)
 render_target_update_mode = 4
 
 [node name="Background" type="ColorRect" parent="SubViewportContainer/SubViewport"]
@@ -61,24 +61,6 @@ grow_vertical = 0
 theme_override_font_sizes/font_size = 30
 shortcut = SubResource("Shortcut_kikup")
 text = "Avvia"
-
-[node name="txt_players" type="TextEdit" parent="SubViewportContainer/SubViewport"]
-unique_name_in_owner = true
-anchors_preset = -1
-anchor_left = 0.371
-anchor_top = 0.207
-anchor_right = 0.6
-anchor_bottom = 0.378
-offset_left = -8.32007
-offset_top = -7.56001
-offset_bottom = -0.240021
-grow_horizontal = 2
-pivot_offset = Vector2(248, 112)
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_font_sizes/font_size = 121
-placeholder_text = "1"
-wrap_mode = 1
 
 [node name="Label" type="Label" parent="SubViewportContainer/SubViewport"]
 anchors_preset = -1
@@ -140,6 +122,21 @@ offset_left = 24.1758
 offset_right = 110.176
 offset_bottom = 23.0
 text = "Controller"
+
+[node name="txt_players" type="LineEdit" parent="SubViewportContainer/SubViewport"]
+unique_name_in_owner = true
+anchors_preset = -1
+anchor_left = 0.367
+anchor_top = 0.23
+anchor_right = 0.679
+anchor_bottom = 0.467
+offset_left = 23.36
+offset_top = 31.6
+offset_right = -71.6801
+offset_bottom = -36.36
+theme_override_font_sizes/font_size = 131
+placeholder_text = "1"
+alignment = 1
 
 [connection signal="pressed" from="SubViewportContainer/SubViewport/btnstart" to="." method="_on_btnstart_pressed"]
 [connection signal="toggled" from="SubViewportContainer/SubViewport/cbsplitscreen" to="." method="_on_check_box_toggled"]

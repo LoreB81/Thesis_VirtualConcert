@@ -2,6 +2,8 @@ extends CharacterBody3D
 
 #variabili per muovere i giocatori
 @onready var Movement : MovementComponent = %Movement_component
+@onready var modello: MeshInstance3D = %Modello
+@onready var camera_pov: Camera3D = %CameraPOV
 
 func _process(_delta):
 	pass

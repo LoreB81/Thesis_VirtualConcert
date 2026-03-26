@@ -3,4 +3,5 @@
 [ext_resource type="Script" uid="uid://edt6u0mxkgcp" path="res://Components/Player/Modules/Scripts/controller_movement.gd" id="1_552m4"]
 
 [node name="Controller_movement" type="Node"]
+editor_description = "Componente per gestire il movimento di un giocatore tramite controller"
 script = ExtResource("1_552m4")

@@ -4,7 +4,7 @@ class_name KeyBoard_Component
 @onready var c:MovementComponent = get_parent()
 @onready var a = c.player
 func input(event):
-	if event is InputEventMouseMotion:
+	if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
 		c.modello.rotate_y(-event.relative.x*0.01)
 		c.pgc.rotate_x(-event.relative.y*0.01)
 		c.pgc.rotation.x = clamp(c.pgc.rotation.x, deg_to_rad(-70), deg_to_rad(70))

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://omjshq2tr404"]
+
+[ext_resource type="Script" uid="uid://du5p6yb46krm5" path="res://Components/Audio/split_screen_audio_manager.gd" id="1_8m8u0"]
+
+[node name="SplitScreenAudioManager" type="Node3D"]
+script = ExtResource("1_8m8u0")

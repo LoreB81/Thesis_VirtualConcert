@@ -1,16 +1,24 @@
 extends Node3D
 
+#indice per capire quali giocatori comandare
 var index = 0
+#array principale dei giocatori, può contenere le viewport per lo splitscreen o quelli normali per l'altra modalità
 var players: Array
+
+# numero di giocatori istanziati
 var n_players
+
 var splitscreen = PlayerCount.get_splitscreen()
+
 var controller = PlayerCount.get_controller()
+@onready var split_screen_audio_manager: SplitScreenAudioManager = $SplitScreenAudioManager
 
 
 func _ready() -> void:
 	# prende il count dei giocatori locali dall'autoload
 	n_players = PlayerCount.get_playercount()
 	if splitscreen:
+		var player_list: Array[CharacterBody3D] = [%Giocatore]
 		players = [%MainSubViewPort]
 		# per ogni giocatore istanzia una schermata e la aggiunge alla grid box
 		for i in n_players-1:
@@ -19,10 +27,14 @@ func _ready() -> void:
 			x.change_lbl_text(i+2)
 			%GridContainer.add_child(x)
 			players.append(x)
+			player_list.append(x.get_character())
 		divide_screen(players)
 		players[0].set_active(true, false)
 		if controller:
 			players[index_next(index, players)].set_active(true, true)
+		split_screen_audio_manager.set_playerlist(player_list)
+		split_screen_audio_manager.active = true
+		
 	else:
 		players = [%Giocatore]
 		# per ogni giocatore istanzia una schermata e la aggiunge alla grid box
@@ -54,7 +66,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			players[index].set_active(false)
 			players[index].set_active(true, false)
 			if controller:
-				players[index_next(index, players)].set_active(true, true)
+				players[index_back(index, players)].set_active(true, true)
 	if not splitscreen:
 		%MainSubViewPort.change_lbl_text(index+1)
 		if event.is_action_pressed("az_switch"):

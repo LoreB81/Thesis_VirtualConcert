@@ -38,3 +38,6 @@ func change_lbl_size(a:float):
 
 func audio_debug()->String:
 	return str(%SubViewport.audio_listener_enable_3d)
+
+func get_character()-> CharacterBody3D:
+	return %Giocatore
