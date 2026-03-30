@@ -15,11 +15,9 @@ func _ready() -> void:
 func set_playerlist(list: Array[CharacterBody3D]):
 	player_list = list
 	last_player = player_list[-1]
-	for x in audioelements:
-		last_player.add_child(x)
 	
 func _process(delta: float) -> void:
 	if active && last_player != null:
 		for x in audioelements:
 			var player = x.get_nearest_player(player_list)
-			x.change_audio_stream_pos(x.get_nearest_player_distance(player),last_player)
+			x.change_audio_stream_pos(x.get_nearest_player_position(player),last_player, player)
