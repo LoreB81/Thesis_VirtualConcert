@@ -5,19 +5,18 @@ class_name AudioElement
 
 
 func change_audio_stream_pos(pos:Vector3,  listener: CharacterBody3D, player: CharacterBody3D):
-	if listener !=player:
-		
-		var offset_globale = self.global_position - player.global_position
-		var drotazione = listener.modello.global_transform.basis.get_rotation_quaternion() * player.modello.global_transform.basis.get_rotation_quaternion().inverse()
-		var offset_ruotato = drotazione * offset_globale
-		
-		audio_stream.global_position = listener.global_position + offset_ruotato
-	else:
-		audio_stream.position = listener.position + Vector3(
-		pos.x,
-		pos.y,
-		pos.z
-		)
+	if audio_stream.playing:
+		if listener !=player:
+			var offset_globale = self.global_position - player.global_position
+			var drotazione = listener.modello.global_transform.basis.get_rotation_quaternion() * player.modello.global_transform.basis.get_rotation_quaternion().inverse()
+			var offset_ruotato = drotazione * offset_globale
+			audio_stream.global_position = listener.global_position + offset_ruotato
+		else:
+			audio_stream.position = listener.position + Vector3(
+			pos.x,
+			pos.y,
+			pos.z
+			)
 
 func get_nearest_player_position(player: CharacterBody3D)-> Vector3:
 		return Vector3(self.global_position.x - player.position.x, 

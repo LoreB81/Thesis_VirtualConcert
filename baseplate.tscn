@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://ch7wfnks6lhr5"]
+[gd_scene load_steps=22 format=3 uid="uid://ch7wfnks6lhr5"]
 
 [ext_resource type="Script" uid="uid://mvabuffvcrwn" path="res://Scripts/baseplate.gd" id="1_icd88"]
 [ext_resource type="PackedScene" uid="uid://rxciul80fix1" path="res://Components/Player/player.tscn" id="1_soyuy"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://qpb6esww1evi" path="res://PG/UomoLowPoly.blend" id="4_2vqvh"]
 [ext_resource type="AudioStream" uid="uid://b46p2pf8lqraj" path="res://Sounds/Musichetta.mp3" id="4_78jex"]
 [ext_resource type="Script" uid="uid://du5p6yb46krm5" path="res://Components/Audio/split_screen_audio_manager.gd" id="6_c502s"]
+[ext_resource type="AudioStream" uid="uid://h4e3kv3fr188" path="res://Sounds/Heaven Pierce Her - Event Horizon (Reach for the Sun and Burn! Burn! Burn!) (ULTRAKILL 8-3 Theme 3).mp3" id="6_v5l56"]
 [ext_resource type="Script" uid="uid://crbtqooufwg2e" path="res://Components/Audio/audio_element.gd" id="7_v5l56"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_soyuy"]
@@ -43,7 +44,25 @@ sky = SubResource("Sky_4muuu")
 tonemap_mode = 2
 glow_enabled = true
 
-[sub_resource type="PrismMesh" id="PrismMesh_c502s"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v5l56"]
+albedo_color = Color(0.909804, 0, 0.172549, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_07caf"]
+material = SubResource("StandardMaterial3D_v5l56")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_07caf"]
+albedo_color = Color(0, 1, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_kkhwo"]
+material = SubResource("StandardMaterial3D_07caf")
+
+[sub_resource type="SphereMesh" id="SphereMesh_kkhwo"]
+radius = 1.0
+height = 1.9
+
+[sub_resource type="TorusMesh" id="TorusMesh_p1amn"]
+inner_radius = 1.303
+outer_radius = 1.728
 
 [node name="Base" type="Node3D"]
 script = ExtResource("1_icd88")
@@ -68,7 +87,7 @@ script = ExtResource("2_2vqvh")
 unique_name_in_owner = true
 handle_input_locally = false
 audio_listener_enable_3d = true
-size = Vector2i(2, 2)
+size = Vector2i(1920, 1080)
 render_target_update_mode = 4
 
 [node name="Floor" type="MeshInstance3D" parent="GridContainer/MainSubViewPort/SubViewport"]
@@ -116,10 +135,26 @@ parameters/looping = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="GridContainer/MainSubViewPort/SubViewport/AudioStream"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.036, 0)
-mesh = SubResource("PrismMesh_c502s")
+mesh = SubResource("BoxMesh_07caf")
 
 [node name="UomoLowPoly" parent="GridContainer/MainSubViewPort/SubViewport" instance=ExtResource("4_2vqvh")]
 transform = Transform3D(0.165, 0, 0, 0, 0.165, 0, 0, 0, 0.165, -3.419, -0.839, -16.923)
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="GridContainer/MainSubViewPort/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.6079, 1.3002, 0)
+stream = ExtResource("6_v5l56")
+autoplay = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="GridContainer/MainSubViewPort/SubViewport/AudioStreamPlayer3D"]
+mesh = SubResource("BoxMesh_kkhwo")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="GridContainer/MainSubViewPort/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.6033, 1.40915, 0)
+mesh = SubResource("SphereMesh_kkhwo")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="GridContainer/MainSubViewPort/SubViewport/MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 0.506199, -0.135275, 0, 0.0621534, 1.10173, 0, 0, 0)
+mesh = SubResource("TorusMesh_p1amn")
 
 [node name="SplitScreenAudioManager" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -19.9318)
@@ -130,4 +165,10 @@ metadata/_custom_type_script = "uid://du5p6yb46krm5"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.73501, 1.42561, 2.96777)
 script = ExtResource("7_v5l56")
 audio_stream = NodePath("../../GridContainer/MainSubViewPort/SubViewport/AudioStream")
+metadata/_custom_type_script = "uid://crbtqooufwg2e"
+
+[node name="AudioElement2" type="Node3D" parent="SplitScreenAudioManager" node_paths=PackedStringArray("audio_stream")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.6914, 1.43479, 19.9084)
+script = ExtResource("7_v5l56")
+audio_stream = NodePath("../../GridContainer/MainSubViewPort/SubViewport/AudioStreamPlayer3D")
 metadata/_custom_type_script = "uid://crbtqooufwg2e"

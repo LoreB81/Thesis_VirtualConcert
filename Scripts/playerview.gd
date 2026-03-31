@@ -14,10 +14,13 @@ func set_active(b:bool, controller: bool = false):
 	var move = %Giocatore.get_movement()
 	if b:
 		if controller:
+			%lbl_nplayer.add_theme_color_override("font_color", Color("Blue"))
 			move.add_child(ControllerComponent.new())
 		else:
+			%lbl_nplayer.add_theme_color_override("font_color", Color("Red"))
 			move.add_child(KeyBoard_Component.new())
 	else:
+		%lbl_nplayer.add_theme_color_override("font_color", Color("White"))
 		for a in move.get_children():
 			a.queue_free()
 
