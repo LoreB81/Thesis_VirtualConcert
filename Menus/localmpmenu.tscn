@@ -32,7 +32,7 @@ stretch = true
 [node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
 handle_input_locally = false
 canvas_item_default_texture_filter = 0
-size = Vector2i(1920, 1080)
+size = Vector2i(1152, 648)
 render_target_update_mode = 4
 
 [node name="Background" type="ColorRect" parent="SubViewportContainer/SubViewport"]
@@ -64,13 +64,14 @@ text = "Avvia"
 
 [node name="Label" type="Label" parent="SubViewportContainer/SubViewport"]
 anchors_preset = -1
-anchor_left = 0.275
-anchor_top = 0.104
-anchor_right = 0.754
+anchor_left = 0.111
+anchor_top = 0.025
+anchor_right = 0.903
 anchor_bottom = 0.178
-offset_top = -8.32
-offset_right = -22.6801
-offset_bottom = -4.24001
+offset_left = 0.127991
+offset_top = -0.200001
+offset_right = -15.2561
+offset_bottom = -15.344
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 61
@@ -80,60 +81,72 @@ horizontal_alignment = 1
 [node name="cbsplitscreen" type="CheckBox" parent="SubViewportContainer/SubViewport"]
 unique_name_in_owner = true
 anchors_preset = -1
-anchor_left = 0.375
-anchor_top = 0.504
-anchor_right = 0.533
-anchor_bottom = 0.533
-offset_left = -8.00006
-offset_top = -16.32
-offset_right = -287.36
-offset_bottom = -23.6401
+anchor_left = 0.341
+anchor_top = 0.519
+anchor_right = 0.397
+anchor_bottom = 0.615
+offset_left = -0.832031
+offset_top = -0.312042
+offset_right = -41.344
+offset_bottom = -38.52
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(2.73, 2.73)
 theme_override_font_sizes/font_size = 0
 
 [node name="Label" type="Label" parent="SubViewportContainer/SubViewport/cbsplitscreen"]
-layout_mode = 0
-offset_left = 24.1758
-offset_right = 110.176
-offset_bottom = 23.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.129
+anchor_top = 0.061
+anchor_right = 4.591
+anchor_bottom = 0.958
+offset_left = -2.9202
+offset_top = -1.464
+offset_right = -0.00800323
+offset_bottom = 0.00799942
 text = "Splitscreen"
 
 [node name="cbcontroller" type="CheckBox" parent="SubViewportContainer/SubViewport"]
 unique_name_in_owner = true
 anchors_preset = -1
-anchor_left = 0.362
-anchor_top = 0.578
-anchor_right = 0.517
-anchor_bottom = 0.615
-offset_left = 16.96
-offset_top = -16.24
-offset_right = -256.64
-offset_bottom = -32.2
+anchor_left = 0.341
+anchor_top = 0.584
+anchor_right = 0.398
+anchor_bottom = 0.685
+offset_left = -0.368042
+offset_top = -0.120056
+offset_right = -42.032
+offset_bottom = -41.5681
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(2.73, 2.73)
 theme_override_font_sizes/font_size = 0
 
 [node name="Label" type="Label" parent="SubViewportContainer/SubViewport/cbcontroller"]
-layout_mode = 0
-offset_left = 24.1758
-offset_right = 110.176
-offset_bottom = 23.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.122
+anchor_top = 0.148
+anchor_right = 4.541
+anchor_bottom = 0.958
+offset_left = -2.7522
+offset_top = -3.552
+offset_right = 1.19199
+offset_bottom = 0.00799942
 text = "Controller"
 
 [node name="txt_players" type="LineEdit" parent="SubViewportContainer/SubViewport"]
 unique_name_in_owner = true
 anchors_preset = -1
-anchor_left = 0.367
-anchor_top = 0.23
-anchor_right = 0.679
-anchor_bottom = 0.467
-offset_left = 23.36
-offset_top = 31.6
-offset_right = -71.6801
-offset_bottom = -36.36
+anchor_left = 0.271
+anchor_top = 0.185
+anchor_right = 0.722
+anchor_bottom = 0.469
+offset_left = 7.80798
+offset_top = -7.88
+offset_right = -7.74408
+offset_bottom = -3.91202
 theme_override_font_sizes/font_size = 131
 placeholder_text = "1"
 alignment = 1
