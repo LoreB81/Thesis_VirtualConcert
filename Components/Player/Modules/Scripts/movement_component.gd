@@ -16,6 +16,7 @@ var _last_frame_was_on_floor = -INF
 @onready var pgc = %CameraPOV
 @onready var vista = %VistaInt
 @onready var modello = %Modello
+
 var interact_timeout=false
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -29,13 +30,16 @@ func input(event):
 			if ogg.has_method("interaz") and not interact_timeout:
 				player.interagisci(ogg)
 	if event.is_action_pressed("az_sprint"):
-		print("sprinting")
 		is_sprinting = true
 	if event.is_action_released("az_sprint"):
-		print("walking")
 		is_sprinting = false
 	for x in get_children():
-		x.input(event)
+		var rel = x.input(event)
+		modello.rotate_y(-rel.x*0.01)
+		pgc.rotate_x(-rel.y*0.01)
+		pgc.rotation.x = clamp(pgc.rotation.x, deg_to_rad(-70), deg_to_rad(70))
+		pgc.rotation.y = clamp(pgc.rotation.y, deg_to_rad(0), deg_to_rad(0))
+		pgc.rotation.z = clamp(pgc.rotation.z, deg_to_rad(0), deg_to_rad(0))
 
 
 func _snap_down_to_stairs_check():
@@ -95,7 +99,14 @@ func move(delta):
 		player.velocity.y -= gravity * delta
 	if get_child_count()>0:
 		for x in get_children():
-			x.move()
+			var input_dir= x.move()
+			var direction = (player.modello.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+			if direction:
+				player.velocity.x = direction.x * locspeed
+				player.velocity.z = direction.z * locspeed
+			else:
+				player.velocity.x = move_toward(player.velocity.x, 0, locspeed)
+				player.velocity.z = move_toward(player.velocity.z, 0, locspeed)
 	else:
 		player.velocity.x = move_toward(player.velocity.x, 0, locspeed)
 		player.velocity.z = move_toward(player.velocity.z, 0, locspeed)

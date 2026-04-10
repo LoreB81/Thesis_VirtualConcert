@@ -8,15 +8,15 @@ var players: Array
 # numero di giocatori istanziati
 var n_players
 
-var splitscreen = PlayerCount.get_splitscreen()
+var splitscreen = InfoPartita.get_splitscreen()
 
-var controller = PlayerCount.get_controller()
+var controller = InfoPartita.get_controller()
 @onready var split_screen_audio_manager: SplitScreenAudioManager = $SplitScreenAudioManager
 
 
 func _ready() -> void:
 	# prende il count dei giocatori locali dall'autoload
-	n_players = PlayerCount.get_playercount()
+	n_players = InfoPartita.get_playercount()
 	if splitscreen:
 		var player_list: Array[CharacterBody3D] = [%Giocatore]
 		players = [%MainSubViewPort]

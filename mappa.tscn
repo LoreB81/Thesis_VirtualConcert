@@ -1,0 +1,95 @@
+[gd_scene format=3 uid="uid://xb5me66b6rqi"]
+
+[ext_resource type="AudioStream" uid="uid://b46p2pf8lqraj" path="res://Sounds/Musichetta.mp3" id="1_dem48"]
+[ext_resource type="PackedScene" uid="uid://qpb6esww1evi" path="res://PG/UomoLowPoly.blend" id="2_8eu3w"]
+[ext_resource type="AudioStream" uid="uid://h4e3kv3fr188" path="res://Sounds/Heaven Pierce Her - Event Horizon (Reach for the Sun and Burn! Burn! Burn!) (ULTRAKILL 8-3 Theme 3).mp3" id="3_i8iyn"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_c4ipf"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4muuu"]
+albedo_color = Color(0.976471, 0.866667, 0.917647, 1)
+albedo_texture = SubResource("PlaceholderTexture2D_c4ipf")
+albedo_texture_force_srgb = true
+emission_enabled = true
+emission = Color(0.999985, 0.888232, 0.869182, 1)
+emission_energy_multiplier = 0.1
+uv1_scale = Vector3(50, 50, 50)
+texture_filter = 0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_0pjtc"]
+material = SubResource("StandardMaterial3D_4muuu")
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_4qhbo"]
+data = PackedVector3Array(1, 0, 1, -1, 0, 1, 1, 0, -1, -1, 0, 1, -1, 0, -1, 1, 0, -1)
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_dem48"]
+sky_top_color = Color(0.366098, 0.111518, 0.704, 1)
+sky_horizon_color = Color(0.897117, 0.228586, 0.316576, 1)
+sky_curve = 0.219613
+ground_bottom_color = Color(0.443137, 0.117647, 0.968627, 1)
+ground_horizon_color = Color(0.631373, 0, 0.635294, 1)
+sun_curve = 0.332871
+
+[sub_resource type="Sky" id="Sky_4muuu"]
+sky_material = SubResource("ProceduralSkyMaterial_dem48")
+
+[sub_resource type="Environment" id="Environment_8eu3w"]
+background_mode = 2
+sky = SubResource("Sky_4muuu")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="SphereMesh" id="SphereMesh_4yysh"]
+radius = 1.0
+height = 1.9
+
+[sub_resource type="TorusMesh" id="TorusMesh_3th0n"]
+inner_radius = 1.303
+outer_radius = 1.728
+
+[node name="Mappa" type="Node3D" unique_id=891395470]
+
+[node name="Floor" type="MeshInstance3D" parent="." unique_id=371196865]
+transform = Transform3D(100, 0, 0, 0, 1, 0, 0, 0, 100, 0, 0.0973943, 0)
+mesh = SubResource("PlaneMesh_0pjtc")
+skeleton = NodePath("../../../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Floor" unique_id=844039614]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor/StaticBody3D" unique_id=2028821373]
+shape = SubResource("ConcavePolygonShape3D_4qhbo")
+
+[node name="Sky" type="Node3D" parent="." unique_id=1536961726]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Sky" unique_id=2114501855]
+environment = SubResource("Environment_8eu3w")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Sky" unique_id=99827053]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+light_color = Color(0.693229, 0.352423, 0.490804, 1)
+shadow_enabled = true
+
+[node name="AudioStream" type="AudioStreamPlayer3D" parent="." unique_id=589874675]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.43583, 1.84919, -16.8336)
+stream = ExtResource("1_dem48")
+volume_db = 1.0
+autoplay = true
+max_distance = 30.0
+parameters/looping = true
+
+[node name="UomoLowPoly" parent="." unique_id=2103566448 instance=ExtResource("2_8eu3w")]
+transform = Transform3D(0.165, 0, 0, 0, 0.165, 0, 0, 0, 0.165, -3.419, -0.839, -16.923)
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=1118776541]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.6079, 1.3002, 0)
+stream = ExtResource("3_i8iyn")
+autoplay = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1066117603]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.6033, 1.40915, 0)
+mesh = SubResource("SphereMesh_4yysh")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D" unique_id=960925287]
+transform = Transform3D(1, 0, 0, 0, 0.506199, -0.135275, 0, 0.0621534, 1.10173, 0, 0, 0)
+mesh = SubResource("TorusMesh_3th0n")

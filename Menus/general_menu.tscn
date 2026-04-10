@@ -91,3 +91,4 @@ theme_override_font_sizes/font_size = 61
 text = "MULTIUTENZA PEER"
 
 [connection signal="pressed" from="SubViewportContainer/SubViewport/ColorRect/Bottoni/btn_localmp" to="." method="localmp_button"]
+[connection signal="pressed" from="SubViewportContainer/SubViewport/ColorRect/Bottoni/btn_peer2peer" to="." method="p2p_button"]

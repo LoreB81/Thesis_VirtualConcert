@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://d22lu8ytrdgcg"]
+
+[ext_resource type="Script" uid="uid://ddmcrkyy1qc5n" path="res://Scripts/pto_p.gd" id="1_0wi88"]
+[ext_resource type="PackedScene" uid="uid://xb5me66b6rqi" path="res://mappa.tscn" id="1_jh3k1"]
+
+[node name="PtoP" type="Node3D" unique_id=1688220669]
+script = ExtResource("1_0wi88")
+
+[node name="Mappa" parent="." unique_id=891395470 instance=ExtResource("1_jh3k1")]
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="." unique_id=1531437006]
+_spawnable_scenes = PackedStringArray("uid://rxciul80fix1")
+spawn_path = NodePath("..")

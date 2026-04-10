@@ -4,7 +4,12 @@ extends CharacterBody3D
 @onready var Movement : MovementComponent = %Movement_component
 @onready var modello: MeshInstance3D = %Modello
 @onready var camera_pov: Camera3D = %CameraPOV
+@onready var input: MultiplayerSynchronizer = $InputSync
 
+@export var player_id: int = 1:
+	set(id):
+		player_id = id
+		set_multiplayer_authority(id)
 func _process(_delta):
 	pass
 	#if vista.is_colliding():
@@ -20,10 +25,10 @@ func _process(_delta):
 			#is_reset = true
 
 func _unhandled_input(event):
-	%Movement_component.input(event)
+	Movement.input(event)
 func _physics_process(delta):
 	# ferma gli utenti non attivi
-	%Movement_component.move(delta)
+	Movement.move(delta)
 
 func set_active(x:bool, controller: bool = false):
 	%CameraPOV.current = x

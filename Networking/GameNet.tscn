@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://xjhhemhjyvmm"]
+
+[ext_resource type="Script" uid="uid://dhb418t7afiwl" path="res://Networking/game_net.gd" id="1_t7r3w"]
+
+[node name="Net" type="Node" unique_id=459455681]
+script = ExtResource("1_t7r3w")
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="." unique_id=1728958645]
+_spawnable_scenes = PackedStringArray("uid://d22lu8ytrdgcg")
+spawn_path = NodePath("../SubViewportContainer/SubViewport")
+spawn_limit = 1
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=667688300]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer" unique_id=927455649]
+handle_input_locally = false
+size = Vector2i(1152, 648)
+render_target_update_mode = 4

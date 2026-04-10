@@ -3,6 +3,7 @@ extends Node
 var playercount = 1
 var splitscreen = false
 var controller = false
+var is_host = false
 
 func changecount(num:int):
 	if num> 1:

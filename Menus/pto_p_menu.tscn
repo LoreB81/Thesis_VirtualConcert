@@ -1,0 +1,81 @@
+[gd_scene format=3 uid="uid://idd802y2a3t3"]
+
+[ext_resource type="Script" uid="uid://dit2608q0dqmd" path="res://Scripts/pto_p_menu.gd" id="1_wuq4h"]
+
+[node name="PtoP_menu" type="Control" unique_id=122869027]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wuq4h")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=1618053058]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer" unique_id=1704599998]
+handle_input_locally = false
+size = Vector2i(1152, 648)
+render_target_update_mode = 4
+
+[node name="Sfondo" type="ColorRect" parent="SubViewportContainer/SubViewport" unique_id=1829268084]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.5921569, 1, 1, 1)
+
+[node name="Label" type="Label" parent="SubViewportContainer/SubViewport/Sfondo" unique_id=61706318]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.113000005
+anchor_top = 0.119
+anchor_right = 0.855
+anchor_bottom = 0.25300002
+offset_left = -0.17601013
+offset_top = -0.11199951
+offset_right = 0.039978027
+offset_bottom = 0.055984497
+theme_override_colors/font_color = Color(0.32877424, 0.51897544, 0.17928794, 1)
+theme_override_font_sizes/font_size = 51
+text = "PEER TO PEER MULTIPLAYER"
+horizontal_alignment = 1
+
+[node name="btn_host" type="Button" parent="SubViewportContainer/SubViewport/Sfondo" unique_id=500944509]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.381
+anchor_top = 0.30600002
+anchor_right = 0.60300004
+anchor_bottom = 0.40600002
+offset_left = 0.08798218
+offset_top = -0.28800964
+offset_right = 0.3439331
+offset_bottom = -0.088012695
+theme_override_font_sizes/font_size = 41
+text = "FAI DA HOST"
+
+[node name="btn_connect" type="Button" parent="SubViewportContainer/SubViewport/Sfondo" unique_id=2029248756]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.381
+anchor_top = 0.54300004
+anchor_right = 0.60300004
+anchor_bottom = 0.64400005
+offset_left = 0.08798218
+offset_top = 0.13598633
+offset_right = 0.3439331
+offset_bottom = -4.312042
+theme_override_font_sizes/font_size = 41
+text = "CONNETTITI"
+
+[connection signal="pressed" from="SubViewportContainer/SubViewport/Sfondo/btn_host" to="." method="_on_btn_host_pressed"]
+[connection signal="pressed" from="SubViewportContainer/SubViewport/Sfondo/btn_connect" to="." method="_on_btn_connect_pressed"]

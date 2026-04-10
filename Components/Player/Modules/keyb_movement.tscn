@@ -1,7 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://eywg6gomp3ho"]
+[gd_scene format=3 uid="uid://eywg6gomp3ho"]
 
 [ext_resource type="Script" uid="uid://blemp3npn7nq1" path="res://Components/Player/Modules/Scripts/keyb_movement.gd" id="1_ebt47"]
 
-[node name="keyb_movement" type="Node"]
+[node name="keyb_movement" type="Node" unique_id=1759096992]
 editor_description = "Componente per gestire il movimento del giocatore tramite tastiera"
 script = ExtResource("1_ebt47")

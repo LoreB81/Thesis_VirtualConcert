@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://l6wxsy448eg2"]
+[gd_scene format=3 uid="uid://l6wxsy448eg2"]
 
 [ext_resource type="Script" uid="uid://dt4bbpmy2qb4p" path="res://Scripts/localmpmenu.gd" id="1_ixdv0"]
 
@@ -9,7 +9,7 @@ keycode = 4194309
 [sub_resource type="Shortcut" id="Shortcut_kikup"]
 events = [SubResource("InputEventKey_gsbft")]
 
-[node name="Control" type="Control"]
+[node name="Control" type="Control" unique_id=1674639756]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -20,7 +20,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("1_ixdv0")
 
-[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+[node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=325441201]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -29,13 +29,13 @@ grow_horizontal = 2
 grow_vertical = 2
 stretch = true
 
-[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer" unique_id=118189484]
 handle_input_locally = false
 canvas_item_default_texture_filter = 0
 size = Vector2i(1152, 648)
 render_target_update_mode = 4
 
-[node name="Background" type="ColorRect" parent="SubViewportContainer/SubViewport"]
+[node name="Background" type="ColorRect" parent="SubViewportContainer/SubViewport" unique_id=71923534]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -45,7 +45,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 color = Color(0.380392, 0.647059, 0.737255, 1)
 
-[node name="btnstart" type="Button" parent="SubViewportContainer/SubViewport"]
+[node name="btnstart" type="Button" parent="SubViewportContainer/SubViewport" unique_id=1762868189]
 unique_name_in_owner = true
 anchors_preset = -1
 anchor_left = 0.367
@@ -62,7 +62,7 @@ theme_override_font_sizes/font_size = 30
 shortcut = SubResource("Shortcut_kikup")
 text = "Avvia"
 
-[node name="Label" type="Label" parent="SubViewportContainer/SubViewport"]
+[node name="Label" type="Label" parent="SubViewportContainer/SubViewport" unique_id=1387645753]
 anchors_preset = -1
 anchor_left = 0.111
 anchor_top = 0.025
@@ -78,7 +78,7 @@ theme_override_font_sizes/font_size = 61
 text = "INSERIRE NUMERO GIOCATORI"
 horizontal_alignment = 1
 
-[node name="cbsplitscreen" type="CheckBox" parent="SubViewportContainer/SubViewport"]
+[node name="cbsplitscreen" type="CheckBox" parent="SubViewportContainer/SubViewport" unique_id=301490982]
 unique_name_in_owner = true
 anchors_preset = -1
 anchor_left = 0.341
@@ -94,7 +94,7 @@ grow_vertical = 2
 scale = Vector2(2.73, 2.73)
 theme_override_font_sizes/font_size = 0
 
-[node name="Label" type="Label" parent="SubViewportContainer/SubViewport/cbsplitscreen"]
+[node name="Label" type="Label" parent="SubViewportContainer/SubViewport/cbsplitscreen" unique_id=1165271193]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 1.129
@@ -107,7 +107,7 @@ offset_right = -0.00800323
 offset_bottom = 0.00799942
 text = "Splitscreen"
 
-[node name="cbcontroller" type="CheckBox" parent="SubViewportContainer/SubViewport"]
+[node name="cbcontroller" type="CheckBox" parent="SubViewportContainer/SubViewport" unique_id=594573451]
 unique_name_in_owner = true
 anchors_preset = -1
 anchor_left = 0.341
@@ -123,7 +123,7 @@ grow_vertical = 2
 scale = Vector2(2.73, 2.73)
 theme_override_font_sizes/font_size = 0
 
-[node name="Label" type="Label" parent="SubViewportContainer/SubViewport/cbcontroller"]
+[node name="Label" type="Label" parent="SubViewportContainer/SubViewport/cbcontroller" unique_id=67844082]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 1.122
@@ -136,7 +136,7 @@ offset_right = 1.19199
 offset_bottom = 0.00799942
 text = "Controller"
 
-[node name="txt_players" type="LineEdit" parent="SubViewportContainer/SubViewport"]
+[node name="txt_players" type="LineEdit" parent="SubViewportContainer/SubViewport" unique_id=1069852580]
 unique_name_in_owner = true
 anchors_preset = -1
 anchor_left = 0.271
