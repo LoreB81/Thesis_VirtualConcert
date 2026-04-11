@@ -27,11 +27,9 @@ func add_player(id):
 	if $Players.has_node(str(id)):
 		return
 	player.name = str(id)
-	player.set_multiplayer_authority(id)
 	print("Sto aggiungendo il player ", id)
 	$Players.add_child(player, true)
-	player.position.y+=1
-	player.set_move(true)
+	player.set_move(id)
 
 @rpc("any_peer", "call_local", "reliable")
 func notify_server_ready():

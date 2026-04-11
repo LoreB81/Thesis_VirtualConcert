@@ -8,18 +8,17 @@ extends CharacterBody3D
 @onready var input: MultiplayerSynchronizer = $InputSync
 
 func _ready() -> void:
-	self.name = str(multiplayer.get_unique_id())
-	set_multiplayer_authority(self.name.to_int())
-	if is_multiplayer_authority():
-		camera_pov.make_current()
+	self.position.y+=1
+	set_multiplayer_authority(name.to_int())
+	var a =get_multiplayer_authority()
+	var b = multiplayer.get_unique_id()
+	print(a,"-",b)
+	if a == b:
 		set_process(true)
-		set_physics_process(true)
+		camera_pov.make_current()
 	else:
-		camera_pov.current = false
 		set_process(false)
-		set_physics_process(false)
-		$CollisionShape3D.disabled = true
-
+		camera_pov.current = false
 func _process(_delta):
 	pass
 	#if vista.is_colliding():
@@ -35,12 +34,13 @@ func _process(_delta):
 			#is_reset = true
 
 func _unhandled_input(event):
-	Movement.input(event)
+	if is_multiplayer_authority():
+		Movement.input(event)
 
 
 func _physics_process(delta):
-	# ferma gli utenti non attivi
-	Movement.move(delta)
+	if is_multiplayer_authority():
+		Movement.move(delta)
 
 # aggiunge il componente di movimento alla tastiera per muovere il player
 func set_active(x:bool, controller: bool = false):
