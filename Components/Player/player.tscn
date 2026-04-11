@@ -2,29 +2,12 @@
 
 [ext_resource type="Script" uid="uid://dhmbdehilik1u" path="res://Scripts/Player/Player.gd" id="1_7iwu5"]
 [ext_resource type="PackedScene" uid="uid://b1to0n0n5e4ly" path="res://Components/Player/Modules/movement_component.tscn" id="2_1xasy"]
-[ext_resource type="Script" uid="uid://gurymniqpjvj" path="res://Components/Player/Modules/Scripts/input_sync.gd" id="3_m62op"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_1xasy"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_1xasy"]
 height = 1.89362
 radius = 0.536621
-
-[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_1xasy"]
-properties/0/path = NodePath(".:player_id")
-properties/0/spawn = true
-properties/0/replication_mode = 1
-properties/1/path = NodePath(".:position")
-properties/1/spawn = true
-properties/1/replication_mode = 1
-properties/2/path = NodePath("Modello:rotation")
-properties/2/spawn = true
-properties/2/replication_mode = 1
-
-[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_m62op"]
-properties/0/path = NodePath("Movement_component:locspeed")
-properties/0/spawn = true
-properties/0/replication_mode = 1
 
 [node name="Giocatore" type="CharacterBody3D" unique_id=437263064]
 script = ExtResource("1_7iwu5")
@@ -59,10 +42,3 @@ unique_name_in_owner = true
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1802204155]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.04599, 0)
 shape = SubResource("CylinderShape3D_1xasy")
-
-[node name="ServerSync" type="MultiplayerSynchronizer" parent="." unique_id=1276815411]
-replication_config = SubResource("SceneReplicationConfig_1xasy")
-
-[node name="InputSync" type="MultiplayerSynchronizer" parent="." unique_id=1242153357]
-replication_config = SubResource("SceneReplicationConfig_m62op")
-script = ExtResource("3_m62op")

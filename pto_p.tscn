@@ -9,5 +9,9 @@ script = ExtResource("1_0wi88")
 [node name="Mappa" parent="." unique_id=891395470 instance=ExtResource("1_jh3k1")]
 
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="." unique_id=1531437006]
-_spawnable_scenes = PackedStringArray("uid://rxciul80fix1")
-spawn_path = NodePath("..")
+_spawnable_scenes = PackedStringArray("uid://bsu0f1i2dmlik")
+spawn_path = NodePath("../Players")
+
+[node name="Players" type="Node" parent="." unique_id=1502713383]
+
+[connection signal="spawned" from="MultiplayerSpawner" to="." method="_on_multiplayer_spawner_spawned"]

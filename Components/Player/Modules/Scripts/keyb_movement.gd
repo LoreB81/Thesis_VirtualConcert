@@ -10,5 +10,6 @@ func input(event)-> Vector2:
 		return event.relative
 	else:
 		return Vector2.ZERO
+		
 func move()-> Vector2:
 	return Input.get_vector("mv_sinistra", "mv_destra", "mv_avanti", "mv_dietro")

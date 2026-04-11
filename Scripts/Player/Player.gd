@@ -6,10 +6,9 @@ extends CharacterBody3D
 @onready var camera_pov: Camera3D = %CameraPOV
 @onready var input: MultiplayerSynchronizer = $InputSync
 
-@export var player_id: int = 1:
-	set(id):
-		player_id = id
-		set_multiplayer_authority(id)
+func _ready() -> void:
+	pass
+
 func _process(_delta):
 	pass
 	#if vista.is_colliding():
@@ -26,20 +25,26 @@ func _process(_delta):
 
 func _unhandled_input(event):
 	Movement.input(event)
+
+
 func _physics_process(delta):
 	# ferma gli utenti non attivi
 	Movement.move(delta)
 
+# aggiunge il componente di movimento alla tastiera per muovere il player
 func set_active(x:bool, controller: bool = false):
 	%CameraPOV.current = x
 	if x:
+		var temp
 		if controller:
-			Movement.add_child(ControllerComponent.new())
+			temp = ControllerComponent.new()
 		else:
-			Movement.add_child(KeyBoard_Component.new())
+			temp = KeyBoard_Component.new()
+		Movement.add_child(temp)
 	else:
 		for a in Movement.get_children():
 			a.queue_free()
 
 func get_movement()->MovementComponent:
 	return Movement
+	
