@@ -29,6 +29,17 @@ OnlineLobby="*uid://lxd8k0q36mmf"
 window/stretch/mode="viewport"
 window/stretch/aspect="expand"
 
+[file_customization]
+
+folder_colors={
+"res://Components/": "pink",
+"res://Components/Player/": "orange",
+"res://Menus/": "green",
+"res://Networking/": "purple",
+"res://PG/": "red",
+"res://Scripts/Player/": "orange"
+}
+
 [input]
 
 mv_avanti={

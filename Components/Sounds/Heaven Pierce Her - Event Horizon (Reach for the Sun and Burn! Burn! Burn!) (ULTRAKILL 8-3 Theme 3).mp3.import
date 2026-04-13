@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://h4e3kv3fr188"
+path="res://.godot/imported/Heaven Pierce Her - Event Horizon (Reach for the Sun and Burn! Burn! Burn!) (ULTRAKILL 8-3 Theme 3).mp3-f9327003bafcc723c686a8d872e7f528.mp3str"
+
+[deps]
+
+source_file="res://Components/Sounds/Heaven Pierce Her - Event Horizon (Reach for the Sun and Burn! Burn! Burn!) (ULTRAKILL 8-3 Theme 3).mp3"
+dest_files=["res://.godot/imported/Heaven Pierce Her - Event Horizon (Reach for the Sun and Burn! Burn! Burn!) (ULTRAKILL 8-3 Theme 3).mp3-f9327003bafcc723c686a8d872e7f528.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

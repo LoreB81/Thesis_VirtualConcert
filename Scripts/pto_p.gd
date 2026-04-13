@@ -23,10 +23,8 @@ func _unhandled_input(event: InputEvent) -> void:
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	if event.is_action_pressed("ui_cancel"):
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-	# Se premiamo INVIO sul server dopo che il client è connesso
-	if event.is_action_pressed("ui_accept") and multiplayer.is_server():
-		print("Forzo spawn Host...")
-		add_player(1)
+
+
 func add_player(id):
 	var player = preload("res://Components/Player/mp_player.tscn").instantiate()
 	#salta i duplicati

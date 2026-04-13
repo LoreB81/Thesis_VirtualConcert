@@ -1,68 +1,25 @@
-[gd_scene format=3 uid="uid://bsu0f1i2dmlik"]
+[gd_scene format=3 uid="uid://ck1302wtu18qd"]
 
+[ext_resource type="PackedScene" uid="uid://rxciul80fix1" path="res://Components/Player/player.tscn" id="1_uq6gn"]
 [ext_resource type="Script" uid="uid://dhscfu0grjroj" path="res://Scripts/Player/mp_player.gd" id="1_xlb2y"]
-[ext_resource type="PackedScene" uid="uid://b1to0n0n5e4ly" path="res://Components/Player/Modules/movement_component.tscn" id="2_1bnfx"]
 [ext_resource type="Script" uid="uid://gurymniqpjvj" path="res://Components/Player/Modules/Scripts/input_sync.gd" id="3_y7yvp"]
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_1xasy"]
-
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_1xasy"]
-height = 1.89362
-radius = 0.536621
-
-[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_1xasy"]
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_qpibx"]
 properties/0/path = NodePath(".:position")
 properties/0/spawn = true
 properties/0/replication_mode = 1
-properties/1/path = NodePath("Modello:rotation")
-properties/1/spawn = true
-properties/1/replication_mode = 1
 
-[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_m62op"]
-properties/0/path = NodePath("Movement_component:locspeed")
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_xlb2y"]
+properties/0/path = NodePath("InputSync:direction")
 properties/0/spawn = true
 properties/0/replication_mode = 1
-properties/1/path = NodePath("InputSync:direction")
-properties/1/spawn = true
-properties/1/replication_mode = 1
 
-[node name="Giocatore" type="CharacterBody3D" unique_id=437263064]
+[node name="Giocatore" unique_id=437263064 instance=ExtResource("1_uq6gn")]
 script = ExtResource("1_xlb2y")
 
-[node name="Modello" type="MeshInstance3D" parent="." unique_id=540646229]
-unique_name_in_owner = true
-mesh = SubResource("CapsuleMesh_1xasy")
+[node name="ServerSync" type="MultiplayerSynchronizer" parent="." index="5" unique_id=947225229]
+replication_config = SubResource("SceneReplicationConfig_qpibx")
 
-[node name="Collo" type="Node3D" parent="Modello" unique_id=2035869211]
-unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.138901, 0.22693, -0.172977)
-
-[node name="CameraPOV" type="Camera3D" parent="Modello/Collo" unique_id=643525392]
-unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.60242, 0)
-
-[node name="VistaInt" type="RayCast3D" parent="Modello/Collo/CameraPOV" unique_id=1432032675]
-unique_name_in_owner = true
-transform = Transform3D(1.91069e-15, 6.3163e-08, 1, 1, -6.3163e-08, -3.59989e-21, 4.37114e-08, 1.445, -4.37114e-08, 0, 0, 0)
-
-[node name="StairsBelowRayCast3D" type="RayCast3D" parent="." unique_id=979682348]
-unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.122037, -0.954266, -0.084244)
-
-[node name="StairsAheadRayCast3D" type="RayCast3D" parent="." unique_id=1410819788]
-unique_name_in_owner = true
-transform = Transform3D(1.91069e-15, 4.37114e-08, 1, 1, -4.37114e-08, 0, 4.37114e-08, 1, -4.37114e-08, 0, -0.922221, 0)
-
-[node name="Movement_component" parent="." unique_id=1474245926 instance=ExtResource("2_1bnfx")]
-unique_name_in_owner = true
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1802204155]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.04599, 0)
-shape = SubResource("CylinderShape3D_1xasy")
-
-[node name="ServerSync" type="MultiplayerSynchronizer" parent="." unique_id=1276815411]
-replication_config = SubResource("SceneReplicationConfig_1xasy")
-
-[node name="InputSync" type="MultiplayerSynchronizer" parent="." unique_id=1242153357]
-replication_config = SubResource("SceneReplicationConfig_m62op")
+[node name="InputSync" type="MultiplayerSynchronizer" parent="." index="6" unique_id=1562805657]
+replication_config = SubResource("SceneReplicationConfig_xlb2y")
 script = ExtResource("3_y7yvp")

@@ -5,40 +5,40 @@
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_1xasy"]
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_1xasy"]
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_m62op"]
 height = 1.89362
 radius = 0.536621
 
 [node name="Giocatore" type="CharacterBody3D" unique_id=437263064]
 script = ExtResource("1_7iwu5")
 
-[node name="Modello" type="MeshInstance3D" parent="." unique_id=540646229]
+[node name="Modello" type="MeshInstance3D" parent="." unique_id=1944314912]
 unique_name_in_owner = true
 mesh = SubResource("CapsuleMesh_1xasy")
 
-[node name="Collo" type="Node3D" parent="Modello" unique_id=2035869211]
+[node name="Collo" type="Node3D" parent="Modello" unique_id=1229728835]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.138901, 0.22693, -0.172977)
 
-[node name="CameraPOV" type="Camera3D" parent="Modello/Collo" unique_id=643525392]
+[node name="CameraPOV" type="Camera3D" parent="Modello/Collo" unique_id=1885484682]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.60242, 0)
 
-[node name="VistaInt" type="RayCast3D" parent="Modello/Collo/CameraPOV" unique_id=1432032675]
+[node name="VistaInt" type="RayCast3D" parent="Modello/Collo/CameraPOV" unique_id=1093323954]
 unique_name_in_owner = true
 transform = Transform3D(1.91069e-15, 6.3163e-08, 1, 1, -6.3163e-08, -3.59989e-21, 4.37114e-08, 1.445, -4.37114e-08, 0, 0, 0)
 
-[node name="StairsBelowRayCast3D" type="RayCast3D" parent="." unique_id=979682348]
+[node name="StairsBelowRayCast3D" type="RayCast3D" parent="." unique_id=1826001234]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.122037, -0.954266, -0.084244)
 
-[node name="StairsAheadRayCast3D" type="RayCast3D" parent="." unique_id=1410819788]
+[node name="StairsAheadRayCast3D" type="RayCast3D" parent="." unique_id=20403302]
 unique_name_in_owner = true
 transform = Transform3D(1.91069e-15, 4.37114e-08, 1, 1, -4.37114e-08, 0, 4.37114e-08, 1, -4.37114e-08, 0, -0.922221, 0)
 
-[node name="Movement_component" parent="." unique_id=1474245926 instance=ExtResource("2_1xasy")]
+[node name="Movement_component" parent="." unique_id=852742304 instance=ExtResource("2_1xasy")]
 unique_name_in_owner = true
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1802204155]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=242200875]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.04599, 0)
-shape = SubResource("CylinderShape3D_1xasy")
+shape = SubResource("CylinderShape3D_m62op")

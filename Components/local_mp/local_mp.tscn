@@ -1,13 +1,13 @@
 [gd_scene format=3 uid="uid://ch7wfnks6lhr5"]
 
-[ext_resource type="Script" uid="uid://mvabuffvcrwn" path="res://Scripts/baseplate.gd" id="1_biujf"]
-[ext_resource type="Script" uid="uid://b1gdlnbrvtmdg" path="res://Scripts/playerview.gd" id="2_5gygg"]
-[ext_resource type="PackedScene" uid="uid://rxciul80fix1" path="res://Components/Player/player.tscn" id="3_a86wp"]
-[ext_resource type="AudioStream" uid="uid://b46p2pf8lqraj" path="res://Sounds/Musichetta.mp3" id="4_2i313"]
-[ext_resource type="PackedScene" uid="uid://qpb6esww1evi" path="res://PG/UomoLowPoly.blend" id="5_xgpal"]
-[ext_resource type="AudioStream" uid="uid://h4e3kv3fr188" path="res://Sounds/Heaven Pierce Her - Event Horizon (Reach for the Sun and Burn! Burn! Burn!) (ULTRAKILL 8-3 Theme 3).mp3" id="6_nnqmv"]
-[ext_resource type="Script" uid="uid://du5p6yb46krm5" path="res://Components/Audio/split_screen_audio_manager.gd" id="7_mn5sf"]
-[ext_resource type="Script" uid="uid://crbtqooufwg2e" path="res://Components/Audio/audio_element.gd" id="8_wwmec"]
+[ext_resource type="Script" uid="uid://mvabuffvcrwn" path="res://Scripts/baseplate.gd" id="1_ya0hm"]
+[ext_resource type="Script" uid="uid://b1gdlnbrvtmdg" path="res://Scripts/playerview.gd" id="2_5ntrp"]
+[ext_resource type="PackedScene" uid="uid://rxciul80fix1" path="res://Components/Player/player.tscn" id="3_kj5nr"]
+[ext_resource type="AudioStream" uid="uid://b46p2pf8lqraj" path="res://Components/Sounds/Musichetta.mp3" id="4_wk50m"]
+[ext_resource type="PackedScene" uid="uid://qpb6esww1evi" path="res://PG/UomoLowPoly.blend" id="5_4i60i"]
+[ext_resource type="AudioStream" uid="uid://h4e3kv3fr188" path="res://Components/Sounds/Heaven Pierce Her - Event Horizon (Reach for the Sun and Burn! Burn! Burn!) (ULTRAKILL 8-3 Theme 3).mp3" id="6_yjbvh"]
+[ext_resource type="Script" uid="uid://du5p6yb46krm5" path="res://Components/Audio/split_screen_audio_manager.gd" id="7_q826b"]
+[ext_resource type="Script" uid="uid://crbtqooufwg2e" path="res://Components/Audio/audio_element.gd" id="8_cdtxd"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v5l56"]
 albedo_color = Color(0.909804, 0, 0.172549, 1)
@@ -65,7 +65,7 @@ tonemap_mode = 2
 glow_enabled = true
 
 [node name="Base" type="Node3D" unique_id=827474246]
-script = ExtResource("1_biujf")
+script = ExtResource("1_ya0hm")
 
 [node name="GridContainer" type="GridContainer" parent="." unique_id=355372991]
 unique_name_in_owner = true
@@ -81,7 +81,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 stretch = true
-script = ExtResource("2_5gygg")
+script = ExtResource("2_5ntrp")
 
 [node name="SubViewport" type="SubViewport" parent="GridContainer/MainSubViewPort" unique_id=2031033164]
 unique_name_in_owner = true
@@ -90,7 +90,7 @@ audio_listener_enable_3d = true
 size = Vector2i(1152, 648)
 render_target_update_mode = 4
 
-[node name="Giocatore" parent="GridContainer/MainSubViewPort/SubViewport" unique_id=1817419284 instance=ExtResource("3_a86wp")]
+[node name="Giocatore" parent="GridContainer/MainSubViewPort/SubViewport" unique_id=1817419284 instance=ExtResource("3_kj5nr")]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.35978, 1.29855, 0)
 
@@ -107,7 +107,7 @@ text = "1"
 [node name="AudioStream" type="AudioStreamPlayer3D" parent="GridContainer/MainSubViewPort/SubViewport" unique_id=79363697]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.43583, 1.84919, -16.8336)
-stream = ExtResource("4_2i313")
+stream = ExtResource("4_wk50m")
 volume_db = 1.0
 autoplay = true
 max_distance = 30.0
@@ -117,12 +117,12 @@ parameters/looping = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.036, 0)
 mesh = SubResource("BoxMesh_07caf")
 
-[node name="UomoLowPoly" parent="GridContainer/MainSubViewPort/SubViewport" unique_id=885641942 instance=ExtResource("5_xgpal")]
+[node name="UomoLowPoly" parent="GridContainer/MainSubViewPort/SubViewport" unique_id=885641942 instance=ExtResource("5_4i60i")]
 transform = Transform3D(0.165, 0, 0, 0, 0.165, 0, 0, 0, 0.165, -3.419, -0.839, -16.923)
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="GridContainer/MainSubViewPort/SubViewport" unique_id=1735225407]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.6079, 1.3002, 0)
-stream = ExtResource("6_nnqmv")
+stream = ExtResource("6_yjbvh")
 autoplay = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="GridContainer/MainSubViewPort/SubViewport/AudioStreamPlayer3D" unique_id=621734899]
@@ -158,17 +158,17 @@ shadow_enabled = true
 
 [node name="SplitScreenAudioManager" type="Node3D" parent="." unique_id=1660535918]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -19.9318)
-script = ExtResource("7_mn5sf")
+script = ExtResource("7_q826b")
 metadata/_custom_type_script = "uid://du5p6yb46krm5"
 
 [node name="AudioElement" type="Node3D" parent="SplitScreenAudioManager" unique_id=394655010 node_paths=PackedStringArray("audio_stream")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.73501, 1.42561, 2.96777)
-script = ExtResource("8_wwmec")
+script = ExtResource("8_cdtxd")
 audio_stream = NodePath("../../GridContainer/MainSubViewPort/SubViewport/AudioStream")
 metadata/_custom_type_script = "uid://crbtqooufwg2e"
 
 [node name="AudioElement2" type="Node3D" parent="SplitScreenAudioManager" unique_id=857662124 node_paths=PackedStringArray("audio_stream")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.6914, 1.43479, 19.9084)
-script = ExtResource("8_wwmec")
+script = ExtResource("8_cdtxd")
 audio_stream = NodePath("../../GridContainer/MainSubViewPort/SubViewport/AudioStreamPlayer3D")
 metadata/_custom_type_script = "uid://crbtqooufwg2e"
