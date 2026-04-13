@@ -14,6 +14,7 @@ func _ready() -> void:
 	var b = multiplayer.get_unique_id()
 	print(a,"-",b)
 	if a == b:
+		set_move(b)
 		set_process(true)
 		camera_pov.make_current()
 	else:
@@ -35,12 +36,12 @@ func _process(_delta):
 
 func _unhandled_input(event):
 	if is_multiplayer_authority():
-		Movement.input(event)
+		Movement.input(event, true)
 
 
 func _physics_process(delta):
 	if is_multiplayer_authority():
-		Movement.move(delta)
+		Movement.move(delta, true)
 
 # aggiunge il componente di movimento alla tastiera per muovere il player
 func set_active(x:bool, controller: bool = false):
@@ -64,4 +65,4 @@ func get_movement()->MovementComponent:
 func set_move(id:int):
 	var x = KeyBoard_Component.new()
 	x.set_multiplayer_authority(id)
-	Movement.add_child(x)
+	input.add_child(x)

@@ -1,5 +1,8 @@
 extends Node3D
-# Called when the node enters the scene tree for the first time.
+
+@onready var mappa: Node3D = $Mappa
+
+
 func _ready() -> void:
 	$MultiplayerSpawner.set_multiplayer_authority(1)
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -7,8 +10,11 @@ func _ready() -> void:
 		add_player(1)
 	else:
 		notify_server_ready.rpc_id(1)
-	
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+@rpc("authority", "call_local", "reliable")
+func start_soundtrack(stream: String, time: float = 0.0):
+	print("sinc audio")
+	mappa.get_node(stream).play(time)
+
 func _process(delta: float) -> void:
 	pass
 
@@ -29,13 +35,15 @@ func add_player(id):
 	player.name = str(id)
 	print("Sto aggiungendo il player ", id)
 	$Players.add_child(player, true)
-	player.set_move(id)
-
 @rpc("any_peer", "call_local", "reliable")
 func notify_server_ready():
 	var peer_id = multiplayer.get_remote_sender_id()
 	print("Il Client ", peer_id, " è pronto. Spawno il suo player...")
 	add_player(peer_id)
+	if multiplayer.is_server():
+		for x in mappa.audiostreams:
+			start_soundtrack.rpc_id(peer_id, x, mappa.get_audio_pos(x))
+	
 
 func _on_multiplayer_spawner_spawned(node: Node) -> void:
 	print("Spawnato ",node)

@@ -2,7 +2,6 @@ extends Node
 class_name KeyBoard_Component
 
 @onready var giocatore: CharacterBody3D = get_parent().get_parent()
-@onready var c: MovementComponent = get_parent()
 
 
 func input(event)-> Vector2:

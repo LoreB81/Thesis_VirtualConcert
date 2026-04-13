@@ -22,6 +22,9 @@ properties/1/replication_mode = 1
 properties/0/path = NodePath("Movement_component:locspeed")
 properties/0/spawn = true
 properties/0/replication_mode = 1
+properties/1/path = NodePath("InputSync:direction")
+properties/1/spawn = true
+properties/1/replication_mode = 1
 
 [node name="Giocatore" type="CharacterBody3D" unique_id=437263064]
 script = ExtResource("1_xlb2y")
