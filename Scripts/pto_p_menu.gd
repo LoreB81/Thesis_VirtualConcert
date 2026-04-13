@@ -1,5 +1,9 @@
 extends Control
 
+@onready var portahost: LineEdit = $SubViewportContainer/SubViewport/Sfondo/btn_host/txt_portahost
+@onready var ip: LineEdit = $SubViewportContainer/SubViewport/Sfondo/Connect/txt_ip
+@onready var portaguest: LineEdit = $SubViewportContainer/SubViewport/Sfondo/Connect/txt_portaguest
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -13,9 +17,9 @@ func _process(delta: float) -> void:
 
 func _on_btn_host_pressed() -> void:
 	InfoPartita.is_host = true
-	print(OnlineLobby.create_game())
+	OnlineLobby.create_game(portahost.text)
 	OnlineLobby.load_game("Networking/GameNet.tscn")
 
 func _on_btn_connect_pressed() -> void:
-	print(OnlineLobby.join_game())
+	OnlineLobby.join_game(ip.text, portaguest.text)
 	OnlineLobby.load_game("Networking/GameNet.tscn")

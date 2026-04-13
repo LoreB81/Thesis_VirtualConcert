@@ -36,14 +36,14 @@ color = Color(0.5921569, 1, 1, 1)
 [node name="Label" type="Label" parent="SubViewportContainer/SubViewport/Sfondo" unique_id=61706318]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.113000005
-anchor_top = 0.119
-anchor_right = 0.855
-anchor_bottom = 0.25300002
-offset_left = -0.17601013
-offset_top = -0.11199951
-offset_right = 0.039978027
-offset_bottom = 0.055984497
+anchor_left = 0.115
+anchor_top = 0.020000001
+anchor_right = 0.85700005
+anchor_bottom = 0.15400001
+offset_left = -0.47999573
+offset_top = 0.03999901
+offset_right = -0.2640381
+offset_bottom = 0.20799255
 theme_override_colors/font_color = Color(0.32877424, 0.51897544, 0.17928794, 1)
 theme_override_font_sizes/font_size = 51
 text = "PEER TO PEER MULTIPLAYER"
@@ -52,30 +52,118 @@ horizontal_alignment = 1
 [node name="btn_host" type="Button" parent="SubViewportContainer/SubViewport/Sfondo" unique_id=500944509]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.381
-anchor_top = 0.30600002
-anchor_right = 0.60300004
-anchor_bottom = 0.40600002
-offset_left = 0.08798218
-offset_top = -0.28800964
-offset_right = 0.3439331
-offset_bottom = -0.088012695
+anchor_left = 0.31500003
+anchor_top = 0.358
+anchor_right = 0.67200005
+anchor_bottom = 0.508
+offset_left = 0.1199646
+offset_top = 0.015991211
+offset_right = 0.85595703
+offset_bottom = -0.184021
+theme_override_colors/font_color = Color(0.3372549, 0, 0, 1)
 theme_override_font_sizes/font_size = 41
 text = "FAI DA HOST"
 
-[node name="btn_connect" type="Button" parent="SubViewportContainer/SubViewport/Sfondo" unique_id=2029248756]
+[node name="txt_portahost" type="LineEdit" parent="SubViewportContainer/SubViewport/Sfondo/btn_host" unique_id=800978052]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.381
-anchor_top = 0.54300004
-anchor_right = 0.60300004
-anchor_bottom = 0.64400005
-offset_left = 0.08798218
-offset_top = 0.13598633
-offset_right = 0.3439331
-offset_bottom = -4.312042
+anchor_left = 0.68
+anchor_top = -0.77500004
+anchor_right = 0.99700004
+anchor_bottom = -0.23700002
+offset_left = -0.16000366
+offset_top = -1.824997
+offset_right = 1.2359924
+offset_bottom = -0.0109939575
+theme_override_font_sizes/font_size = 33
+placeholder_text = "7000"
+
+[node name="Label" type="Label" parent="SubViewportContainer/SubViewport/Sfondo/btn_host/txt_portahost" unique_id=1396366556]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = -0.781
+anchor_right = 0.59400004
+offset_top = 0.009235382
+offset_right = -0.13201904
+theme_override_colors/font_color = Color(0.30588236, 0, 0, 1)
+theme_override_font_sizes/font_size = 31
+text = "Porta"
+
+[node name="Connect" type="Control" parent="SubViewportContainer/SubViewport/Sfondo" unique_id=851289818]
+layout_mode = 1
+anchor_left = 0.15900001
+anchor_top = 0.43100002
+anchor_right = 0.82000005
+anchor_bottom = 0.84000003
+offset_left = -7.1680145
+offset_top = 37.711975
+offset_right = 5.3599243
+offset_bottom = 69.67999
+
+[node name="btn_connect" type="Button" parent="SubViewportContainer/SubViewport/Sfondo/Connect" unique_id=2029248756]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.24200001
+anchor_top = 0.62600005
+anchor_right = 0.77400005
+anchor_bottom = 0.933
+offset_left = -0.30801392
+offset_top = 0.07800293
+offset_right = -1.1280518
+offset_bottom = -0.14398193
+theme_override_colors/font_color = Color(0.15294118, 0.13333334, 0.3647059, 1)
 theme_override_font_sizes/font_size = 41
 text = "CONNETTITI"
 
+[node name="txt_ip" type="LineEdit" parent="SubViewportContainer/SubViewport/Sfondo/Connect" unique_id=122629753]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.21400002
+anchor_top = 0.316
+anchor_right = 0.57600003
+anchor_bottom = 0.50600004
+offset_left = 0.36398315
+offset_top = 0.147995
+offset_right = 0.17596436
+offset_bottom = 0.067840576
+theme_override_font_sizes/font_size = 33
+placeholder_text = "127.0.0.1"
+
+[node name="Label" type="Label" parent="SubViewportContainer/SubViewport/Sfondo/Connect/txt_ip" unique_id=921546286]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = -0.781
+anchor_right = 0.59400004
+offset_top = 0.009235382
+offset_right = -0.13201904
+theme_override_colors/font_color = Color(0, 0.039215688, 0.4392157, 1)
+theme_override_font_sizes/font_size = 31
+text = "Indirizzo IP"
+
+[node name="txt_portaguest" type="LineEdit" parent="SubViewportContainer/SubViewport/Sfondo/Connect" unique_id=729631891]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.60300004
+anchor_top = 0.316
+anchor_right = 0.77300006
+anchor_bottom = 0.50600004
+offset_left = 0.2779541
+offset_top = 0.147995
+offset_right = 0.697937
+offset_bottom = 0.067840576
+theme_override_font_sizes/font_size = 33
+placeholder_text = "7000"
+
+[node name="Label" type="Label" parent="SubViewportContainer/SubViewport/Sfondo/Connect/txt_portaguest" unique_id=32352168]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = -0.781
+anchor_right = 0.59400004
+offset_top = 0.009235382
+offset_right = -0.13201904
+theme_override_colors/font_color = Color(0, 0.039215688, 0.4392157, 1)
+theme_override_font_sizes/font_size = 31
+text = "Porta"
+
 [connection signal="pressed" from="SubViewportContainer/SubViewport/Sfondo/btn_host" to="." method="_on_btn_host_pressed"]
-[connection signal="pressed" from="SubViewportContainer/SubViewport/Sfondo/btn_connect" to="." method="_on_btn_connect_pressed"]
+[connection signal="pressed" from="SubViewportContainer/SubViewport/Sfondo/Connect/btn_connect" to="." method="_on_btn_connect_pressed"]

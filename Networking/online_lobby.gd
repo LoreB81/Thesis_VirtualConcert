@@ -4,7 +4,7 @@ signal player_connected(peer_id, player_info)
 signal player_disconnected(peer_id)
 signal server_disconnected
 
-const PORT = 7000
+const PORT = "7000"
 const DEFAULT_SERVER_IP = "127.0.0.1" # IPv4 localhost
 const MAX_CONNECTIONS = 20
 
@@ -24,21 +24,32 @@ func _ready():
 	multiplayer.server_disconnected.connect(_on_server_disconnected)
 
 
-func join_game(address = ""):
+func join_game(address:String = "", port:String =""):
 	if address.is_empty():
 		address = DEFAULT_SERVER_IP
 	var peer = ENetMultiplayerPeer.new()
-	var error = peer.create_client(address, PORT)
+	if port.is_empty() or !port.is_valid_int() or port.to_int()<0:
+		port= PORT
+	var error = peer.create_client(address, port.to_int())
 	if error:
-		return error
+		print(error)
 	multiplayer.multiplayer_peer = peer
 
 
-func create_game():
+func create_game(port:String = ""):
 	var peer = ENetMultiplayerPeer.new()
-	var error = peer.create_server(PORT, MAX_CONNECTIONS)
-	if error:
-		return error
+	if port.is_empty() or !port.is_valid_int() or port.to_int()<0:
+		port= PORT
+	var error = peer.create_server(port.to_int(), MAX_CONNECTIONS)
+	if error != OK:
+		print("Errore creazione server: ", error)
+		if error == ERR_ALREADY_IN_USE:
+			print("La porta è già occupata!")
+		elif error == ERR_CANT_CREATE:
+			print("Il sistema impedisce la creazione del socket (Firewall?)")
+	else:
+		multiplayer.multiplayer_peer = peer
+		print("Server avviato correttamente sulla porta ", port)
 	multiplayer.multiplayer_peer = peer
 
 	players[1] = player_info
