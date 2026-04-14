@@ -34,9 +34,11 @@ window/stretch/aspect="expand"
 folder_colors={
 "res://Components/": "pink",
 "res://Components/Player/": "orange",
+"res://Components/Player/Modules/Scripts/": "yellow",
 "res://Menus/": "green",
 "res://Networking/": "purple",
 "res://PG/": "red",
+"res://Scripts/": "yellow",
 "res://Scripts/Player/": "orange"
 }
 

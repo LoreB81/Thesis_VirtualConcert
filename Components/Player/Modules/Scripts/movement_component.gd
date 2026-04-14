@@ -18,6 +18,7 @@ var _last_frame_was_on_floor = -INF
 @onready var modello = %Modello
 @onready var inputs: MultiplayerSynchronizer = $"../InputSync"
 
+var visual_moving:= Vector2.ZERO
 var interact_timeout=false
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -37,15 +38,18 @@ func input(event, multi:bool = false):
 	if not multi:
 		for x in get_children():
 			var rel = x.input(event)
-			modello.rotate_y(-rel.x*0.01)
-			pgc.rotate_x(-rel.y*0.01)
-			pgc.rotation.x = clamp(pgc.rotation.x, deg_to_rad(-70), deg_to_rad(70))
-			pgc.rotation.y = clamp(pgc.rotation.y, deg_to_rad(0), deg_to_rad(0))
-			pgc.rotation.z = clamp(pgc.rotation.z, deg_to_rad(0), deg_to_rad(0))
+			if x is KeyBoard_Component:
+				modello.rotate_y(-rel.x*0.01)
+				pgc.rotate_x(-rel.y*0.01)
+				pgc.rotation.x = clamp(pgc.rotation.x, deg_to_rad(-70), deg_to_rad(70))
+				pgc.rotation.y = clamp(pgc.rotation.y, deg_to_rad(0), deg_to_rad(0))
+				pgc.rotation.z = clamp(pgc.rotation.z, deg_to_rad(0), deg_to_rad(0))
+			else:
+				visual_moving = rel
 	else:
 		var rel = inputs.input(event)
-		modello.rotate_y(-rel.x*0.01)
-		pgc.rotate_x(-rel.y*0.01)
+		modello.rotate_y(-rel.y*0.01)
+		pgc.rotate_x(-rel.x*0.01)
 		pgc.rotation.x = clamp(pgc.rotation.x, deg_to_rad(-70), deg_to_rad(70))
 		pgc.rotation.y = clamp(pgc.rotation.y, deg_to_rad(0), deg_to_rad(0))
 		pgc.rotation.z = clamp(pgc.rotation.z, deg_to_rad(0), deg_to_rad(0))
@@ -61,6 +65,13 @@ func move(delta, multi:bool = false):
 	if not multi:
 		if get_child_count()>0:
 			for x in get_children():
+				if x is ControllerComponent:
+					if visual_moving != Vector2.ZERO:
+						modello.rotate_y(-visual_moving.x * delta * 3.0) 
+						pgc.rotate_x(-visual_moving.y * delta * 3.0)
+					pgc.rotation.x = clamp(pgc.rotation.x, deg_to_rad(-70), deg_to_rad(70))
+					pgc.rotation.y = clamp(pgc.rotation.y, deg_to_rad(0), deg_to_rad(0))
+					pgc.rotation.z = clamp(pgc.rotation.z, deg_to_rad(0), deg_to_rad(0))
 				var input_dir= x.move()
 				var direction = (player.modello.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 				if direction:

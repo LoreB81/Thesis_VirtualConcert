@@ -46,7 +46,7 @@ func create_game(port:String = ""):
 		if error == ERR_ALREADY_IN_USE:
 			print("La porta è già occupata!")
 		elif error == ERR_CANT_CREATE:
-			print("Il sistema impedisce la creazione del socket (Firewall?)")
+			print("Il sistema impedisce la creazione del socket")
 	else:
 		multiplayer.multiplayer_peer = peer
 		print("Server avviato correttamente sulla porta ", port)

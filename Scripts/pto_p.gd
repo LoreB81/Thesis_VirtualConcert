@@ -2,6 +2,7 @@ extends Node3D
 
 @onready var mappa: Node3D = $Mappa
 
+const SPAWN_ZONE := 5.0
 
 func _ready() -> void:
 	$MultiplayerSpawner.set_multiplayer_authority(1)
@@ -32,6 +33,8 @@ func add_player(id):
 		return
 	player.name = str(id)
 	print("Sto aggiungendo il player ", id)
+	var pos = Vector2.from_angle(randf()*2*PI)
+	player.position = Vector3(pos.x * SPAWN_ZONE * randf(), 0, pos.y * SPAWN_ZONE * randf())
 	$Players.add_child(player, true)
 @rpc("any_peer", "call_local", "reliable")
 func notify_server_ready():
