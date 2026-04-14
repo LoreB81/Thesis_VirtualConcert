@@ -44,6 +44,10 @@ folder_colors={
 "res://Sprites/Dinamici/Script/": "yellow"
 }
 
+[global_group]
+
+Players="Elementi Giocatore"
+
 [input]
 
 mv_avanti={

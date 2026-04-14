@@ -5,8 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://qpb6esww1evi" path="res://PG/UomoLowPoly.blend" id="2_8eu3w"]
 [ext_resource type="AudioStream" uid="uid://h4e3kv3fr188" path="res://Components/Sounds/Heaven Pierce Her - Event Horizon (Reach for the Sun and Burn! Burn! Burn!) (ULTRAKILL 8-3 Theme 3).mp3" id="3_i8iyn"]
 [ext_resource type="Script" uid="uid://dut2l1akjku8t" path="res://Scripts/audio_synchronizer.gd" id="5_i8iyn"]
-[ext_resource type="SpriteFrames" uid="uid://bvf0nj51p4b5j" path="res://Sprites/Dinamici/Freccia.tres" id="6_4yysh"]
-[ext_resource type="Script" uid="uid://b2251qfs2r4pj" path="res://Scripts/8waysprites.gd" id="7_3th0n"]
+[ext_resource type="PackedScene" uid="uid://rmc2axrlfmff" path="res://Components/8_way_animated_sprite.tscn" id="6_4yysh"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_c4ipf"]
 
@@ -104,11 +103,5 @@ mesh = SubResource("TorusMesh_3th0n")
 replication_config = SubResource("SceneReplicationConfig_8eu3w")
 script = ExtResource("5_i8iyn")
 
-[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="." unique_id=1600503488]
+[node name="8-WayAnimatedSprite" parent="." unique_id=1456854687 instance=ExtResource("6_4yysh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.443718, 2.9462686, 0)
-pixel_size = 0.1
-billboard = 1
-texture_filter = 0
-sprite_frames = ExtResource("6_4yysh")
-animation = &"B"
-script = ExtResource("7_3th0n")

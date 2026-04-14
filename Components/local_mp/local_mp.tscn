@@ -6,6 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://b46p2pf8lqraj" path="res://Components/Sounds/Musichetta.mp3" id="4_wk50m"]
 [ext_resource type="PackedScene" uid="uid://qpb6esww1evi" path="res://PG/UomoLowPoly.blend" id="5_4i60i"]
 [ext_resource type="AudioStream" uid="uid://h4e3kv3fr188" path="res://Components/Sounds/Heaven Pierce Her - Event Horizon (Reach for the Sun and Burn! Burn! Burn!) (ULTRAKILL 8-3 Theme 3).mp3" id="6_yjbvh"]
+[ext_resource type="PackedScene" uid="uid://rmc2axrlfmff" path="res://Components/8_way_animated_sprite.tscn" id="7_5ntrp"]
 [ext_resource type="Script" uid="uid://du5p6yb46krm5" path="res://Components/Audio/split_screen_audio_manager.gd" id="7_q826b"]
 [ext_resource type="Script" uid="uid://crbtqooufwg2e" path="res://Components/Audio/audio_element.gd" id="8_cdtxd"]
 
@@ -155,6 +156,9 @@ environment = SubResource("Environment_icd88")
 transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
 light_color = Color(0.693229, 0.352423, 0.490804, 1)
 shadow_enabled = true
+
+[node name="8-WayAnimatedSprite" parent="GridContainer/MainSubViewPort/SubViewport" unique_id=1456854687 instance=ExtResource("7_5ntrp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7678022, -9.918598)
 
 [node name="SplitScreenAudioManager" type="Node3D" parent="." unique_id=1660535918]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -19.9318)

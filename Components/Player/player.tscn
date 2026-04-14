@@ -9,7 +9,7 @@
 height = 1.89362
 radius = 0.536621
 
-[node name="Giocatore" type="CharacterBody3D" unique_id=437263064]
+[node name="Giocatore" type="CharacterBody3D" unique_id=437263064 groups=["Players"]]
 script = ExtResource("1_7iwu5")
 
 [node name="Modello" type="MeshInstance3D" parent="." unique_id=1944314912]

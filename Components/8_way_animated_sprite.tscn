@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://rmc2axrlfmff"]
+
+[ext_resource type="SpriteFrames" uid="uid://bvf0nj51p4b5j" path="res://Sprites/Dinamici/Freccia.tres" id="1_na6my"]
+[ext_resource type="Script" uid="uid://b2251qfs2r4pj" path="res://Scripts/8waysprites.gd" id="2_b6eb0"]
+
+[node name="8-WayAnimatedSprite" type="AnimatedSprite3D" unique_id=1456854687]
+pixel_size = 0.1
+billboard = 1
+texture_filter = 0
+sprite_frames = ExtResource("1_na6my")
+animation = &"B"
+script = ExtResource("2_b6eb0")
+
+[node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="." unique_id=283110372]
