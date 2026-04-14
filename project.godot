@@ -39,7 +39,9 @@ folder_colors={
 "res://Networking/": "purple",
 "res://PG/": "red",
 "res://Scripts/": "yellow",
-"res://Scripts/Player/": "orange"
+"res://Scripts/Player/": "orange",
+"res://Sprites/": "teal",
+"res://Sprites/Dinamici/Script/": "yellow"
 }
 
 [input]

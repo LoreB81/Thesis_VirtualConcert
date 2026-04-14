@@ -48,8 +48,8 @@ func input(event, multi:bool = false):
 				visual_moving = rel
 	else:
 		var rel = inputs.input(event)
-		modello.rotate_y(-rel.y*0.01)
-		pgc.rotate_x(-rel.x*0.01)
+		modello.rotate_y(-rel.x*0.01)
+		pgc.rotate_x(-rel.y*0.01)
 		pgc.rotation.x = clamp(pgc.rotation.x, deg_to_rad(-70), deg_to_rad(70))
 		pgc.rotation.y = clamp(pgc.rotation.y, deg_to_rad(0), deg_to_rad(0))
 		pgc.rotation.z = clamp(pgc.rotation.z, deg_to_rad(0), deg_to_rad(0))
