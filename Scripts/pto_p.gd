@@ -9,6 +9,7 @@ func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	if multiplayer.is_server():
 		add_player(1)
+		multiplayer.peer_disconnected.connect(remove_player)
 	else:
 		notify_server_ready.rpc_id(1)
 @rpc("authority", "call_local", "reliable")
@@ -48,3 +49,7 @@ func notify_server_ready():
 
 func _on_multiplayer_spawner_spawned(node: Node) -> void:
 	print("Spawnato ",node)
+
+func remove_player(id:int):
+	var prova = str("Players/",id)
+	get_node(prova).queue_free()

@@ -6,6 +6,8 @@
 [ext_resource type="AudioStream" uid="uid://h4e3kv3fr188" path="res://Components/Sounds/Heaven Pierce Her - Event Horizon (Reach for the Sun and Burn! Burn! Burn!) (ULTRAKILL 8-3 Theme 3).mp3" id="3_i8iyn"]
 [ext_resource type="Script" uid="uid://dut2l1akjku8t" path="res://Scripts/audio_synchronizer.gd" id="5_i8iyn"]
 [ext_resource type="PackedScene" uid="uid://4rrmvm640phy" path="res://Components/8_way_animated_sprite.tscn" id="6_4yysh"]
+[ext_resource type="SpriteFrames" uid="uid://bvf0nj51p4b5j" path="res://Sprites/Dinamici/Freccia.tres" id="7_3th0n"]
+[ext_resource type="Texture2D" uid="uid://duxjvrep42e0w" path="res://Sprites/Dinamici/Fontanta.png" id="8_mpukp"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_c4ipf"]
 
@@ -51,6 +53,164 @@ inner_radius = 1.303
 outer_radius = 1.728
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_8eu3w"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1p52r"]
+atlas = ExtResource("8_mpukp")
+region = Rect2(96, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0tg17"]
+atlas = ExtResource("8_mpukp")
+region = Rect2(96, 48, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_acm0i"]
+atlas = ExtResource("8_mpukp")
+region = Rect2(256, 48, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_el4ri"]
+atlas = ExtResource("8_mpukp")
+region = Rect2(64, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3t2l2"]
+atlas = ExtResource("8_mpukp")
+region = Rect2(224, 48, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0kr23"]
+atlas = ExtResource("8_mpukp")
+region = Rect2(64, 48, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5ktx1"]
+atlas = ExtResource("8_mpukp")
+region = Rect2(128, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2owph"]
+atlas = ExtResource("8_mpukp")
+region = Rect2(128, 48, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gl13n"]
+atlas = ExtResource("8_mpukp")
+region = Rect2(288, 48, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7q54h"]
+atlas = ExtResource("8_mpukp")
+region = Rect2(0, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5k03t"]
+atlas = ExtResource("8_mpukp")
+region = Rect2(0, 48, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fn03m"]
+atlas = ExtResource("8_mpukp")
+region = Rect2(160, 48, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rffab"]
+atlas = ExtResource("8_mpukp")
+region = Rect2(32, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rbd8s"]
+atlas = ExtResource("8_mpukp")
+region = Rect2(32, 48, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aypw4"]
+atlas = ExtResource("8_mpukp")
+region = Rect2(192, 48, 32, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_oi7lj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1p52r")
+}],
+"loop": true,
+"name": &"BL_Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0tg17")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_acm0i")
+}],
+"loop": true,
+"name": &"BL_Running",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_el4ri")
+}],
+"loop": true,
+"name": &"B_Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3t2l2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0kr23")
+}],
+"loop": true,
+"name": &"B_Running",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5ktx1")
+}],
+"loop": true,
+"name": &"FL_Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2owph")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gl13n")
+}],
+"loop": true,
+"name": &"FL_Running",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7q54h")
+}],
+"loop": true,
+"name": &"F_Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5k03t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fn03m")
+}],
+"loop": true,
+"name": &"F_Running",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rffab")
+}],
+"loop": true,
+"name": &"L_Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rbd8s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aypw4")
+}],
+"loop": true,
+"name": &"L_Running",
+"speed": 5.0
+}]
 
 [node name="Mappa" type="Node3D" unique_id=891395470]
 script = ExtResource("1_8eu3w")
@@ -103,5 +263,31 @@ mesh = SubResource("TorusMesh_3th0n")
 replication_config = SubResource("SceneReplicationConfig_8eu3w")
 script = ExtResource("5_i8iyn")
 
-[node name="8-WayAnimatedSprite" parent="." unique_id=935540163 instance=ExtResource("6_4yysh")]
+[node name="Freccia3D" type="Node3D" parent="." unique_id=260738743]
+
+[node name="Animated_Sprite" type="AnimatedSprite3D" parent="Freccia3D" unique_id=874747293]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2714605, -10.054487)
+pixel_size = 0.1
+billboard = 2
+texture_filter = 0
+sprite_frames = ExtResource("7_3th0n")
+animation = &"B"
+
+[node name="8-WayAnimatedSprite" parent="Freccia3D" unique_id=935540163 node_paths=PackedStringArray("sprite") instance=ExtResource("6_4yysh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2714605, -10.054487)
+sprite = NodePath("../Animated_Sprite")
+
+[node name="Fontanella" type="Node3D" parent="." unique_id=1406055695]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 1.2757927, 8.016176)
+
+[node name="8-WayAnimatedSprite" parent="Fontanella" unique_id=416721196 node_paths=PackedStringArray("sprite") instance=ExtResource("6_4yysh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3023082, 0)
+sprite = NodePath("../AnimatedSprite3D")
+action = "_Idle"
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="Fontanella" unique_id=1233860902]
+pixel_size = 0.05
+billboard = 1
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_oi7lj")
+animation = &"F_Idle"

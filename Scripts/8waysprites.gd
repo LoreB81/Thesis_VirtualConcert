@@ -1,31 +1,41 @@
 extends Node3D
-@onready var sprite: AnimatedSprite3D = $Animated_Sprite
-
-
+@export var sprite: AnimatedSprite3D
+@export var action = ""
+@export var EightWayMode:= true
 func _process(delta: float) -> void:
-	orientate()
+	if EightWayMode: orientate()
 
 func orientate() -> void:
 	var camera = get_viewport().get_camera_3d()
 	if not camera:
 		return
-	var cam_fwd = -camera.global_transform.basis.z
-	var cam_angle = atan2(cam_fwd.x, cam_fwd.z)
-	var obj_fwd = -global_transform.basis.z
-	var obj_angle = atan2(obj_fwd.x, obj_fwd.z)
-	var angle = cam_angle - obj_angle
-	angle = fposmod(angle, TAU)
+	#direzione rispetto alla telecamera
+	var dirc = camera.global_position - global_position
+	var view_angle = atan2(dirc.x, dirc.z)
+	var fwd = -global_transform.basis.z
+	var obj_angle = atan2(fwd.x, fwd.z)
+	var angle = view_angle - obj_angle
+	angle = fposmod(angle, TAU) # Normalizza tra 0 e 2PI
 	var step = TAU / 8.0
 	var index = int(round(angle / step)) % 8
 	_select_animation_with_flip(index)
 
-func _select_animation_with_flip(index: int):
+func _select_animation_with_flip(index: int, symmetric = true):
 	match index:
-		0: sprite.play("B"); sprite.flip_h = false
-		1: sprite.play("BL"); sprite.flip_h = false
-		2: sprite.play("L"); sprite.flip_h = false
-		3: sprite.play("FL"); sprite.flip_h = false
-		4: sprite.play("F"); sprite.flip_h = false
-		5: sprite.play("FL"); sprite.flip_h = true
-		6: sprite.play("L"); sprite.flip_h = true
-		7: sprite.play("BL"); sprite.flip_h = true
+		0: sprite.play(str("B",action)); if symmetric: sprite.flip_h = false
+		1: sprite.play(str("BL",action)); if symmetric: sprite.flip_h = false
+		2: sprite.play(str("L",action)); if symmetric: sprite.flip_h = false
+		3: sprite.play(str("FL",action)); if symmetric: sprite.flip_h = false
+		4: sprite.play(str("F",action)); if symmetric: sprite.flip_h = false
+		5: if symmetric: 
+			sprite.play(str("FL",action)) 
+			sprite.flip_h = true 
+		else: sprite.play(str("FR",action));
+		6: if symmetric: 
+			sprite.play(str("L",action)) 
+			sprite.flip_h = true 
+		else: sprite.play(str("R",action));
+		7: if symmetric: 
+			sprite.play(str("BL",action)) 
+			sprite.flip_h = true 
+		else: sprite.play(str("BR",action));
