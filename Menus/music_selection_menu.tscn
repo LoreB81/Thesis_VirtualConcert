@@ -1,0 +1,84 @@
+[gd_scene format=3 uid="uid://baklg5hd52ha2"]
+
+[ext_resource type="Script" uid="uid://bs5v5el2k2f5a" path="res://Scripts/music_selection_menu.gd" id="1_cbup3"]
+
+[node name="MusicSelectionMenu" type="Control" unique_id=1151074917]
+layout_mode = 3
+anchor_right = 0.418
+anchor_bottom = 0.395
+offset_right = 0.46398926
+offset_bottom = 0.039993286
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_cbup3")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1794174315]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.94143283, 0.7965847, 0.8717825, 1)
+
+[node name="Label" type="Label" parent="." unique_id=579912752]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.388
+anchor_bottom = 0.18400002
+offset_right = -0.01600647
+offset_bottom = -0.104003906
+theme_override_colors/font_color = Color(0.5583635, 0.2097337, 0.26049912, 1)
+theme_override_font_sizes/font_size = 34
+text = "Fonti Audio"
+
+[node name="Label2" type="Label" parent="." unique_id=1126437586]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.388
+anchor_right = 1.021
+anchor_bottom = 0.18400002
+offset_left = -0.01600647
+offset_right = -0.12200928
+offset_bottom = -0.104003906
+theme_override_colors/font_color = Color(0.5583635, 0.2097337, 0.26049912, 1)
+theme_override_font_sizes/font_size = 33
+text = "Musica disponibile"
+
+[node name="Audiolist" type="ItemList" parent="." unique_id=347516456]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.18400002
+anchor_right = 0.388
+anchor_bottom = 0.781
+offset_top = -0.104003906
+offset_right = -0.01600647
+offset_bottom = 0.06399536
+select_mode = 2
+
+[node name="MusicList" type="ItemList" parent="." unique_id=716821630]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.423
+anchor_top = 0.18400002
+anchor_right = 0.98100007
+anchor_bottom = 0.79700005
+offset_left = 0.11399841
+offset_top = -0.104003906
+offset_right = 0.15795898
+offset_bottom = -0.03201294
+
+[node name="btn_invio" type="Button" parent="." unique_id=2019897619]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.303
+anchor_top = 0.81200004
+anchor_right = 0.683
+anchor_bottom = 0.99600005
+offset_left = -0.04600525
+offset_top = 0.12799072
+offset_right = -0.20602417
+offset_bottom = 0.023986816
+text = "IMPOSTA"
+
+[connection signal="pressed" from="btn_invio" to="." method="_on_btn_invio_pressed"]

@@ -1,7 +1,11 @@
 extends Node3D
+class_name EightWayAnimatedSprite
 @export var sprite: AnimatedSprite3D
 @export var action = ""
 @export var EightWayMode:= true
+@export var front_ref: Node= self
+@export var flip = false
+@export var symmetric = true
 func _process(delta: float) -> void:
 	if EightWayMode: orientate()
 
@@ -12,13 +16,14 @@ func orientate() -> void:
 	#direzione rispetto alla telecamera
 	var dirc = camera.global_position - global_position
 	var view_angle = atan2(dirc.x, dirc.z)
-	var fwd = -global_transform.basis.z
+	var fwd = -front_ref.global_transform.basis.z
+	if flip: fwd*=-1
 	var obj_angle = atan2(fwd.x, fwd.z)
 	var angle = view_angle - obj_angle
 	angle = fposmod(angle, TAU) # Normalizza tra 0 e 2PI
 	var step = TAU / 8.0
 	var index = int(round(angle / step)) % 8
-	_select_animation_with_flip(index)
+	_select_animation_with_flip(index,symmetric)
 
 func _select_animation_with_flip(index: int, symmetric = true):
 	match index:
@@ -39,3 +44,8 @@ func _select_animation_with_flip(index: int, symmetric = true):
 			sprite.play(str("BL",action)) 
 			sprite.flip_h = true 
 		else: sprite.play(str("BR",action));
+		
+func set_action(act: String)->void:
+	action = act
+func get_action()->String:
+	return action

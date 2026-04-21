@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://dut2l1akjku8t" path="res://Scripts/audio_synchronizer.gd" id="5_i8iyn"]
 [ext_resource type="PackedScene" uid="uid://4rrmvm640phy" path="res://Components/8_way_animated_sprite.tscn" id="6_4yysh"]
 [ext_resource type="SpriteFrames" uid="uid://bvf0nj51p4b5j" path="res://Sprites/Dinamici/Freccia.tres" id="7_3th0n"]
+[ext_resource type="Script" uid="uid://0ggy723rwkcm" path="res://fontanella.gd" id="8_1p52r"]
 [ext_resource type="Texture2D" uid="uid://duxjvrep42e0w" path="res://Sprites/Dinamici/Fontanta.png" id="8_mpukp"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_c4ipf"]
@@ -212,6 +213,8 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_mpukp"]
+
 [node name="Mappa" type="Node3D" unique_id=891395470]
 script = ExtResource("1_8eu3w")
 
@@ -235,24 +238,11 @@ transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75
 light_color = Color(0.693229, 0.352423, 0.490804, 1)
 shadow_enabled = true
 
-[node name="AudioStream" type="AudioStreamPlayer3D" parent="." unique_id=589874675]
-unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.43583, 1.84919, -16.8336)
-stream = ExtResource("1_dem48")
-volume_db = 1.0
-max_distance = 30.0
-parameters/looping = true
-
 [node name="UomoLowPoly" parent="." unique_id=2103566448 instance=ExtResource("2_8eu3w")]
 transform = Transform3D(0.165, 0, 0, 0, 0.165, 0, 0, 0, 0.165, -3.419, -0.839, -16.923)
 
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=1118776541]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.6079, 1.3002, 0)
-stream = ExtResource("3_i8iyn")
-max_distance = 30.0
-
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1066117603]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.6033, 1.40915, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.03327751, 1.40915, 22.190918)
 mesh = SubResource("SphereMesh_4yysh")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D" unique_id=960925287]
@@ -264,9 +254,10 @@ replication_config = SubResource("SceneReplicationConfig_8eu3w")
 script = ExtResource("5_i8iyn")
 
 [node name="Freccia3D" type="Node3D" parent="." unique_id=260738743]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, -3.3859806)
 
 [node name="Animated_Sprite" type="AnimatedSprite3D" parent="Freccia3D" unique_id=874747293]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2714605, -10.054487)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2714605, 2.03015)
 pixel_size = 0.1
 billboard = 2
 texture_filter = 0
@@ -274,11 +265,12 @@ sprite_frames = ExtResource("7_3th0n")
 animation = &"B"
 
 [node name="8-WayAnimatedSprite" parent="Freccia3D" unique_id=935540163 node_paths=PackedStringArray("sprite") instance=ExtResource("6_4yysh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2714605, -10.054487)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2714605, 1.9893804)
 sprite = NodePath("../Animated_Sprite")
 
 [node name="Fontanella" type="Node3D" parent="." unique_id=1406055695]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 1.2757927, 8.016176)
+transform = Transform3D(-0.715, 0, -1.07961995e-07, 0, 0.715, 0, 1.07961995e-07, 0, -0.715, 0, 0.87027967, 8.016176)
+script = ExtResource("8_1p52r")
 
 [node name="8-WayAnimatedSprite" parent="Fontanella" unique_id=416721196 node_paths=PackedStringArray("sprite") instance=ExtResource("6_4yysh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3023082, 0)
@@ -287,7 +279,27 @@ action = "_Idle"
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="Fontanella" unique_id=1233860902]
 pixel_size = 0.05
-billboard = 1
+billboard = 2
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_oi7lj")
 animation = &"F_Idle"
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Fontanella" unique_id=1618306937]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Fontanella/StaticBody3D" unique_id=1165286391]
+shape = SubResource("CylinderShape3D_mpukp")
+
+[node name="Audios" type="Node" parent="." unique_id=352579477]
+
+[node name="Audio1" type="AudioStreamPlayer3D" parent="Audios" unique_id=589874675]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.4358304, 1.8491902, -16.8336)
+stream = ExtResource("1_dem48")
+volume_db = 1.0
+max_distance = 30.0
+parameters/looping = true
+
+[node name="Audio2" type="AudioStreamPlayer3D" parent="Audios" unique_id=1118776541]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.037877083, 1.3002, 22.190918)
+stream = ExtResource("3_i8iyn")
+max_distance = 30.0

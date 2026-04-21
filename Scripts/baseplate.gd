@@ -17,6 +17,7 @@ var controller = InfoPartita.get_controller()
 func _ready() -> void:
 	# prende il count dei giocatori locali dall'autoload
 	n_players = InfoPartita.get_playercount()
+	%Giocatore.set_nickname(str(1))
 	if splitscreen:
 		var player_list: Array[CharacterBody3D] = [%Giocatore]
 		players = [%MainSubViewPort]
@@ -27,7 +28,9 @@ func _ready() -> void:
 			x.change_lbl_text(i+2)
 			%GridContainer.add_child(x)
 			players.append(x)
-			player_list.append(x.get_character())
+			var temp_player = x.get_character()
+			temp_player.set_nickname(str(i+2))
+			player_list.append(temp_player)
 		divide_screen(players)
 		players[0].set_active(true, false)
 		if controller:
@@ -43,6 +46,7 @@ func _ready() -> void:
 			x.position.z += (i+1)*3
 			x.position.y = 2
 			%SubViewport.add_child(x)
+			x.set_nickname(str(i+2))
 			players.append(x)
 		players[0].set_active(true, controller)
 	#cattura il mouse

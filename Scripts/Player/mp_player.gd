@@ -5,7 +5,11 @@ extends CharacterBody3D
 @onready var Movement : MovementComponent = %Movement_component
 @onready var modello: MeshInstance3D = %Modello
 @onready var camera_pov: Camera3D = %CameraPOV
+#input per il multiplayer
 @onready var input: MultiplayerSynchronizer = $InputSync
+#nametag per il multiplayer
+@onready var nametag: Label3D = $Nametag
+
 
 func _ready() -> void:
 	self.position.y+=1
@@ -17,6 +21,7 @@ func _ready() -> void:
 		set_move(b)
 		set_process(true)
 		camera_pov.make_current()
+		nametag.text = OnlineLobby.local_name
 	else:
 		set_process(false)
 		camera_pov.current = false

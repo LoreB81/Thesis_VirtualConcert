@@ -5,7 +5,7 @@ extends CharacterBody3D
 @onready var Movement : MovementComponent = %Movement_component
 @onready var modello: MeshInstance3D = %Modello
 @onready var camera_pov: Camera3D = %CameraPOV
-
+@onready var nametag: Label3D = $Nametag
 
 func _ready() -> void:
 	pass
@@ -49,3 +49,6 @@ func set_active(x:bool, controller: bool = false):
 func get_movement()->MovementComponent:
 	return Movement
 	
+
+func set_nickname(name:String)->void:
+	nametag.text = name

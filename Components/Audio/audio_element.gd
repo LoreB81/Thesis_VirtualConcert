@@ -8,7 +8,7 @@ func change_audio_stream_pos(pos:Vector3,  listener: CharacterBody3D, player: Ch
 	if audio_stream.playing:
 		if listener !=player:
 			var offset_globale = self.global_position - player.global_position
-			var drotazione = listener.modello.global_transform.basis.get_rotation_quaternion() * player.modello.global_transform.basis.get_rotation_quaternion().inverse()
+			var drotazione = listener.global_transform.basis.get_rotation_quaternion() * player.global_transform.basis.get_rotation_quaternion().inverse()
 			var offset_ruotato = drotazione * offset_globale
 			audio_stream.global_position = listener.global_position + offset_ruotato
 		else:

@@ -56,10 +56,10 @@ anchor_left = 0.31500003
 anchor_top = 0.358
 anchor_right = 0.67200005
 anchor_bottom = 0.508
-offset_left = 0.1199646
-offset_top = 0.015991211
-offset_right = 0.85595703
-offset_bottom = -0.184021
+offset_left = 139.11996
+offset_top = -22.984009
+offset_right = 139.85596
+offset_bottom = -23.184021
 theme_override_colors/font_color = Color(0.3372549, 0, 0, 1)
 theme_override_font_sizes/font_size = 41
 text = "FAI DA HOST"
@@ -95,10 +95,10 @@ anchor_left = 0.15900001
 anchor_top = 0.43100002
 anchor_right = 0.82000005
 anchor_bottom = 0.84000003
-offset_left = -7.1680145
-offset_top = 37.711975
-offset_right = 5.3599243
-offset_bottom = 69.67999
+offset_left = 131.83199
+offset_top = 14.711975
+offset_right = 144.35992
+offset_bottom = 46.679993
 
 [node name="btn_connect" type="Button" parent="SubViewportContainer/SubViewport/Sfondo/Connect" unique_id=2029248756]
 layout_mode = 1
@@ -164,6 +164,32 @@ offset_right = -0.13201904
 theme_override_colors/font_color = Color(0, 0.039215688, 0.4392157, 1)
 theme_override_font_sizes/font_size = 31
 text = "Porta"
+
+[node name="lbl" type="Label" parent="SubViewportContainer/SubViewport/Sfondo" unique_id=1304018525]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.136
+anchor_top = 0.323
+anchor_right = 0.28
+anchor_bottom = 0.39800003
+offset_left = 0.32798767
+offset_top = -0.3040161
+offset_right = -0.55999756
+offset_bottom = 0.09597778
+theme_override_colors/font_color = Color(0.04295308, 0.15714669, 0.1691415, 1)
+theme_override_font_sizes/font_size = 31
+text = "Nickname"
+
+[node name="txt_name" type="LineEdit" parent="SubViewportContainer/SubViewport/Sfondo/lbl" unique_id=615380476]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_right = 1.455
+anchor_bottom = 2.102
+offset_right = -0.07501221
+offset_bottom = 0.0020141602
+theme_override_font_sizes/font_size = 33
+placeholder_text = "Host/Guest"
 
 [connection signal="pressed" from="SubViewportContainer/SubViewport/Sfondo/btn_host" to="." method="_on_btn_host_pressed"]
 [connection signal="pressed" from="SubViewportContainer/SubViewport/Sfondo/Connect/btn_connect" to="." method="_on_btn_connect_pressed"]
