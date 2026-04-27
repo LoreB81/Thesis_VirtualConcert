@@ -1,15 +1,16 @@
 extends Node3D
 
-# nodo mappa
+## Nodo mappa
 @onready var mappa: Node3D = $Mappa
 
-# margine della ona di spawn
+## Margine della zona di spawn
 const SPAWN_ZONE := 5.0
 
-# varibili per la gestione del menù di selezione musica
+# Varibili per la gestione del menù di selezione musica
 var menu_toggle = false
 var menu: Node
 
+# Se è il server/host crea il proprio giocatore, altrimenti avvisa il server che è pronto
 func _ready() -> void:
 	$MultiplayerSpawner.set_multiplayer_authority(1)
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -19,7 +20,9 @@ func _ready() -> void:
 		multiplayer.peer_disconnected.connect(remove_player)
 	else:
 		notify_server_ready.rpc_id(1)
-		
+
+
+## Chiamata remota per iniziare in una [param stream] un brano [param music] al tempo [param time]
 @rpc("authority", "call_local", "reliable")
 func start_soundtrack(stream: String, time: float = 0.0, music:String=""):
 	print("sinc audio")
@@ -40,6 +43,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			menu_toggle = !menu_toggle
 			menu_handler()
 
+##Gestore per il menu di selezione di musica dell'Host
 func menu_handler()->void:
 	if menu_toggle:
 		menu = preload("res://Menus/music_selection_menu.tscn").instantiate()
@@ -50,6 +54,7 @@ func menu_handler()->void:
 	else:
 		menu.queue_free()
 
+## Funzione per aggiungere un giocatore con il suo [param id]
 func add_player(id):
 	var player = preload("res://Components/Player/mp_player.tscn").instantiate()
 	#salta i duplicati
@@ -60,7 +65,8 @@ func add_player(id):
 	var pos = Vector2.from_angle(randf()*2*PI)
 	player.position = Vector3(pos.x * SPAWN_ZONE * randf(), 0, pos.y * SPAWN_ZONE * randf())
 	$Players.add_child(player, true)
-	
+
+## Notifica il server che l'host è pronto ad essere collegato
 @rpc("any_peer", "call_local", "reliable")
 func notify_server_ready():
 	var peer_id = multiplayer.get_remote_sender_id()
@@ -71,13 +77,17 @@ func notify_server_ready():
 			var music = mappa.get_audio_node(x).stream.resource_path.get_file()
 			start_soundtrack.rpc_id(peer_id, x, mappa.get_audio_node(x).get_playback_position(), music)
 
+## Inizia la stessa musica in tutto il server
 func global_music_start(stream: Array[String], audio: String):
 	for x in stream:
 		for y in OnlineLobby.players:
 			start_soundtrack.rpc_id(y, x, 0, audio)
+
+
 func _on_multiplayer_spawner_spawned(node: Node) -> void:
 	print("Spawnato ",node)
 
+## Rimuove il giocatore con id [param id]
 func remove_player(id:int):
 	var prova = str("Players/",id)
 	get_node(prova).queue_free()

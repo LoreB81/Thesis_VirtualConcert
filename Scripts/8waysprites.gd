@@ -1,14 +1,28 @@
 extends Node3D
 class_name EightWayAnimatedSprite
+## Layer per il cambio di direzione di sprite per effetto simil 3D grazie a 8 decal che compongono i lati
+
+## Sprite effettivo con animazioni
 @export var sprite: AnimatedSprite3D
+
+## Animazione da riprodurre, impostare con _ davanti
 @export var action = ""
+
+## Per attivare o disattivare la modalità 8Way rendendo questo nodo inutile 
 @export var EightWayMode:= true
+
+## Nodo che fare da riferimento per la direzione davanti dello sprite
 @export var front_ref: Node= self
+## Variabile per capire quando specchiare lo sprite
 @export var flip = false
+
+## Variabile per capire se specchiare lo sprite in caso questo fosse simmetrico, 
+## usando quindi un solo sprite specchiato per il lato destro e sinistro
 @export var symmetric = true
 func _process(delta: float) -> void:
 	if EightWayMode: orientate()
 
+## Funzione per capire la posizione relativa della telecamera rispetto allo sprite
 func orientate() -> void:
 	var camera = get_viewport().get_camera_3d()
 	if not camera:
@@ -25,6 +39,8 @@ func orientate() -> void:
 	var index = int(round(angle / step)) % 8
 	_select_animation_with_flip(index,symmetric)
 
+## Funzione per cambiare la direzione convertendo [param index] in direzione e [param symmetric] se si desidera 
+## che il lato destro sia il sinistro ma specchiato
 func _select_animation_with_flip(index: int, symmetric = true):
 	match index:
 		0: sprite.play(str("B",action)); if symmetric: sprite.flip_h = false

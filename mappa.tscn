@@ -9,6 +9,7 @@
 [ext_resource type="SpriteFrames" uid="uid://bvf0nj51p4b5j" path="res://Sprites/Dinamici/Freccia.tres" id="7_3th0n"]
 [ext_resource type="Script" uid="uid://0ggy723rwkcm" path="res://fontanella.gd" id="8_1p52r"]
 [ext_resource type="Texture2D" uid="uid://duxjvrep42e0w" path="res://Sprites/Dinamici/Fontanta.png" id="8_mpukp"]
+[ext_resource type="Texture2D" uid="uid://o28py7llvb31" path="res://Sprites/Siepe.png" id="10_0tg17"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_c4ipf"]
 
@@ -215,11 +216,29 @@ animations = [{
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_mpukp"]
 
+[sub_resource type="PlaneMesh" id="PlaneMesh_acm0i"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_el4ri"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+albedo_texture = ExtResource("10_0tg17")
+uv1_scale = Vector3(15.96, 1, 1)
+texture_filter = 0
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_3t2l2"]
+data = PackedVector3Array(1, 0, 1, -1, 0, 1, 1, 0, -1, -1, 0, 1, -1, 0, -1, 1, 0, -1)
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_0tg17"]
+properties/0/path = NodePath("Fontanella/8-WayAnimatedSprite:action")
+properties/0/spawn = true
+properties/0/replication_mode = 2
+
 [node name="Mappa" type="Node3D" unique_id=891395470]
 script = ExtResource("1_8eu3w")
 
 [node name="Floor" type="MeshInstance3D" parent="." unique_id=371196865]
-transform = Transform3D(100, 0, 0, 0, 1, 0, 0, 0, 100, 0, 0.0973943, 0)
+transform = Transform3D(43.97368, 0, 0, 0, 1, 0, 0, 0, 42.98839, 0, 0.0973943, 0)
 mesh = SubResource("PlaneMesh_0pjtc")
 skeleton = NodePath("../../../..")
 
@@ -303,3 +322,52 @@ parameters/looping = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.037877083, 1.3002, 22.190918)
 stream = ExtResource("3_i8iyn")
 max_distance = 30.0
+
+[node name="Confini" type="Node" parent="." unique_id=2010288840]
+
+[node name="Siepe" type="MeshInstance3D" parent="Confini" unique_id=340488820]
+transform = Transform3D(-42.93, -1.1102693e-07, 8.429945e-15, 0, -5.5513464e-08, -2.206, 3.75306e-06, -1.27, 9.642733e-08, -0.016, 2.2949715, 42.746)
+mesh = SubResource("PlaneMesh_acm0i")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_el4ri")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Confini/Siepe" unique_id=1577391731]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Confini/Siepe/StaticBody3D" unique_id=1686100972]
+shape = SubResource("ConcavePolygonShape3D_3t2l2")
+
+[node name="Siepe2" type="MeshInstance3D" parent="Confini" unique_id=546332064]
+transform = Transform3D(-1.8765301e-06, -1.2700001, 9.642733e-08, 0, -5.5513468e-08, -2.206, 42.930004, -5.5513468e-08, 4.2149723e-15, 41.257, 2.295, 0.047)
+mesh = SubResource("PlaneMesh_acm0i")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_el4ri")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Confini/Siepe2" unique_id=94533211]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Confini/Siepe2/StaticBody3D" unique_id=1323352114]
+shape = SubResource("ConcavePolygonShape3D_3t2l2")
+
+[node name="Siepe3" type="MeshInstance3D" parent="Confini" unique_id=1077917940]
+transform = Transform3D(-1.87653e-06, 1.27, -9.642733e-08, 0, -5.5513464e-08, -2.206, -42.93, -5.5513464e-08, 4.2149723e-15, -42.975857, 2.2949715, 0.0029335022)
+mesh = SubResource("PlaneMesh_acm0i")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_el4ri")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Confini/Siepe3" unique_id=1611007071]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Confini/Siepe3/StaticBody3D" unique_id=444767141]
+shape = SubResource("ConcavePolygonShape3D_3t2l2")
+
+[node name="Siepe4" type="MeshInstance3D" parent="Confini" unique_id=316511857]
+transform = Transform3D(42.93, 0, 0, 0, -5.5513464e-08, -2.206, 0, 1.27, -9.642733e-08, -0.016, 2.2949715, -41.688942)
+mesh = SubResource("PlaneMesh_acm0i")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_el4ri")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Confini/Siepe4" unique_id=616642404]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Confini/Siepe4/StaticBody3D" unique_id=583995561]
+shape = SubResource("ConcavePolygonShape3D_3t2l2")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=398365003]
+replication_config = SubResource("SceneReplicationConfig_0tg17")

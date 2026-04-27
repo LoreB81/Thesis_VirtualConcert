@@ -1,16 +1,17 @@
 extends CharacterBody3D
 
+#Giocatore fatto apposta per il multiplayer
 
 #variabili per muovere i giocatori
 @onready var Movement : MovementComponent = %Movement_component
 @onready var modello: MeshInstance3D = %Modello
 @onready var camera_pov: Camera3D = %CameraPOV
-#input per il multiplayer
+# Input per il multiplayer
 @onready var input: MultiplayerSynchronizer = $InputSync
-#nametag per il multiplayer
+# Nametag per il multiplayer
 @onready var nametag: Label3D = $Nametag
 
-
+# Da a Cesare quel che è di Cesare
 func _ready() -> void:
 	self.position.y+=1
 	set_multiplayer_authority(name.to_int())
@@ -27,17 +28,6 @@ func _ready() -> void:
 		camera_pov.current = false
 func _process(_delta):
 	pass
-	#if vista.is_colliding():
-		#var ogg = vista.get_collider()
-		#is_reset = false
-		#if ogg!= null and ogg.get_parent().has_method("interaz") or ogg.has_method("interaz"):
-			#lblint.text = "Press E to interact"
-		#else:
-			#lblint.text = ""
-	#else:
-		#if !is_reset:
-			#lblint.text = ""
-			#is_reset = true
 
 func _unhandled_input(event):
 	if is_multiplayer_authority():
@@ -48,7 +38,7 @@ func _physics_process(delta):
 	if is_multiplayer_authority():
 		Movement.move(delta, true)
 
-# aggiunge il componente di movimento alla tastiera per muovere il player
+## Abilità o meno il componente di movimento che può essere [ControllerComponent] se [param controller] è [code]true[/code] altrimenti [KeyboardComponent]
 func set_active(x:bool, controller: bool = false):
 	if get_multiplayer_authority() == int(self.name):
 		%CameraPOV.current = x
@@ -57,17 +47,19 @@ func set_active(x:bool, controller: bool = false):
 		if controller:
 			temp = ControllerComponent.new()
 		else:
-			temp = KeyBoard_Component.new()
+			temp = KeyBoardComponent.new()
 		temp.set_multiplayer_authority(int(self.name))
 		Movement.add_child(temp)
 	else:
 		for a in Movement.get_children():
 			a.queue_free()
 
+## Getter del [MovementComponent]
 func get_movement()->MovementComponent:
 	return Movement
 	
+## Abilità un [KeyBoardComponent]
 func set_move(id:int):
-	var x = KeyBoard_Component.new()
+	var x = KeyBoardComponent.new()
 	x.set_multiplayer_authority(id)
 	input.add_child(x)

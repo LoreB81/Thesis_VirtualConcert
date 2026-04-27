@@ -1,8 +1,10 @@
 extends Node
+
+## Componente per gestire il movimento da controller
 class_name ControllerComponent
 
-@onready var c: MovementComponent = get_parent()
-@onready var a = c.player
+
+## Funzione che ritorna il movimento fatto dalla levetta destra da [param event]
 func input(event)->Vector2:
 	if event is InputEventJoypadMotion and event.axis>1:
 		var horizontal = Input.get_joy_axis(0, JOY_AXIS_RIGHT_X)
@@ -14,5 +16,6 @@ func input(event)->Vector2:
 		return Vector2(horizontal, vertical)
 	return Vector2.ZERO
 
+## Ritorna il movimento fatto dalla levetta destra del Joystick
 func move()->Vector2:
 	return Input.get_vector("js_sinistra", "js_destra", "js_avanti", "js_dietro",0.2)

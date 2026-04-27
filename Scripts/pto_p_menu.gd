@@ -1,5 +1,7 @@
 extends Control
 
+#Menu per il peer2peer
+
 @onready var portahost: LineEdit = $SubViewportContainer/SubViewport/Sfondo/btn_host/txt_portahost
 @onready var ip: LineEdit = $SubViewportContainer/SubViewport/Sfondo/Connect/txt_ip
 @onready var portaguest: LineEdit = $SubViewportContainer/SubViewport/Sfondo/Connect/txt_portaguest

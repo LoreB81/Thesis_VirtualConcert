@@ -1,5 +1,7 @@
 extends CharacterBody3D
 
+#Giocatore locale
+
 #variabili per muovere i giocatori
 
 @onready var Movement : MovementComponent = %Movement_component
@@ -32,7 +34,7 @@ func _physics_process(delta):
 	# ferma gli utenti non attivi
 	Movement.move(delta)
 
-# aggiunge il componente di movimento alla tastiera per muovere il player
+## Abilità o meno il componente di movimento che può essere [ControllerComponent] se [param controller] è [code]true[/code] altrimenti [KeyboardComponent]
 func set_active(x:bool, controller: bool = false):
 	%CameraPOV.current = x
 	if x:
@@ -40,7 +42,7 @@ func set_active(x:bool, controller: bool = false):
 		if controller:
 			temp = ControllerComponent.new()
 		else:
-			temp = KeyBoard_Component.new()
+			temp = KeyBoardComponent.new()
 		Movement.add_child(temp)
 	else:
 		for a in Movement.get_children():

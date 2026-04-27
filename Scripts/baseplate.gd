@@ -1,22 +1,25 @@
 extends Node3D
 
-#indice per capire quali giocatori comandare
+## Indice per capire quali giocatori comandare
 var index = 0
-#array principale dei giocatori, può contenere le viewport per lo splitscreen o quelli normali per l'altra modalità
+## Array principale dei giocatori, può contenere le viewport per lo splitscreen o quelli normali per l'altra modalità
 var players: Array
 
-# numero di giocatori istanziati
+## Numero di giocatori istanziati
 var n_players
 
+## Prende dall'Autoload [InfoPartita] se la partita è stata avviata in modalità splitscreen
 var splitscreen = InfoPartita.get_splitscreen()
-
+## Prende dall'Autoload [InfoPartita] se la partita è stata avviata con un controller
 var controller = InfoPartita.get_controller()
+
 @onready var split_screen_audio_manager: SplitScreenAudioManager = $SplitScreenAudioManager
 
 
 func _ready() -> void:
 	# prende il count dei giocatori locali dall'autoload
 	n_players = InfoPartita.get_playercount()
+	# imposto il nickname del primo giocatore visto che è già istanziato
 	%Giocatore.set_nickname(str(1))
 	if splitscreen:
 		var player_list: Array[CharacterBody3D] = [%Giocatore]
@@ -29,6 +32,7 @@ func _ready() -> void:
 			%GridContainer.add_child(x)
 			players.append(x)
 			var temp_player = x.get_character()
+			# imposto il nickname al proprio numero di istanza
 			temp_player.set_nickname(str(i+2))
 			player_list.append(temp_player)
 		divide_screen(players)
@@ -46,6 +50,7 @@ func _ready() -> void:
 			x.position.z += (i+1)*3
 			x.position.y = 2
 			%SubViewport.add_child(x)
+			# imposto il nickname al proprio numero di istanza
 			x.set_nickname(str(i+2))
 			players.append(x)
 		players[0].set_active(true, controller)
@@ -86,7 +91,10 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel"):
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 
-# serve per imitare una lista circolare
+
+# TODO: Fare una vera e propria lista circolare in futuro
+
+## Serve per imitare una lista circolare su [param array]. Scorre in avanti da [param index]
 func index_next(index: int, array: Array)-> int:
 	if index < array.size()-1:
 		index+=1
@@ -94,13 +102,15 @@ func index_next(index: int, array: Array)-> int:
 		index = 0
 	return index
 
+## Serve per imitare una lista circolare su [param array]. Scorre indietro da [param index]
 func index_back(index: int, array: Array)-> int:
 	if index !=0 :
 		index-=1
 	else: 
 		index = array.size()-1
 	return index
-# divide lo schermo in base a quanti giocatori sono presenti
+	
+## Divide lo schermo in base a quanti giocatori sono presenti in [param players]
 func divide_screen(players: Array):
 	var sqrtsize = sqrt(players.size())
 	var size

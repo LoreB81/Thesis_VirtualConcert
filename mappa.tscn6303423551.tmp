@@ -1,0 +1,373 @@
+[gd_scene format=3 uid="uid://xb5me66b6rqi"]
+
+[ext_resource type="Script" uid="uid://1d6je3bhfnd3" path="res://mappa.gd" id="1_8eu3w"]
+[ext_resource type="AudioStream" uid="uid://b46p2pf8lqraj" path="res://Components/Sounds/Musichetta.mp3" id="1_dem48"]
+[ext_resource type="PackedScene" uid="uid://qpb6esww1evi" path="res://PG/UomoLowPoly.blend" id="2_8eu3w"]
+[ext_resource type="AudioStream" uid="uid://h4e3kv3fr188" path="res://Components/Sounds/Heaven Pierce Her - Event Horizon (Reach for the Sun and Burn! Burn! Burn!) (ULTRAKILL 8-3 Theme 3).mp3" id="3_i8iyn"]
+[ext_resource type="Script" uid="uid://dut2l1akjku8t" path="res://Scripts/audio_synchronizer.gd" id="5_i8iyn"]
+[ext_resource type="PackedScene" uid="uid://4rrmvm640phy" path="res://Components/8_way_animated_sprite.tscn" id="6_4yysh"]
+[ext_resource type="SpriteFrames" uid="uid://bvf0nj51p4b5j" path="res://Sprites/Dinamici/Freccia.tres" id="7_3th0n"]
+[ext_resource type="Script" uid="uid://0ggy723rwkcm" path="res://fontanella.gd" id="8_1p52r"]
+[ext_resource type="Texture2D" uid="uid://duxjvrep42e0w" path="res://Sprites/Dinamici/Fontanta.png" id="8_mpukp"]
+[ext_resource type="Texture2D" uid="uid://o28py7llvb31" path="res://Sprites/Siepe.png" id="10_0tg17"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_c4ipf"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4muuu"]
+albedo_color = Color(0.976471, 0.866667, 0.917647, 1)
+albedo_texture = SubResource("PlaceholderTexture2D_c4ipf")
+albedo_texture_force_srgb = true
+emission_enabled = true
+emission = Color(0.999985, 0.888232, 0.869182, 1)
+emission_energy_multiplier = 0.1
+uv1_scale = Vector3(50, 50, 50)
+texture_filter = 0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_0pjtc"]
+material = SubResource("StandardMaterial3D_4muuu")
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_4qhbo"]
+data = PackedVector3Array(1, 0, 1, -1, 0, 1, 1, 0, -1, -1, 0, 1, -1, 0, -1, 1, 0, -1)
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_dem48"]
+sky_top_color = Color(0.366098, 0.111518, 0.704, 1)
+sky_horizon_color = Color(0.897117, 0.228586, 0.316576, 1)
+sky_curve = 0.219613
+ground_bottom_color = Color(0.443137, 0.117647, 0.968627, 1)
+ground_horizon_color = Color(0.631373, 0, 0.635294, 1)
+sun_curve = 0.332871
+
+[sub_resource type="Sky" id="Sky_4muuu"]
+sky_material = SubResource("ProceduralSkyMaterial_dem48")
+
+[sub_resource type="Environment" id="Environment_8eu3w"]
+background_mode = 2
+sky = SubResource("Sky_4muuu")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="SphereMesh" id="SphereMesh_4yysh"]
+radius = 1.0
+height = 1.9
+
+[sub_resource type="TorusMesh" id="TorusMesh_3th0n"]
+inner_radius = 1.303
+outer_radius = 1.728
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_8eu3w"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1p52r"]
+atlas = ExtResource("8_mpukp")
+region = Rect2(96, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0tg17"]
+atlas = ExtResource("8_mpukp")
+region = Rect2(96, 48, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_acm0i"]
+atlas = ExtResource("8_mpukp")
+region = Rect2(256, 48, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_el4ri"]
+atlas = ExtResource("8_mpukp")
+region = Rect2(64, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3t2l2"]
+atlas = ExtResource("8_mpukp")
+region = Rect2(224, 48, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0kr23"]
+atlas = ExtResource("8_mpukp")
+region = Rect2(64, 48, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5ktx1"]
+atlas = ExtResource("8_mpukp")
+region = Rect2(128, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2owph"]
+atlas = ExtResource("8_mpukp")
+region = Rect2(128, 48, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gl13n"]
+atlas = ExtResource("8_mpukp")
+region = Rect2(288, 48, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7q54h"]
+atlas = ExtResource("8_mpukp")
+region = Rect2(0, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5k03t"]
+atlas = ExtResource("8_mpukp")
+region = Rect2(0, 48, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fn03m"]
+atlas = ExtResource("8_mpukp")
+region = Rect2(160, 48, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rffab"]
+atlas = ExtResource("8_mpukp")
+region = Rect2(32, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rbd8s"]
+atlas = ExtResource("8_mpukp")
+region = Rect2(32, 48, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aypw4"]
+atlas = ExtResource("8_mpukp")
+region = Rect2(192, 48, 32, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_oi7lj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1p52r")
+}],
+"loop": true,
+"name": &"BL_Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0tg17")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_acm0i")
+}],
+"loop": true,
+"name": &"BL_Running",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_el4ri")
+}],
+"loop": true,
+"name": &"B_Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3t2l2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0kr23")
+}],
+"loop": true,
+"name": &"B_Running",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5ktx1")
+}],
+"loop": true,
+"name": &"FL_Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2owph")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gl13n")
+}],
+"loop": true,
+"name": &"FL_Running",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7q54h")
+}],
+"loop": true,
+"name": &"F_Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5k03t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fn03m")
+}],
+"loop": true,
+"name": &"F_Running",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rffab")
+}],
+"loop": true,
+"name": &"L_Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rbd8s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aypw4")
+}],
+"loop": true,
+"name": &"L_Running",
+"speed": 5.0
+}]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_mpukp"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_acm0i"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_el4ri"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+albedo_texture = ExtResource("10_0tg17")
+uv1_scale = Vector3(15.96, 1, 1)
+texture_filter = 0
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_3t2l2"]
+data = PackedVector3Array(1, 0, 1, -1, 0, 1, 1, 0, -1, -1, 0, 1, -1, 0, -1, 1, 0, -1)
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_0tg17"]
+properties/0/path = NodePath("Fontanella/8-WayAnimatedSprite:action")
+properties/0/spawn = true
+properties/0/replication_mode = 2
+
+[node name="Mappa" type="Node3D" unique_id=891395470]
+script = ExtResource("1_8eu3w")
+
+[node name="Floor" type="MeshInstance3D" parent="." unique_id=371196865]
+transform = Transform3D(43.97368, 0, 0, 0, 1, 0, 0, 0, 42.98839, 0, 0.0973943, 0)
+mesh = SubResource("PlaneMesh_0pjtc")
+skeleton = NodePath("../../../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Floor" unique_id=844039614]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor/StaticBody3D" unique_id=2028821373]
+shape = SubResource("ConcavePolygonShape3D_4qhbo")
+
+[node name="Sky" type="Node3D" parent="." unique_id=1536961726]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Sky" unique_id=2114501855]
+environment = SubResource("Environment_8eu3w")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Sky" unique_id=99827053]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+light_color = Color(0.693229, 0.352423, 0.490804, 1)
+shadow_enabled = true
+
+[node name="UomoLowPoly" parent="." unique_id=2103566448 instance=ExtResource("2_8eu3w")]
+transform = Transform3D(0.165, 0, 0, 0, 0.165, 0, 0, 0, 0.165, -3.419, -0.839, -16.923)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1066117603]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.03327751, 1.40915, 22.190918)
+mesh = SubResource("SphereMesh_4yysh")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D" unique_id=960925287]
+transform = Transform3D(1, 0, 0, 0, 0.506199, -0.135275, 0, 0.0621534, 1.10173, 0, 0, 0)
+mesh = SubResource("TorusMesh_3th0n")
+
+[node name="AudioSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=1592036310]
+replication_config = SubResource("SceneReplicationConfig_8eu3w")
+script = ExtResource("5_i8iyn")
+
+[node name="Freccia3D" type="Node3D" parent="." unique_id=260738743]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, -3.3859806)
+
+[node name="Animated_Sprite" type="AnimatedSprite3D" parent="Freccia3D" unique_id=874747293]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2714605, 2.03015)
+pixel_size = 0.1
+billboard = 2
+texture_filter = 0
+sprite_frames = ExtResource("7_3th0n")
+animation = &"B"
+
+[node name="8-WayAnimatedSprite" parent="Freccia3D" unique_id=935540163 node_paths=PackedStringArray("sprite") instance=ExtResource("6_4yysh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2714605, 1.9893804)
+sprite = NodePath("../Animated_Sprite")
+
+[node name="Fontanella" type="Node3D" parent="." unique_id=1406055695]
+transform = Transform3D(-0.715, 0, -1.07961995e-07, 0, 0.715, 0, 1.07961995e-07, 0, -0.715, 0, 0.87027967, 8.016176)
+script = ExtResource("8_1p52r")
+
+[node name="8-WayAnimatedSprite" parent="Fontanella" unique_id=416721196 node_paths=PackedStringArray("sprite") instance=ExtResource("6_4yysh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3023082, 0)
+sprite = NodePath("../AnimatedSprite3D")
+action = "_Idle"
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="Fontanella" unique_id=1233860902]
+pixel_size = 0.05
+billboard = 2
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_oi7lj")
+animation = &"F_Idle"
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Fontanella" unique_id=1618306937]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Fontanella/StaticBody3D" unique_id=1165286391]
+shape = SubResource("CylinderShape3D_mpukp")
+
+[node name="Audios" type="Node" parent="." unique_id=352579477]
+
+[node name="Audio1" type="AudioStreamPlayer3D" parent="Audios" unique_id=589874675]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.4358304, 1.8491902, -16.8336)
+stream = ExtResource("1_dem48")
+volume_db = 1.0
+max_distance = 30.0
+parameters/looping = true
+
+[node name="Audio2" type="AudioStreamPlayer3D" parent="Audios" unique_id=1118776541]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.037877083, 1.3002, 22.190918)
+stream = ExtResource("3_i8iyn")
+max_distance = 30.0
+
+[node name="Confini" type="Node" parent="." unique_id=2010288840]
+
+[node name="Siepe" type="MeshInstance3D" parent="Confini" unique_id=340488820]
+transform = Transform3D(-42.93, -1.1102693e-07, 8.429945e-15, 0, -5.5513464e-08, -2.206, 3.75306e-06, -1.27, 9.642733e-08, -0.016, 2.2949715, 42.746)
+mesh = SubResource("PlaneMesh_acm0i")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_el4ri")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Confini/Siepe" unique_id=1577391731]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Confini/Siepe/StaticBody3D" unique_id=1686100972]
+shape = SubResource("ConcavePolygonShape3D_3t2l2")
+
+[node name="Siepe2" type="MeshInstance3D" parent="Confini" unique_id=546332064]
+transform = Transform3D(-1.8765301e-06, -1.2700001, 9.642733e-08, 0, -5.5513468e-08, -2.206, 42.930004, -5.5513468e-08, 4.2149723e-15, 41.257, 2.295, 0.047)
+mesh = SubResource("PlaneMesh_acm0i")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_el4ri")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Confini/Siepe2" unique_id=94533211]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Confini/Siepe2/StaticBody3D" unique_id=1323352114]
+shape = SubResource("ConcavePolygonShape3D_3t2l2")
+
+[node name="Siepe3" type="MeshInstance3D" parent="Confini" unique_id=1077917940]
+transform = Transform3D(-1.87653e-06, 1.27, -9.642733e-08, 0, -5.5513464e-08, -2.206, -42.93, -5.5513464e-08, 4.2149723e-15, -42.975857, 2.2949715, 0.0029335022)
+mesh = SubResource("PlaneMesh_acm0i")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_el4ri")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Confini/Siepe3" unique_id=1611007071]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Confini/Siepe3/StaticBody3D" unique_id=444767141]
+shape = SubResource("ConcavePolygonShape3D_3t2l2")
+
+[node name="Siepe4" type="MeshInstance3D" parent="Confini" unique_id=316511857]
+transform = Transform3D(42.93, 0, 0, 0, -5.5513464e-08, -2.206, 0, 1.27, -9.642733e-08, -0.016, 2.2949715, -41.688942)
+mesh = SubResource("PlaneMesh_acm0i")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_el4ri")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Confini/Siepe4" unique_id=616642404]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Confini/Siepe4/StaticBody3D" unique_id=583995561]
+shape = SubResource("ConcavePolygonShape3D_3t2l2")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=398365003]
+replication_config = SubResource("SceneReplicationConfig_0tg17")

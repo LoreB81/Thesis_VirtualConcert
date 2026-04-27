@@ -22,6 +22,7 @@ func _ready():
 	multiplayer.server_disconnected.connect(_on_server_disconnected)
 	multiplayer.peer_connected.connect(_on_player_connected)
 
+## Per unirsi alla partita come Guest all'indirizzo [param address] alla porta [param port]
 func join_game(address:String = "", port:String =""):
 	if address.is_empty():
 		address = DEFAULT_SERVER_IP
@@ -36,6 +37,7 @@ func join_game(address:String = "", port:String =""):
 func _on_player_connected(id):
 	players.push_back(id)
 
+## Per creare una partita come host alla porta [param port]
 func create_game(port:String = ""):
 	var peer = ENetMultiplayerPeer.new()
 	if port.is_empty() or !port.is_valid_int() or port.to_int()<0:
@@ -58,15 +60,13 @@ func remove_multiplayer_peer():
 	players.clear()
 
 
-# When the server decides to start the game from a UI scene,
-# do Lobby.load_game.rpc(filepath)
+## Chiamata remota per cambiare scena
 @rpc("call_local", "reliable")
 func load_game(game_scene_path):
 	get_tree().change_scene_to_file(game_scene_path)
 
 
 
-# Every peer will call this when they have loaded the game scene.
 @rpc("any_peer", "call_local", "reliable")
 func player_loaded():
 	pass

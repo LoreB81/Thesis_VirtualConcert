@@ -1,5 +1,6 @@
 extends Node3D
 class_name AudioElement
+## Classe di elementi audio spaziali per lo splitscreen locale
 
 @export var audio_stream: AudioStreamPlayer3D
 
@@ -18,11 +19,12 @@ func change_audio_stream_pos(pos:Vector3,  listener: CharacterBody3D, player: Ch
 			pos.z
 			)
 
-func get_nearest_player_position(player: CharacterBody3D)-> Vector3:
+## Ritorna la differenza di posizione dal [param player] passato
+func get_difference_player_position(player: CharacterBody3D)-> Vector3:
 		return Vector3(self.global_position.x - player.position.x, 
 		self.global_position.y - player.position.y, self.global_position.z - player.position.z,)
 
-		
+## Ritorna il giocatore più vicino a [member self] contenuto in [param array]
 func get_nearest_player(array: Array[CharacterBody3D])->CharacterBody3D:
 	var closest: CharacterBody3D = null
 	var closest_distance : float = INF
