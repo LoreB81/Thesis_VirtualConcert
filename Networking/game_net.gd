@@ -5,8 +5,13 @@ extends Node
 # Aggiunge l'intero gioco principale al server
 func _ready() -> void:
 	if multiplayer.is_server():
-		sub_viewport.add_child(preload("res://pto_p.tscn").instantiate())
-
+		if OnlineLobby.mode!= null:
+			if OnlineLobby.mode == OnlineLobby.Modes.PTP:
+				sub_viewport.add_child(preload("res://pto_p.tscn").instantiate())
+			elif OnlineLobby.mode == OnlineLobby.Modes.SERVER:
+				sub_viewport.add_child(preload("res://server.tscn").instantiate())
+			else: print("Errore: Non ci sono modalità selezionate valide")
+		else: print("Errore: Non ci sono modalità selezionate valide")
 
 func _process(delta: float) -> void:
 	pass

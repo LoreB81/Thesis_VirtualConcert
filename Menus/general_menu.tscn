@@ -76,19 +76,34 @@ theme_override_font_sizes/font_size = 61
 text = "MULTIUTENZA LOCALE"
 
 [node name="btn_peer2peer" type="Button" parent="SubViewportContainer/SubViewport/ColorRect/Bottoni" unique_id=1653701928]
-layout_mode = 0
+layout_mode = 1
+anchors_preset = -1
 anchor_left = 0.044
 anchor_top = 0.589
 anchor_right = 0.943
 anchor_bottom = 0.896
-offset_left = 0.0439987
-offset_top = -0.111008
-offset_right = 5.69299
-offset_bottom = 0.0959778
-grow_horizontal = 2
-grow_vertical = 2
+offset_left = 1.0439987
+offset_top = 0.8890228
+offset_right = 6.692993
+offset_bottom = 1.0960083
 theme_override_font_sizes/font_size = 61
 text = "MULTIUTENZA PEER"
 
+[node name="btn_server" type="Button" parent="SubViewportContainer/SubViewport/ColorRect/Bottoni" unique_id=1223024415]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.045
+anchor_top = 1.0
+anchor_right = 0.943
+anchor_bottom = 1.3080001
+offset_left = 0.29499817
+offset_right = 6.692993
+offset_bottom = -0.092041016
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 61
+text = "MULTIUTENZA SERVER"
+
 [connection signal="pressed" from="SubViewportContainer/SubViewport/ColorRect/Bottoni/btn_localmp" to="." method="localmp_button"]
 [connection signal="pressed" from="SubViewportContainer/SubViewport/ColorRect/Bottoni/btn_peer2peer" to="." method="p2p_button"]
+[connection signal="pressed" from="SubViewportContainer/SubViewport/ColorRect/Bottoni/btn_server" to="." method="server_button"]

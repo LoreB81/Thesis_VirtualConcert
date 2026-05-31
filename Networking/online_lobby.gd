@@ -14,7 +14,9 @@ var local_name: String = ""
 
 var players_loaded = 0
 
+enum Modes{PTP, SERVER}
 
+var mode = null
 
 func _ready():
 	multiplayer.peer_disconnected.connect(_on_player_disconnected)

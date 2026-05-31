@@ -26,6 +26,7 @@ func NicknameCheck(default: String=""):
 func _on_btn_host_pressed() -> void:
 	NicknameCheck("Host")
 	OnlineLobby.create_game(portahost.text)
+	OnlineLobby.mode = OnlineLobby.Modes.PTP
 	OnlineLobby.load_game("Networking/GameNet.tscn")
 
 func _on_btn_connect_pressed() -> void:
