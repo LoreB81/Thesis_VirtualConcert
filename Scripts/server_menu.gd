@@ -24,12 +24,12 @@ func NicknameCheck(default: String=""):
 
 
 func _on_btn_server_pressed() -> void:
-	NicknameCheck("Host")
+	NicknameCheck("Server")
 	OnlineLobby.create_game(portahost.text)
 	OnlineLobby.mode = OnlineLobby.Modes.SERVER
 	OnlineLobby.load_game("Networking/GameNet.tscn")
 
 func _on_btn_connect_pressed() -> void:
-	NicknameCheck("Guest")
+	NicknameCheck("Player")
 	OnlineLobby.join_game(ip.text, portaguest.text)
 	OnlineLobby.load_game("Networking/GameNet.tscn")

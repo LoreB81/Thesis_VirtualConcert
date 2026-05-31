@@ -16,6 +16,9 @@ func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	if multiplayer.is_server():
 		multiplayer.peer_disconnected.connect(remove_player)
+		OnlineLobby.players.push_back(1)
+	else:
+		notify_server_ready.rpc_id(1)
 
 
 ## Chiamata remota per iniziare in una [param stream] un brano [param music] al tempo [param time]

@@ -6,7 +6,7 @@
 script = ExtResource("1_t7r3w")
 
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="." unique_id=1728958645]
-_spawnable_scenes = PackedStringArray("uid://d22lu8ytrdgcg")
+_spawnable_scenes = PackedStringArray("uid://d22lu8ytrdgcg", "uid://cqx01c2ag5jt8")
 spawn_path = NodePath("../SubViewportContainer/SubViewport")
 spawn_limit = 1
 
