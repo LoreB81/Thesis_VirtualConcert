@@ -4,7 +4,6 @@ extends Node3D
 @onready var mappa: Node3D = $Mappa
 
 ## Margine della zona di spawn
-const SPAWN_ZONE := 5.0
 
 # Varibili per la gestione del menù di selezione musica
 var menu_toggle = false
@@ -13,11 +12,11 @@ var menu: Node
 # Se è il server/host crea il proprio giocatore, altrimenti avvisa il server che è pronto
 func _ready() -> void:
 	$MultiplayerSpawner.set_multiplayer_authority(1)
-	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	if multiplayer.is_server():
 		multiplayer.peer_disconnected.connect(remove_player)
 		OnlineLobby.players.push_back(1)
 	else:
+		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 		notify_server_ready.rpc_id(1)
 
 
@@ -61,8 +60,6 @@ func add_player(id):
 		return
 	player.name = str(id)
 	print("Sto aggiungendo il player ", id)
-	var pos = Vector2.from_angle(randf()*2*PI)
-	player.position = Vector3(pos.x * SPAWN_ZONE * randf(), 0, pos.y * SPAWN_ZONE * randf())
 	$Players.add_child(player, true)
 
 ## Notifica il server che l'host è pronto ad essere collegato
@@ -71,10 +68,10 @@ func notify_server_ready():
 	var peer_id = multiplayer.get_remote_sender_id()
 	print("Il Client ", peer_id, " è pronto. Spawno il suo player...")
 	add_player(peer_id)
-	if multiplayer.is_server():
-		for x in mappa.audiostreams:
-			var music = mappa.get_audio_node(x).stream.resource_path.get_file()
-			start_soundtrack.rpc_id(peer_id, x, mappa.get_audio_node(x).get_playback_position(), music)
+	#if multiplayer.is_server():
+		#for x in mappa.audiostreams:
+			#var music = mappa.get_audio_node(x).stream.resource_path.get_file()
+			#start_soundtrack.rpc_id(peer_id, x, mappa.get_audio_node(x).get_playback_position(), music)
 
 ## Inizia la stessa musica in tutto il server
 func global_music_start(stream: Array[String], audio: String):

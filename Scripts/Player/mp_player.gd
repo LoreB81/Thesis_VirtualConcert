@@ -1,7 +1,7 @@
 extends CharacterBody3D
 
 #Giocatore fatto apposta per il multiplayer
-
+const SPAWN_ZONE := 5.0
 #variabili per muovere i giocatori
 @onready var Movement : MovementComponent = %Movement_component
 @onready var modello: MeshInstance3D = %Modello
@@ -13,7 +13,6 @@ extends CharacterBody3D
 
 # Da a Cesare quel che è di Cesare
 func _ready() -> void:
-	self.position.y+=1
 	set_multiplayer_authority(name.to_int())
 	var a =get_multiplayer_authority()
 	var b = multiplayer.get_unique_id()
@@ -23,6 +22,8 @@ func _ready() -> void:
 		set_process(true)
 		camera_pov.make_current()
 		nametag.text = OnlineLobby.local_name
+		var pos = Vector2.from_angle(randf()*2*PI)
+		self.position = Vector3(pos.x * SPAWN_ZONE * randf(), 1, pos.y * SPAWN_ZONE * randf())
 	else:
 		set_process(false)
 		camera_pov.current = false

@@ -9,7 +9,7 @@ func _ready() -> void:
 			if OnlineLobby.mode == OnlineLobby.Modes.PTP:
 				sub_viewport.add_child(preload("res://pto_p.tscn").instantiate())
 			elif OnlineLobby.mode == OnlineLobby.Modes.SERVER:
-				sub_viewport.add_child(preload("res://server.tscn").instantiate())
+				sub_viewport.add_child(preload("res://Components/Server/server.tscn").instantiate())
 			else: print("Errore: Non ci sono modalità selezionate valide")
 		else: print("Errore: Non ci sono modalità selezionate valide")
 

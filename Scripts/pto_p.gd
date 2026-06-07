@@ -4,7 +4,6 @@ extends Node3D
 @onready var mappa: Node3D = $Mappa
 
 ## Margine della zona di spawn
-const SPAWN_ZONE := 5.0
 
 # Varibili per la gestione del menù di selezione musica
 var menu_toggle = false
@@ -62,8 +61,6 @@ func add_player(id):
 		return
 	player.name = str(id)
 	print("Sto aggiungendo il player ", id)
-	var pos = Vector2.from_angle(randf()*2*PI)
-	player.position = Vector3(pos.x * SPAWN_ZONE * randf(), 0, pos.y * SPAWN_ZONE * randf())
 	$Players.add_child(player, true)
 
 ## Notifica il server che l'host è pronto ad essere collegato

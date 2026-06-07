@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://rxciul80fix1" path="res://Components/Player/player.tscn" id="1_uq6gn"]
 [ext_resource type="Script" uid="uid://dhscfu0grjroj" path="res://Scripts/Player/mp_player.gd" id="1_xlb2y"]
 [ext_resource type="Script" uid="uid://gurymniqpjvj" path="res://Components/Player/Modules/Scripts/input_sync.gd" id="3_y7yvp"]
+[ext_resource type="PackedScene" uid="uid://irtsehu5tmf7" path="res://Networking/voip_controller.tscn" id="4_1bnfx"]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_qpibx"]
 properties/0/path = NodePath(".:position")
@@ -20,6 +21,10 @@ properties/0/path = NodePath("InputSync:direction")
 properties/0/spawn = true
 properties/0/replication_mode = 1
 
+[sub_resource type="AudioStreamGenerator" id="AudioStreamGenerator_1bnfx"]
+mix_rate = 48000.0
+buffer_length = 5.0
+
 [node name="Giocatore" unique_id=437263064 instance=ExtResource("1_uq6gn")]
 script = ExtResource("1_xlb2y")
 
@@ -29,3 +34,10 @@ replication_config = SubResource("SceneReplicationConfig_qpibx")
 [node name="InputSync" type="MultiplayerSynchronizer" parent="." index="6" unique_id=1562805657]
 replication_config = SubResource("SceneReplicationConfig_xlb2y")
 script = ExtResource("3_y7yvp")
+
+[node name="VOIP_controller" parent="." index="8" unique_id=660892812 node_paths=PackedStringArray("output") instance=ExtResource("4_1bnfx")]
+output = NodePath("../ProximityChat")
+
+[node name="ProximityChat" type="AudioStreamPlayer3D" parent="." index="9" unique_id=796362217]
+stream = SubResource("AudioStreamGenerator_1bnfx")
+autoplay = true
