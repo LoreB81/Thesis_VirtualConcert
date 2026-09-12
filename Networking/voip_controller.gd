@@ -13,6 +13,7 @@ func _enter_tree() -> void:
 	
 func _ready() -> void:
 	if is_multiplayer_authority():
+		get_viewport().get_node("Mic").texture = load("res://Sprites/Microfono_Attivo.png")
 		input.stream = AudioStreamMicrophone.new()
 		input.play()
 		idx = AudioServer.get_bus_index("Record")
@@ -23,6 +24,10 @@ func _unhandled_input(event: InputEvent) -> void:
 	if not is_multiplayer_authority(): return
 	if event.is_action_pressed("az_mute"):
 		mute = !mute
+		if mute:
+			get_viewport().get_node("Mic").texture = load("res://Sprites/Microfono_Disattivo.png")
+		else: 
+			get_viewport().get_node("Mic").texture = load("res://Sprites/Microfono_Attivo.png")
 		print(get_multiplayer_authority(), "Mute: ", mute)
 
 func _physics_process(_delta: float) -> void:
@@ -30,6 +35,13 @@ func _physics_process(_delta: float) -> void:
 		var buffer_length = effect.get_frames_available()
 		if not mute and effect.can_get_buffer(buffer_length):
 			var data = effect.get_buffer(buffer_length)
+			var volume = 0.0
+			for sample in data:
+				volume += abs(sample.x)
+			volume /= buffer_length
+			if volume > 0.02:
+				get_viewport().get_node("Mic").texture = load("res://Sprites/Microfono_Parlando.png")
+			else: get_viewport().get_node("Mic").texture = load("res://Sprites/Microfono_Attivo.png")
 			send_data.rpc(data)
 			effect.clear_buffer()
 	else:

@@ -31,6 +31,7 @@ var interact_timeout=false
 ##Gravità del progetto
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
+
 ## Gestore degli input da [param event]. 
 ##Il parametro [param multi] serve per dire alla funzione di gestire i player multigiocatori visto che la loro struttura di movimento è diversa
 func input(event, multi:bool = false):

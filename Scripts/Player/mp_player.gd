@@ -20,6 +20,7 @@ func _ready() -> void:
 	if a == b:
 		set_move(b)
 		set_process(true)
+		get_viewport().get_node("CrossAir").visible = true
 		camera_pov.make_current()
 		nametag.text = OnlineLobby.local_name
 		var pos = Vector2.from_angle(randf()*2*PI)
@@ -38,6 +39,14 @@ func _unhandled_input(event):
 func _physics_process(delta):
 	if is_multiplayer_authority():
 		Movement.move(delta, true)
+		if %VistaInt.is_colliding():
+			var ogg :Object= %VistaInt.get_collider()
+			if ogg is StaticBody3D:
+				ogg = ogg.get_parent()
+			if ogg.has_method("interaz") and ogg.txtinter !=null:
+				get_viewport().get_node("InteractionText").text = ogg.txtinter
+		else:
+			get_viewport().get_node("InteractionText").text = ""
 
 ## Abilità o meno il componente di movimento che può essere [ControllerComponent] se [param controller] è [code]true[/code] altrimenti [KeyboardComponent]
 func set_active(x:bool, controller: bool = false):

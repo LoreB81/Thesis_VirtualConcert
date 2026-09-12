@@ -16,7 +16,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 
 config/name="ThesisMusicTogether"
 run/main_scene="uid://dubbuwjt6wsop"
-config/features=PackedStringArray("4.6", "Forward Plus")
+config/features=PackedStringArray("4.7", "Forward Plus")
 boot_splash/bg_color=Color(0.6400095, 0.34756747, 0.5135108, 1)
 boot_splash/use_filter=false
 boot_splash/image="uid://bdrpy51ei2nda"
