@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bx3wsyjrmrsrt"
-path="res://.godot/imported/Microfono_Disattivo.png-067bb9b9203e37a1bb8e0e9719757eac.ctex"
+path="res://.godot/imported/Microfono_Disattivo.png-fa1afc47a7abda3d84abc575b061c7a8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Microfono_Disattivo.png"
-dest_files=["res://.godot/imported/Microfono_Disattivo.png-067bb9b9203e37a1bb8e0e9719757eac.ctex"]
+source_file="res://Sprites/Audio/Microfono_Disattivo.png"
+dest_files=["res://.godot/imported/Microfono_Disattivo.png-fa1afc47a7abda3d84abc575b061c7a8.ctex"]
 
 [params]
 

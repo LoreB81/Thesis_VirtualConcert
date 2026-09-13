@@ -1,6 +1,9 @@
 [gd_scene format=3 uid="uid://dubbuwjt6wsop"]
 
 [ext_resource type="Script" uid="uid://bge1dpio803nb" path="res://Scripts/general_menu.gd" id="1_urold"]
+[ext_resource type="Theme" uid="uid://cvfs5iocwkuem" path="res://Menus/menustyle.tres" id="2_h6mvr"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_w3at6"]
 
 [node name="GeneralMenu" type="Control" unique_id=388939933]
 layout_mode = 3
@@ -26,12 +29,13 @@ size = Vector2i(1152, 648)
 render_target_update_mode = 4
 
 [node name="ColorRect" type="ColorRect" parent="SubViewportContainer/SubViewport" unique_id=1762784022]
+material = SubResource("CanvasItemMaterial_w3at6")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.434596, 0.92772, 0.877307, 1)
+color = Color(0.5653867, 0.6010861, 0.8637223, 1)
 
 [node name="Label" type="Label" parent="SubViewportContainer/SubViewport/ColorRect" unique_id=1667779225]
 layout_mode = 1
@@ -71,6 +75,7 @@ offset_left = -0.31800842
 offset_top = -0.04901123
 offset_right = 0.2779541
 offset_bottom = -0.0020446777
+theme = ExtResource("2_h6mvr")
 theme_override_font_sizes/font_size = 26
 text = "MULTIUTENZA LOCALE (Deprecato)"
 
@@ -85,6 +90,7 @@ offset_left = 1.0439987
 offset_top = -0.09898758
 offset_right = -0.048034668
 offset_bottom = 30.905006
+theme = ExtResource("2_h6mvr")
 theme_override_font_sizes/font_size = 61
 text = "MULTIUTENZA PEER"
 
@@ -101,6 +107,7 @@ offset_right = -0.048034668
 offset_bottom = 13.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("2_h6mvr")
 theme_override_font_sizes/font_size = 61
 text = "MULTIUTENZA SERVER"
 

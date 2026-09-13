@@ -1,0 +1,24 @@
+[gd_resource type="Theme" format=3 uid="uid://cvfs5iocwkuem"]
+
+[sub_resource type="SystemFont" id="SystemFont_td467"]
+font_names = PackedStringArray("Arial Rounded MT")
+
+[sub_resource type="FontVariation" id="FontVariation_qf6i3"]
+base_font = SubResource("SystemFont_td467")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_thx31"]
+bg_color = Color(0.8260225, 0.4900809, 0.51070774, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.79457074, 0.27676225, 0.41776985, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[resource]
+Button/colors/font_color = Color(0.875, 0.875, 0.875, 1)
+Button/fonts/font = SubResource("FontVariation_qf6i3")
+Button/styles/normal = SubResource("StyleBoxFlat_thx31")

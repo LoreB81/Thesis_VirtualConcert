@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bnpy8y10t2cff"
-path="res://.godot/imported/Microfono_Parlando.png-05dcce367985a40db4e74330d1373281.ctex"
+uid="uid://csfrrpybx4iws"
+path="res://.godot/imported/Microfono_Attivo.png-c8dbb443ac42b202d6cc41fee9bc955e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Microfono_Parlando.png"
-dest_files=["res://.godot/imported/Microfono_Parlando.png-05dcce367985a40db4e74330d1373281.ctex"]
+source_file="res://Sprites/Audio/Microfono_Attivo.png"
+dest_files=["res://.godot/imported/Microfono_Attivo.png-c8dbb443ac42b202d6cc41fee9bc955e.ctex"]
 
 [params]
 

@@ -5,7 +5,7 @@ class_name VOIP_controller
 var idx : int
 var effect : AudioEffectCapture
 var playback : AudioStreamGeneratorPlayback
-var mute = false
+@export var mute = false
 @export var output: AudioStreamPlayer3D
 var pending_frames= []
 func _enter_tree() -> void:
@@ -13,7 +13,7 @@ func _enter_tree() -> void:
 	
 func _ready() -> void:
 	if is_multiplayer_authority():
-		get_viewport().get_node("Mic").texture = load("res://Sprites/Microfono_Attivo.png")
+		get_viewport().get_node("Mic").texture = load("res://Sprites/Audio/Microfono_Attivo.png")
 		input.stream = AudioStreamMicrophone.new()
 		input.play()
 		idx = AudioServer.get_bus_index("Record")
@@ -25,9 +25,11 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("az_mute"):
 		mute = !mute
 		if mute:
-			get_viewport().get_node("Mic").texture = load("res://Sprites/Microfono_Disattivo.png")
+			get_viewport().get_node("Mic").texture = load("res://Sprites/Audio/Microfono_Disattivo.png")
+			change_speaker_icon.rpc(2)
 		else: 
-			get_viewport().get_node("Mic").texture = load("res://Sprites/Microfono_Attivo.png")
+			get_viewport().get_node("Mic").texture = load("res://Sprites/Audio/Microfono_Attivo.png")
+			change_speaker_icon.rpc(1)
 		print(get_multiplayer_authority(), "Mute: ", mute)
 
 func _physics_process(_delta: float) -> void:
@@ -40,8 +42,11 @@ func _physics_process(_delta: float) -> void:
 				volume += abs(sample.x)
 			volume /= buffer_length
 			if volume > 0.02:
-				get_viewport().get_node("Mic").texture = load("res://Sprites/Microfono_Parlando.png")
-			else: get_viewport().get_node("Mic").texture = load("res://Sprites/Microfono_Attivo.png")
+				get_viewport().get_node("Mic").texture = load("res://Sprites/Audio/Microfono_Parlando.png")
+				change_speaker_icon.rpc(3)
+			else: 
+				get_viewport().get_node("Mic").texture = load("res://Sprites/Audio/Microfono_Attivo.png")
+				change_speaker_icon.rpc(1)
 			send_data.rpc(data)
 			effect.clear_buffer()
 	else:
@@ -56,3 +61,14 @@ func _physics_process(_delta: float) -> void:
 @rpc("any_peer", "call_remote", "unreliable")
 func send_data(data : PackedVector2Array):
 	pending_frames.append_array(data)
+
+@rpc("any_peer", "call_remote", "reliable")
+func change_speaker_icon(n: int):
+	var sender_icon: Sprite3D = $"..".get_parent().get_node(str(multiplayer.get_remote_sender_id())).get_node("Nametag/SpeakingIcon")
+	match n:
+		1:
+			sender_icon.texture = load("res://Sprites/Audio/SpeakerAttivo.png")
+		2:
+			sender_icon.texture = load("res://Sprites/Audio/SpeakerDisattivo.png")
+		3:
+			sender_icon.texture = load("res://Sprites/Audio/SpeakerParlando.png")

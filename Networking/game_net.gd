@@ -14,4 +14,4 @@ func _ready() -> void:
 		else: print("Errore: Non ci sono modalità selezionate valide")
 
 func _process(delta: float) -> void:
-	pass
+	$SubViewportContainer/SubViewport/FPSCounter.text = "FPS: "+str(Engine.get_frames_per_second())

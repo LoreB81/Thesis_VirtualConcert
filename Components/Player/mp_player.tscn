@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://dhscfu0grjroj" path="res://Scripts/Player/mp_player.gd" id="1_xlb2y"]
 [ext_resource type="Script" uid="uid://gurymniqpjvj" path="res://Components/Player/Modules/Scripts/input_sync.gd" id="3_y7yvp"]
 [ext_resource type="PackedScene" uid="uid://irtsehu5tmf7" path="res://Networking/voip_controller.tscn" id="4_1bnfx"]
+[ext_resource type="Texture2D" uid="uid://bvseeqeusplv2" path="res://Sprites/Audio/SpeakerAttivo.png" id="4_y7yvp"]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_qpibx"]
 properties/0/path = NodePath(".:position")
@@ -28,12 +29,27 @@ buffer_length = 5.0
 [node name="Giocatore" unique_id=437263064 instance=ExtResource("1_uq6gn")]
 script = ExtResource("1_xlb2y")
 
+[node name="EightWayAnimatedSprite" parent="." index="4" unique_id=1148720837]
+flip = true
+
 [node name="ServerSync" type="MultiplayerSynchronizer" parent="." index="5" unique_id=947225229]
 replication_config = SubResource("SceneReplicationConfig_qpibx")
 
 [node name="InputSync" type="MultiplayerSynchronizer" parent="." index="6" unique_id=1562805657]
 replication_config = SubResource("SceneReplicationConfig_xlb2y")
 script = ExtResource("3_y7yvp")
+
+[node name="Nametag" parent="." index="7" unique_id=43662474]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.427637, 0)
+visible = false
+
+[node name="SpeakingIcon" type="Sprite3D" parent="Nametag" index="0" unique_id=982066171]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.21977246, 0)
+billboard = 1
+texture_filter = 0
+texture = ExtResource("4_y7yvp")
 
 [node name="VOIP_controller" parent="." index="8" unique_id=660892812 node_paths=PackedStringArray("output") instance=ExtResource("4_1bnfx")]
 output = NodePath("../ProximityChat")

@@ -4,7 +4,7 @@ extends CharacterBody3D
 const SPAWN_ZONE := 5.0
 #variabili per muovere i giocatori
 @onready var Movement : MovementComponent = %Movement_component
-@onready var modello: MeshInstance3D = %Modello
+#@onready var modello: MeshInstance3D = %Modello
 @onready var camera_pov: Camera3D = %CameraPOV
 # Input per il multiplayer
 @onready var input: MultiplayerSynchronizer = $InputSync
@@ -28,6 +28,7 @@ func _ready() -> void:
 	else:
 		set_process(false)
 		camera_pov.current = false
+		%Nametag.show()
 func _process(_delta):
 	pass
 
