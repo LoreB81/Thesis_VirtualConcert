@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://duxjvrep42e0w" path="res://Sprites/Dinamici/Fontanta.png" id="8_mpukp"]
 [ext_resource type="Texture2D" uid="uid://o28py7llvb31" path="res://Sprites/Siepe.png" id="10_0tg17"]
 [ext_resource type="Texture2D" uid="uid://cbmgmopo7sqdj" path="res://Sprites/Palma.png" id="11_acm0i"]
+[ext_resource type="Script" uid="uid://b4g81sp765dfm" path="res://Scripts/MicrofonoGlobale.gd" id="12_el4ri"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_dem48"]
 sky_top_color = Color(0.366098, 0.111518, 0.704, 1)
@@ -238,6 +239,15 @@ properties/0/replication_mode = 2
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_g4v7s"]
 height = 3.6904297
 
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_acm0i"]
+data = PackedVector3Array(-6.1559906, -0.29675293, 3.0941162, -6.1559906, -0.29675293, -3.0941162, -6.1559906, 0.29675293, -3.0941162, 6.1559906, -0.29675293, -3.0941162, -6.1559906, -0.29675293, -3.0941162, -6.1559906, -0.29675293, 3.0941162, -6.1559906, 0.29675293, -3.0941162, -6.1559906, -0.29675293, -3.0941162, 6.1559906, -0.29675293, -3.0941162, -6.1559906, 0.29675293, -3.0941162, -6.1559906, 0.29675293, 3.0941162, -6.1559906, -0.29675293, 3.0941162, -6.1559906, -0.29675293, 3.0941162, -6.1559906, 0.29675293, 3.0941162, 6.1559906, 0.29675293, 3.0941162, 6.1559906, 0.29675293, 3.0941162, -6.1559906, 0.29675293, 3.0941162, -6.1559906, 0.29675293, -3.0941162, -6.1559906, -0.29675293, 3.0941162, 6.1559906, -0.29675293, 3.0941162, 6.1559906, -0.29675293, -3.0941162, 6.1559906, 0.29675293, 3.0941162, 6.1559906, -0.29675293, 3.0941162, -6.1559906, -0.29675293, 3.0941162, 6.1559906, -0.29675293, -3.0941162, 6.1559906, -0.29675293, 3.0941162, 6.1559906, 0.29675293, 3.0941162, 6.1559906, -0.29675293, -3.0941162, 6.1559906, 0.29675293, -3.0941162, -6.1559906, 0.29675293, -3.0941162, -6.1559906, 0.29675293, -3.0941162, 6.1559906, 0.29675293, -3.0941162, 6.1559906, 0.29675293, 3.0941162, 6.1559906, 0.29675293, 3.0941162, 6.1559906, 0.29675293, -3.0941162, 6.1559906, -0.29675293, -3.0941162)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_el4ri"]
+data = PackedVector3Array(-1, 0, 0, -1, 0, -1.24, 1.0027, 0.68869996, -1.24, -1, 0, -1.24, -1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, -1.24, -1, 0, -1.24, 1.0027, 0.68869996, -1.24, -1, 0, -1.24, 1, 0, -1.24, 1, 0, 0, -1, 0, 0, 1.0027, 0.68869996, 0, 1, 0, -1.24, 1, 0, 0, 1.0027, 0.68869996, 0, 1.0027, 0.68869996, 0, 1.0027, 0.68869996, -1.24, 1, 0, -1.24, 1.0027, 0.68869996, -1.24, 1.0027, 0.68869996, 0, -1, 0, 0)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_g4v7s"]
+size = Vector3(12.261765, 5.0007935, 6.138397)
+
 [node name="Mappa" type="Node3D" unique_id=891395470]
 script = ExtResource("1_8eu3w")
 
@@ -252,7 +262,7 @@ light_color = Color(0.693229, 0.352423, 0.490804, 1)
 shadow_enabled = true
 
 [node name="UomoLowPoly" parent="." unique_id=2103566448 instance=ExtResource("2_8eu3w")]
-transform = Transform3D(0.165, 0, 0, 0, 0.165, 0, 0, 0, 0.165, -3.419, -0.839, -16.923)
+transform = Transform3D(-0.165, 0, -1.4424758e-08, 0, 0.165, 0, 1.4424758e-08, 0, -0.165, -5.345023, -0.839, 23.797539)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1066117603]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.03327751, 1.40915, 22.190918)
@@ -306,7 +316,7 @@ shape = SubResource("CylinderShape3D_mpukp")
 
 [node name="Audio1" type="AudioStreamPlayer3D" parent="Audios" unique_id=589874675]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.4358304, 1.8491902, -16.8336)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.8798926, 1.8491902, 21.923721)
 stream = ExtResource("1_dem48")
 volume_db = 1.0
 max_distance = 30.0
@@ -617,3 +627,35 @@ texture = ExtResource("11_acm0i")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Palme/Palma16/StaticBody3D" unique_id=1729752738]
 transform = Transform3D(1, 0, 1.4210855e-14, 0, 1, 0, -1.4210855e-14, 0, 1, 0, 0.84521484, 0)
 shape = SubResource("CylinderShape3D_g4v7s")
+
+[node name="Palco" type="Node" parent="." unique_id=2074447175]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Palco" unique_id=1429970499]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.384, -12.471)
+size = Vector3(12.311981, 0.59350586, 6.1882324)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Palco/CSGBox3D" unique_id=1678886629]
+
+[node name="CSGBakedCollisionShape3D" type="CollisionShape3D" parent="Palco/CSGBox3D/StaticBody3D" unique_id=1874208049]
+shape = SubResource("ConcavePolygonShape3D_acm0i")
+
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="Palco" unique_id=1964818588]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.151961, 0, -11.885598)
+polygon = PackedVector2Array(-1, 0, 1, 0, 1.0026865, 0.6886524)
+depth = 1.24
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Palco/CSGPolygon3D" unique_id=1787547343]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Palco/CSGPolygon3D/StaticBody3D" unique_id=1407047419]
+shape = SubResource("ConcavePolygonShape3D_el4ri")
+
+[node name="Area3D" type="Area3D" parent="Palco" unique_id=1523816475]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -13.436647)
+script = ExtResource("12_el4ri")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Palco/Area3D" unique_id=1126947719]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.021980286, 2.0003967, 0.9898224)
+shape = SubResource("BoxShape3D_g4v7s")
+
+[connection signal="body_entered" from="Palco/Area3D" to="Palco/Area3D" method="_on_body_entered"]
+[connection signal="body_exited" from="Palco/Area3D" to="Palco/Area3D" method="_on_body_exited"]

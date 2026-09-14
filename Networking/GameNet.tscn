@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://xjhhemhjyvmm"]
 
 [ext_resource type="Script" uid="uid://dhb418t7afiwl" path="res://Networking/game_net.gd" id="1_t7r3w"]
+[ext_resource type="Texture2D" uid="uid://csfrrpybx4iws" path="res://Sprites/Audio/Microfono_Attivo.png" id="2_dx2bv"]
 
 [node name="Net" type="Node" unique_id=459455681]
 script = ExtResource("1_t7r3w")
@@ -28,6 +29,7 @@ render_target_update_mode = 4
 
 [node name="Mic" type="TextureRect" parent="SubViewportContainer/SubViewport" unique_id=139955998]
 unique_name_in_owner = true
+visible = false
 texture_filter = 1
 anchors_preset = -1
 anchor_left = 0.92300004
@@ -39,6 +41,22 @@ offset_top = -0.20000076
 offset_right = 0.43200684
 offset_bottom = 0.055999756
 mouse_filter = 2
+texture = ExtResource("2_dx2bv")
+
+[node name="Label" type="Label" parent="SubViewportContainer/SubViewport/Mic" unique_id=1440022833]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.18300001
+anchor_top = 1.0
+anchor_right = 0.76100004
+anchor_bottom = 1.94
+offset_left = 3.006999
+offset_top = -9.0
+offset_right = 2.968998
+offset_bottom = -8.980011
+theme_override_font_sizes/font_size = 45
+text = "M"
+horizontal_alignment = 1
 
 [node name="CanvasLayer" type="CanvasLayer" parent="SubViewportContainer/SubViewport" unique_id=539882511]
 

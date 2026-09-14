@@ -13,7 +13,7 @@ func _enter_tree() -> void:
 	
 func _ready() -> void:
 	if is_multiplayer_authority():
-		get_viewport().get_node("Mic").texture = load("res://Sprites/Audio/Microfono_Attivo.png")
+		get_viewport().get_node("Mic").show()
 		input.stream = AudioStreamMicrophone.new()
 		input.play()
 		idx = AudioServer.get_bus_index("Record")

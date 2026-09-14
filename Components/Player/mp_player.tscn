@@ -57,3 +57,4 @@ output = NodePath("../ProximityChat")
 [node name="ProximityChat" type="AudioStreamPlayer3D" parent="." index="9" unique_id=796362217]
 stream = SubResource("AudioStreamGenerator_1bnfx")
 autoplay = true
+max_distance = 15.0
