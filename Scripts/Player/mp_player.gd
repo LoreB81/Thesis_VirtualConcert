@@ -11,6 +11,7 @@ const SPAWN_ZONE := 5.0
 # Nametag per il multiplayer
 @onready var nametag: Label3D = $Nametag
 
+var tutorial = false
 # Da a Cesare quel che è di Cesare
 func _ready() -> void:
 	set_multiplayer_authority(name.to_int())
@@ -25,6 +26,8 @@ func _ready() -> void:
 		nametag.text = OnlineLobby.local_name
 		var pos = Vector2.from_angle(randf()*2*PI)
 		self.position = Vector3(pos.x * SPAWN_ZONE * randf(), 1, pos.y * SPAWN_ZONE * randf())
+		if tutorial:
+			get_viewport().add_child(load("res://Menus/tutorial_menu.tscn").instantiate())
 	else:
 		set_process(false)
 		camera_pov.current = false

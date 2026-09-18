@@ -1,17 +1,18 @@
-[gd_scene format=3 uid="uid://xb5me66b6rqi"]
+[gd_scene format=4 uid="uid://xb5me66b6rqi"]
 
 [ext_resource type="Script" uid="uid://1d6je3bhfnd3" path="res://mappa.gd" id="1_8eu3w"]
 [ext_resource type="AudioStream" uid="uid://b46p2pf8lqraj" path="res://Components/Sounds/Musichetta.mp3" id="1_dem48"]
 [ext_resource type="PackedScene" uid="uid://qpb6esww1evi" path="res://PG/UomoLowPoly.blend" id="2_8eu3w"]
 [ext_resource type="AudioStream" uid="uid://h4e3kv3fr188" path="res://Components/Sounds/Heaven Pierce Her - Event Horizon (Reach for the Sun and Burn! Burn! Burn!) (ULTRAKILL 8-3 Theme 3).mp3" id="3_i8iyn"]
+[ext_resource type="Texture2D" uid="uid://bj6ut16yxow1d" path="res://Sprites/Dinamici/Arrow_Sprite.png" id="4_3t2l2"]
 [ext_resource type="Script" uid="uid://dut2l1akjku8t" path="res://Scripts/audio_synchronizer.gd" id="5_i8iyn"]
 [ext_resource type="PackedScene" uid="uid://4rrmvm640phy" path="res://Components/8_way_animated_sprite.tscn" id="6_4yysh"]
-[ext_resource type="SpriteFrames" uid="uid://bvf0nj51p4b5j" path="res://Sprites/Dinamici/Freccia.tres" id="7_3th0n"]
 [ext_resource type="Script" uid="uid://0ggy723rwkcm" path="res://fontanella.gd" id="8_1p52r"]
 [ext_resource type="Texture2D" uid="uid://duxjvrep42e0w" path="res://Sprites/Dinamici/Fontanta.png" id="8_mpukp"]
 [ext_resource type="Texture2D" uid="uid://o28py7llvb31" path="res://Sprites/Siepe.png" id="10_0tg17"]
 [ext_resource type="Texture2D" uid="uid://cbmgmopo7sqdj" path="res://Sprites/Palma.png" id="11_acm0i"]
 [ext_resource type="Script" uid="uid://b4g81sp765dfm" path="res://Scripts/MicrofonoGlobale.gd" id="12_el4ri"]
+[ext_resource type="Texture2D" uid="uid://ytvnd7oohlwf" path="res://Sprites/MicrofonoPalco.png" id="13_0kr23"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_dem48"]
 sky_top_color = Color(0.366098, 0.111518, 0.704, 1)
@@ -39,6 +40,105 @@ inner_radius = 1.303
 outer_radius = 1.728
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_8eu3w"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mwd8t"]
+atlas = ExtResource("4_3t2l2")
+region = Rect2(128, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gvvj7"]
+atlas = ExtResource("4_3t2l2")
+region = Rect2(96, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_55qfn"]
+atlas = ExtResource("4_3t2l2")
+region = Rect2(160, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_03mpo"]
+atlas = ExtResource("4_3t2l2")
+region = Rect2(0, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1nabn"]
+atlas = ExtResource("4_3t2l2")
+region = Rect2(32, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_km35p"]
+atlas = ExtResource("4_3t2l2")
+region = Rect2(224, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gorte"]
+atlas = ExtResource("4_3t2l2")
+region = Rect2(64, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_im6gl"]
+atlas = ExtResource("4_3t2l2")
+region = Rect2(192, 0, 32, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5ktx1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mwd8t")
+}],
+"loop": 1,
+"name": &"B",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gvvj7")
+}],
+"loop": 1,
+"name": &"BL",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_55qfn")
+}],
+"loop": 1,
+"name": &"BR",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_03mpo")
+}],
+"loop": 1,
+"name": &"F",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1nabn")
+}],
+"loop": 1,
+"name": &"FL",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_km35p")
+}],
+"loop": 1,
+"name": &"FR",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gorte")
+}],
+"loop": 1,
+"name": &"L",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_im6gl")
+}],
+"loop": 1,
+"name": &"R",
+"speed": 5.0
+}]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1p52r"]
 atlas = ExtResource("8_mpukp")
@@ -248,6 +348,83 @@ data = PackedVector3Array(-1, 0, 0, -1, 0, -1.24, 1.0027, 0.68869996, -1.24, -1,
 [sub_resource type="BoxShape3D" id="BoxShape3D_g4v7s"]
 size = Vector3(12.261765, 5.0007935, 6.138397)
 
+[sub_resource type="ArrayMesh" id="ArrayMesh_el4ri"]
+_surfaces = [{
+"aabb": AABB(-0.7680969, -1.1307983, -0.59381104, 1.5361938, 2.2615967, 1.1876221),
+"attribute_data": PackedByteArray("AACAPwAAgD8AAIA/AAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/AAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/AACAPwAAgD8AAIA/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/AAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/AAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/AACAPwAAgD8AAIA/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/AACAPwAAgD8AAIA/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAPwAAgD8AAIA/"),
+"format": 34359738391,
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 36,
+"vertex_data": PackedByteArray("AKJEvwC+kL8ABBg/AKJEvwC+kL8ABBi/AKJEvwC+kD8ABBi/AKJEPwC+kL8ABBi/AKJEvwC+kL8ABBi/AKJEvwC+kL8ABBg/AKJEvwC+kD8ABBi/AKJEvwC+kL8ABBi/AKJEPwC+kL8ABBi/AKJEvwC+kD8ABBi/AKJEvwC+kD8ABBg/AKJEvwC+kL8ABBg/AKJEvwC+kL8ABBg/AKJEvwC+kD8ABBg/AKJEPwC+kD8ABBg/AKJEPwC+kD8ABBg/AKJEvwC+kD8ABBg/AKJEvwC+kD8ABBi/AKJEvwC+kL8ABBg/AKJEPwC+kL8ABBg/AKJEPwC+kL8ABBi/AKJEPwC+kD8ABBg/AKJEPwC+kL8ABBg/AKJEvwC+kL8ABBg/AKJEPwC+kL8ABBi/AKJEPwC+kL8ABBg/AKJEPwC+kD8ABBg/AKJEPwC+kL8ABBi/AKJEPwC+kD8ABBi/AKJEvwC+kD8ABBi/AKJEvwC+kD8ABBi/AKJEPwC+kD8ABBi/AKJEPwC+kD8ABBg/AKJEPwC+kD8ABBg/AKJEPwC+kD8ABBi/AKJEPwC+kL8ABBi/AAD/f/9//n8AAP9//3/+fwAA/3//f/5//38AAP//AAD/fwAA//8AAP9/AAD//wAA/////wAA/z//////AAD/P/////8AAP8/AAD/f/9//n8AAP9//3/+fwAA/3//f/5//3//fwAA/z//f/9/AAD/P/9//38AAP8//3//////AAD/f/////8AAP9//////wAA/38AAP//AAD/fwAA//8AAP9/AAD//wAA/3//fwAA/z//f/9/AAD/P/9//38AAP8/////f/9//n////9//3/+f////3//f/5//////wAA/z//////AAD/P/////8AAP8//3//////AAD/f/////8AAP9//////wAA////f/9//n////9//3/+f////3//f/5/")
+}]
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_0kr23"]
+data = PackedVector3Array(-0.7680969, -1.1307983, 0.59381104, -0.7680969, -1.1307983, -0.59381104, -0.7680969, 1.1307983, -0.59381104, 0.7680969, -1.1307983, -0.59381104, -0.7680969, -1.1307983, -0.59381104, -0.7680969, -1.1307983, 0.59381104, -0.7680969, 1.1307983, -0.59381104, -0.7680969, -1.1307983, -0.59381104, 0.7680969, -1.1307983, -0.59381104, -0.7680969, 1.1307983, -0.59381104, -0.7680969, 1.1307983, 0.59381104, -0.7680969, -1.1307983, 0.59381104, -0.7680969, -1.1307983, 0.59381104, -0.7680969, 1.1307983, 0.59381104, 0.7680969, 1.1307983, 0.59381104, 0.7680969, 1.1307983, 0.59381104, -0.7680969, 1.1307983, 0.59381104, -0.7680969, 1.1307983, -0.59381104, -0.7680969, -1.1307983, 0.59381104, 0.7680969, -1.1307983, 0.59381104, 0.7680969, -1.1307983, -0.59381104, 0.7680969, 1.1307983, 0.59381104, 0.7680969, -1.1307983, 0.59381104, -0.7680969, -1.1307983, 0.59381104, 0.7680969, -1.1307983, -0.59381104, 0.7680969, -1.1307983, 0.59381104, 0.7680969, 1.1307983, 0.59381104, 0.7680969, -1.1307983, -0.59381104, 0.7680969, 1.1307983, -0.59381104, -0.7680969, 1.1307983, -0.59381104, -0.7680969, 1.1307983, -0.59381104, 0.7680969, 1.1307983, -0.59381104, 0.7680969, 1.1307983, 0.59381104, 0.7680969, 1.1307983, 0.59381104, 0.7680969, 1.1307983, -0.59381104, 0.7680969, -1.1307983, -0.59381104)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oi7lj"]
+atlas = ExtResource("13_0kr23")
+region = Rect2(128, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dkoh6"]
+atlas = ExtResource("13_0kr23")
+region = Rect2(96, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7e76x"]
+atlas = ExtResource("13_0kr23")
+region = Rect2(0, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_10xkv"]
+atlas = ExtResource("13_0kr23")
+region = Rect2(32, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pk03q"]
+atlas = ExtResource("13_0kr23")
+region = Rect2(64, 0, 32, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g4v7s"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oi7lj")
+}],
+"loop": 1,
+"name": &"B",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dkoh6")
+}],
+"loop": 1,
+"name": &"BL",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7e76x")
+}],
+"loop": 1,
+"name": &"F",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_10xkv")
+}],
+"loop": 1,
+"name": &"FL",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pk03q")
+}],
+"loop": 1,
+"name": &"L",
+"speed": 5.0
+}]
+
 [node name="Mappa" type="Node3D" unique_id=891395470]
 script = ExtResource("1_8eu3w")
 
@@ -284,7 +461,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2714605, 2.03015)
 pixel_size = 0.1
 billboard = 2
 texture_filter = 0
-sprite_frames = ExtResource("7_3th0n")
+sprite_frames = SubResource("SpriteFrames_5ktx1")
 animation = &"B"
 
 [node name="8-WayAnimatedSprite" parent="Freccia3D" unique_id=935540163 node_paths=PackedStringArray("sprite") instance=ExtResource("6_4yysh")]
@@ -628,10 +805,11 @@ texture = ExtResource("11_acm0i")
 transform = Transform3D(1, 0, 1.4210855e-14, 0, 1, 0, -1.4210855e-14, 0, 1, 0, 0.84521484, 0)
 shape = SubResource("CylinderShape3D_g4v7s")
 
-[node name="Palco" type="Node" parent="." unique_id=2074447175]
+[node name="Palco" type="Node3D" parent="." unique_id=545044214]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -12.418814)
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Palco" unique_id=1429970499]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.384, -12.471)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.39801538, 0)
 size = Vector3(12.311981, 0.59350586, 6.1882324)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Palco/CSGBox3D" unique_id=1678886629]
@@ -640,7 +818,7 @@ size = Vector3(12.311981, 0.59350586, 6.1882324)
 shape = SubResource("ConcavePolygonShape3D_acm0i")
 
 [node name="CSGPolygon3D" type="CSGPolygon3D" parent="Palco" unique_id=1964818588]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.151961, 0, -11.885598)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.163741, 0.03406626, 0)
 polygon = PackedVector2Array(-1, 0, 1, 0, 1.0026865, 0.6886524)
 depth = 1.24
 
@@ -650,12 +828,37 @@ depth = 1.24
 shape = SubResource("ConcavePolygonShape3D_el4ri")
 
 [node name="Area3D" type="Area3D" parent="Palco" unique_id=1523816475]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -13.436647)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5492117, 0)
 script = ExtResource("12_el4ri")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Palco/Area3D" unique_id=1126947719]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.021980286, 2.0003967, 0.9898224)
 shape = SubResource("BoxShape3D_g4v7s")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Palco" unique_id=460504035]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0061035156, 3.3054903, -2.8930511)
+size = Vector3(12.269043, 5.256714, 0.39404297)
+
+[node name="CSGBakedMeshInstance3D" type="MeshInstance3D" parent="Palco" unique_id=1141032047]
+transform = Transform3D(0.92756695, 0, 0.37365708, 0, 1, 0, -0.37365708, 0, 0.92756695, -4.937921, 1.6779261, 2.0459833)
+mesh = SubResource("ArrayMesh_el4ri")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Palco/CSGBakedMeshInstance3D" unique_id=1767269703]
+
+[node name="CSGBakedCollisionShape3D" type="CollisionShape3D" parent="Palco/CSGBakedMeshInstance3D/StaticBody3D" unique_id=1948124090]
+shape = SubResource("ConcavePolygonShape3D_0kr23")
+
+[node name="8-WayAnimatedSprite" parent="Palco" unique_id=235677367 node_paths=PackedStringArray("sprite") instance=ExtResource("6_4yysh")]
+transform = Transform3D(2.935, 0, 0, 0, 2.935, 0, 0, 0, 2.935, 0, 1.8400834, 2.336319)
+sprite = NodePath("AnimatedSprite3D")
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="Palco/8-WayAnimatedSprite" unique_id=654768260]
+transform = Transform3D(1.0000001, 0, 0, 0, 1.0000001, 0, 0, 0, 1.0000001, 0, -0.10512555, 0)
+billboard = 2
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_g4v7s")
+animation = &"L"
+frame_progress = 0.037528053
 
 [connection signal="body_entered" from="Palco/Area3D" to="Palco/Area3D" method="_on_body_entered"]
 [connection signal="body_exited" from="Palco/Area3D" to="Palco/Area3D" method="_on_body_exited"]
