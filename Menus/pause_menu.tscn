@@ -1,0 +1,110 @@
+[gd_scene format=3 uid="uid://cdp8bhnpnchf8"]
+
+[ext_resource type="Script" uid="uid://dxigcv006mpb3" path="res://Scripts/pause_menu.gd" id="1_i2531"]
+
+[node name="PauseMenu" type="Control" unique_id=1014091311]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_i2531")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=12444462]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.99215686, 0.77254903, 0.8156863, 0.4392157)
+
+[node name="btn_exit" type="Button" parent="ColorRect" unique_id=182768833]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.33900002
+anchor_top = 0.68500006
+anchor_right = 0.63000005
+anchor_bottom = 0.79200006
+offset_left = 0.47198486
+offset_top = 0.1199646
+offset_right = 0.2399292
+offset_bottom = -0.21606445
+theme_override_font_sizes/font_size = 44
+text = "DISCONNETTITI"
+
+[node name="btn_riprendi" type="Button" parent="ColorRect" unique_id=688727646]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.395
+anchor_top = 0.091000006
+anchor_right = 0.57600003
+anchor_bottom = 0.19800001
+offset_left = -0.040008545
+offset_top = 0.03199768
+offset_right = 0.447937
+offset_bottom = -0.3040161
+theme_override_font_sizes/font_size = 44
+text = "RIPRENDI"
+
+[node name="OutputSelect" type="OptionButton" parent="ColorRect" unique_id=101437402]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.15900001
+anchor_top = 0.307
+anchor_right = 0.45000002
+anchor_bottom = 0.418
+offset_left = -0.16801453
+offset_top = 0.06399536
+offset_right = 1.5999756
+offset_bottom = 0.13598633
+
+[node name="btn_ConfirmOut" type="Button" parent="ColorRect/OutputSelect" unique_id=154179759]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.166
+anchor_right = 1.825
+anchor_bottom = 1.0
+offset_left = 0.0579834
+offset_right = -0.025024414
+text = "Conferma"
+
+[node name="Label" type="Label" parent="ColorRect/OutputSelect" unique_id=572395098]
+layout_mode = 0
+offset_top = -49.0
+offset_right = 169.0
+theme_override_font_sizes/font_size = 30
+text = "Dispositivi di output"
+
+[node name="InputSelect" type="OptionButton" parent="ColorRect" unique_id=329546721]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.15900001
+anchor_top = 0.307
+anchor_right = 0.45000002
+anchor_bottom = 0.418
+offset_left = -0.16801453
+offset_top = 127.063995
+offset_right = 1.5999756
+offset_bottom = 127.13599
+
+[node name="btn_ConfirmIn" type="Button" parent="ColorRect/InputSelect" unique_id=673600149]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.166
+anchor_right = 1.825
+anchor_bottom = 1.0
+offset_left = 0.0579834
+offset_right = -0.025024414
+text = "Conferma"
+
+[node name="Label" type="Label" parent="ColorRect/InputSelect" unique_id=595999413]
+layout_mode = 0
+offset_top = -49.0
+offset_right = 169.0
+theme_override_font_sizes/font_size = 30
+text = "Dispositivi di input"
+
+[connection signal="pressed" from="ColorRect/btn_exit" to="." method="_on_btn_exit_pressed"]
+[connection signal="pressed" from="ColorRect/btn_riprendi" to="." method="_on_btn_riprendi_pressed"]

@@ -11,6 +11,7 @@ const SPAWN_ZONE := 5.0
 # Nametag per il multiplayer
 @onready var nametag: Label3D = $Nametag
 
+var pause = false
 # Da a Cesare quel che è di Cesare
 func _ready() -> void:
 	set_multiplayer_authority(name.to_int())
@@ -26,7 +27,10 @@ func _ready() -> void:
 		var pos = Vector2.from_angle(randf()*2*PI)
 		self.position = Vector3(pos.x * SPAWN_ZONE * randf(), 1, pos.y * SPAWN_ZONE * randf())
 		if OnlineLobby.tutorial:
-			get_viewport().add_child(load("res://Menus/tutorial_menu.tscn").instantiate())
+			var menu = load("res://Menus/tutorial_menu.tscn").instantiate()
+			menu.finished.connect(menu_finished)
+			get_viewport().add_child(menu)
+			pause= true
 	else:
 		set_process(false)
 		camera_pov.current = false
@@ -36,11 +40,18 @@ func _process(_delta):
 
 func _unhandled_input(event):
 	if is_multiplayer_authority():
-		Movement.input(event, true)
+		if event.is_action_pressed("ui_cancel"):
+			if !pause:
+				pause = true
+				var menu = load("res://Menus/pause_menu.tscn").instantiate()
+				menu.finished.connect(menu_finished)
+				get_viewport().add_child(menu)
+		if !pause:
+			Movement.input(event, true)
 
 
 func _physics_process(delta):
-	if is_multiplayer_authority():
+	if is_multiplayer_authority() and !pause:
 		Movement.move(delta, true)
 		if %VistaInt.is_colliding():
 			var ogg :Object= %VistaInt.get_collider()
@@ -67,6 +78,10 @@ func set_active(x:bool, controller: bool = false):
 		for a in Movement.get_children():
 			a.queue_free()
 
+func menu_finished():
+	set_active(true)
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	pause = false
 ## Getter del [MovementComponent]
 func get_movement()->MovementComponent:
 	return Movement

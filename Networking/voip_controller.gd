@@ -64,11 +64,12 @@ func send_data(data : PackedVector2Array):
 
 @rpc("any_peer", "call_remote", "reliable")
 func change_speaker_icon(n: int):
-	var sender_icon: Sprite3D = $"..".get_parent().get_node(str(multiplayer.get_remote_sender_id())).get_node("Nametag/SpeakingIcon")
-	match n:
-		1:
-			sender_icon.texture = load("res://Sprites/Audio/SpeakerAttivo.png")
-		2:
-			sender_icon.texture = load("res://Sprites/Audio/SpeakerDisattivo.png")
-		3:
-			sender_icon.texture = load("res://Sprites/Audio/SpeakerParlando.png")
+	if multiplayer!= null:
+		var sender_icon: Sprite3D = $"..".get_parent().get_node(str(multiplayer.get_remote_sender_id())).get_node("Nametag/SpeakingIcon")
+		match n:
+			1:
+				sender_icon.texture = load("res://Sprites/Audio/SpeakerAttivo.png")
+			2:
+				sender_icon.texture = load("res://Sprites/Audio/SpeakerDisattivo.png")
+			3:
+				sender_icon.texture = load("res://Sprites/Audio/SpeakerParlando.png")
