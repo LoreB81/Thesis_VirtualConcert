@@ -33,3 +33,7 @@ func _on_btn_connect_pressed() -> void:
 	NicknameCheck("Guest")
 	OnlineLobby.join_game(ip.text, portaguest.text)
 	OnlineLobby.load_game("Networking/GameNet.tscn")
+
+
+func _on_button_pressed() -> void:
+	get_tree().change_scene_to_file("res://Menus/general_menu.tscn")

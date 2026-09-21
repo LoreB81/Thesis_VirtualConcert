@@ -68,7 +68,7 @@ func notify_server_ready():
 	if multiplayer.is_server():
 		for x in mappa.audiostreams:
 			var music = mappa.get_audio_node(x).stream.resource_path.get_file()
-			start_soundtrack.rpc_id(peer_id, x, mappa.get_audio_node(x).get_playback_position(), music)
+			#start_soundtrack.rpc_id(peer_id, x, mappa.get_audio_node(x).get_playback_position(), music)
 
 ## Inizia la stessa musica in tutto il server
 func global_music_start(stream: Array[String], audio: String):
