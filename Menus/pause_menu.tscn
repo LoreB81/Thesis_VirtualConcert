@@ -57,17 +57,18 @@ anchor_right = 0.45000002
 anchor_bottom = 0.418
 offset_left = -0.16801453
 offset_top = 0.06399536
-offset_right = 1.5999756
+offset_right = 72.599976
 offset_bottom = 0.13598633
+fit_to_longest_item = false
 
 [node name="btn_ConfirmOut" type="Button" parent="ColorRect/OutputSelect" unique_id=154179759]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 1.166
-anchor_right = 1.825
+anchor_left = 1.179
+anchor_right = 1.838
 anchor_bottom = 1.0
-offset_left = 0.0579834
-offset_right = -0.025024414
+offset_left = -0.03201294
+offset_right = -0.11505127
 text = "Conferma"
 
 [node name="Label" type="Label" parent="ColorRect/OutputSelect" unique_id=572395098]
@@ -86,17 +87,18 @@ anchor_right = 0.45000002
 anchor_bottom = 0.418
 offset_left = -0.16801453
 offset_top = 127.063995
-offset_right = 1.5999756
+offset_right = 72.599976
 offset_bottom = 127.13599
+fit_to_longest_item = false
 
 [node name="btn_ConfirmIn" type="Button" parent="ColorRect/InputSelect" unique_id=673600149]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 1.166
-anchor_right = 1.825
+anchor_left = 1.179
+anchor_right = 1.838
 anchor_bottom = 1.0
-offset_left = 0.0579834
-offset_right = -0.025024414
+offset_left = -0.03201294
+offset_right = -0.11505127
 text = "Conferma"
 
 [node name="Label" type="Label" parent="ColorRect/InputSelect" unique_id=595999413]
@@ -108,3 +110,5 @@ text = "Dispositivi di input"
 
 [connection signal="pressed" from="ColorRect/btn_exit" to="." method="_on_btn_exit_pressed"]
 [connection signal="pressed" from="ColorRect/btn_riprendi" to="." method="_on_btn_riprendi_pressed"]
+[connection signal="pressed" from="ColorRect/OutputSelect/btn_ConfirmOut" to="." method="_on_btn_confirm_out_pressed"]
+[connection signal="pressed" from="ColorRect/InputSelect/btn_ConfirmIn" to="." method="_on_btn_confirm_in_pressed"]
