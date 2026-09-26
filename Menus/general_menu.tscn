@@ -64,17 +64,33 @@ offset_top = -3.008
 offset_right = 1.79999
 offset_bottom = 15.408
 
+[node name="btn_vr" type="Button" parent="SubViewportContainer/SubViewport/ColorRect/Bottoni" unique_id=1701712696]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_right = 0.9990001
+anchor_bottom = 1.294
+offset_top = -3.0
+offset_right = -0.076049805
+offset_bottom = 0.09399414
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_h6mvr")
+theme_override_font_sizes/font_size = 61
+text = "MULTIUTENZA VR
+"
+
 [node name="btn_localmp" type="Button" parent="SubViewportContainer/SubViewport/ColorRect/Bottoni" unique_id=1112325622]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.18200001
-anchor_top = 1.251
-anchor_right = 0.77800006
-anchor_bottom = 1.3980001
-offset_left = -0.31800842
-offset_top = -0.04901123
-offset_right = 0.2779541
-offset_bottom = -0.0020446777
+anchor_left = 0.178
+anchor_top = 1.462
+anchor_right = 0.79800004
+anchor_bottom = 1.639
+offset_left = -12.322006
+offset_top = 1.8619995
+offset_right = 0.29797363
+offset_bottom = -0.06100464
 theme = ExtResource("2_h6mvr")
 theme_override_font_sizes/font_size = 26
 text = "MULTIUTENZA LOCALE (Deprecato)"
@@ -82,14 +98,12 @@ text = "MULTIUTENZA LOCALE (Deprecato)"
 [node name="btn_peer2peer" type="Button" parent="SubViewportContainer/SubViewport/ColorRect/Bottoni" unique_id=1653701928]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.044
-anchor_top = 0.201
-anchor_right = 0.952
-anchor_bottom = 0.40500003
-offset_left = 1.0439987
-offset_top = -0.09898758
-offset_right = -0.048034668
-offset_bottom = 30.905006
+anchor_top = 0.21100001
+anchor_right = 0.90700006
+anchor_bottom = 0.5
+offset_top = -0.08898926
+offset_right = -0.3430786
+offset_bottom = 5.5000153
 theme = ExtResource("2_h6mvr")
 theme_override_font_sizes/font_size = 61
 text = "MULTIUTENZA PEER"
@@ -97,20 +111,19 @@ text = "MULTIUTENZA PEER"
 [node name="btn_server" type="Button" parent="SubViewportContainer/SubViewport/ColorRect/Bottoni" unique_id=1223024415]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.045
-anchor_top = 0.73600006
-anchor_right = 0.952
+anchor_top = 0.702
+anchor_right = 0.96700007
 anchor_bottom = 1.0
-offset_left = 0.29499817
-offset_top = -0.06402588
-offset_right = -0.048034668
-offset_bottom = 13.0
+offset_top = -26.89801
+offset_right = -0.28302002
+offset_bottom = -24.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_h6mvr")
 theme_override_font_sizes/font_size = 61
 text = "MULTIUTENZA SERVER"
 
+[connection signal="pressed" from="SubViewportContainer/SubViewport/ColorRect/Bottoni/btn_vr" to="." method="_on_btn_vr_pressed"]
 [connection signal="pressed" from="SubViewportContainer/SubViewport/ColorRect/Bottoni/btn_localmp" to="." method="localmp_button"]
 [connection signal="pressed" from="SubViewportContainer/SubViewport/ColorRect/Bottoni/btn_peer2peer" to="." method="p2p_button"]
 [connection signal="pressed" from="SubViewportContainer/SubViewport/ColorRect/Bottoni/btn_server" to="." method="server_button"]

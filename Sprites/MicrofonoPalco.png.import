@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://ytvnd7oohlwf"
 path.s3tc="res://.godot/imported/MicrofonoPalco.png-b11bc5e1d0f264510b701d37c12e99ce.s3tc.ctex"
+path.etc2="res://.godot/imported/MicrofonoPalco.png-b11bc5e1d0f264510b701d37c12e99ce.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Sprites/MicrofonoPalco.png"
-dest_files=["res://.godot/imported/MicrofonoPalco.png-b11bc5e1d0f264510b701d37c12e99ce.s3tc.ctex"]
+dest_files=["res://.godot/imported/MicrofonoPalco.png-b11bc5e1d0f264510b701d37c12e99ce.s3tc.ctex", "res://.godot/imported/MicrofonoPalco.png-b11bc5e1d0f264510b701d37c12e99ce.etc2.ctex"]
 
 [params]
 

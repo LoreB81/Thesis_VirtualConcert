@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://bvseeqeusplv2"
 path.s3tc="res://.godot/imported/SpeakerAttivo.png-245ffc300ace8f5e1217e63155e65336.s3tc.ctex"
+path.etc2="res://.godot/imported/SpeakerAttivo.png-245ffc300ace8f5e1217e63155e65336.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Sprites/Audio/SpeakerAttivo.png"
-dest_files=["res://.godot/imported/SpeakerAttivo.png-245ffc300ace8f5e1217e63155e65336.s3tc.ctex"]
+dest_files=["res://.godot/imported/SpeakerAttivo.png-245ffc300ace8f5e1217e63155e65336.s3tc.ctex", "res://.godot/imported/SpeakerAttivo.png-245ffc300ace8f5e1217e63155e65336.etc2.ctex"]
 
 [params]
 

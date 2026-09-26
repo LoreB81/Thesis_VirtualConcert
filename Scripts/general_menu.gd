@@ -12,3 +12,7 @@ func p2p_button() -> void:
 
 func server_button() -> void:
 	get_tree().change_scene_to_file("res://Menus/server_menu.tscn")
+
+
+func _on_btn_vr_pressed() -> void:
+	get_tree().change_scene_to_file("res://Menus/vr_menu.tscn")

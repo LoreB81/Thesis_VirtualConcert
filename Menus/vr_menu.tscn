@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://d6bxd45yb2ih"]
+
+[ext_resource type="PackedScene" uid="uid://qpb6esww1evi" path="res://PG/UomoLowPoly.blend" id="1_ufpb3"]
+[ext_resource type="Script" uid="uid://n5ka04sg6aph" path="res://Scripts/vr_menu.gd" id="1_wj8hp"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_g4v7s"]
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_y7hoa"]
+data = PackedVector3Array(1, 0, 1, -1, 0, 1, 1, 0, -1, -1, 0, 1, -1, 0, -1, 1, 0, -1)
+
+[node name="VrMenu" type="Node3D" unique_id=279399570]
+script = ExtResource("1_wj8hp")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=941628846]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer" unique_id=278647357]
+handle_input_locally = false
+size = Vector2i(1152, 648)
+render_target_update_mode = 4
+
+[node name="UomoLowPoly" parent="SubViewportContainer/SubViewport" unique_id=294551876 instance=ExtResource("1_ufpb3")]
+transform = Transform3D(0.425, 0, 0, 0, 0.425, 0, 0, 0, 0.425, 0, 0, -8.869802)
+
+[node name="XROrigin3D" type="XROrigin3D" parent="SubViewportContainer/SubViewport" unique_id=1869538387]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8992369, 0)
+
+[node name="XRAnchor3D" type="XRAnchor3D" parent="SubViewportContainer/SubViewport/XROrigin3D" unique_id=666694673]
+tracker = &"head"
+
+[node name="LeftHand" type="XRController3D" parent="SubViewportContainer/SubViewport/XROrigin3D" unique_id=595292897]
+tracker = &"left_hand"
+show_when_tracked = true
+
+[node name="RightHand" type="XRController3D" parent="SubViewportContainer/SubViewport/XROrigin3D" unique_id=1117457980]
+tracker = &"right_hand"
+show_when_tracked = true
+
+[node name="XRCamera3D" type="XRCamera3D" parent="SubViewportContainer/SubViewport/XROrigin3D" unique_id=212739027]
+
+[node name="Pavimento" type="MeshInstance3D" parent="SubViewportContainer/SubViewport" unique_id=386410919]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
+mesh = SubResource("PlaneMesh_g4v7s")
+skeleton = NodePath("../../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="SubViewportContainer/SubViewport/Pavimento" unique_id=593053588]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewportContainer/SubViewport/Pavimento/StaticBody3D" unique_id=134096724]
+shape = SubResource("ConcavePolygonShape3D_y7hoa")
+
+[node name="Skeleton3D" type="Skeleton3D" parent="SubViewportContainer/SubViewport" unique_id=1578683035]
+
+[node name="XRHandModifier3D" type="XRHandModifier3D" parent="SubViewportContainer/SubViewport/Skeleton3D" unique_id=2038196107]
+
+[node name="XRHandModifier3D2" type="XRHandModifier3D" parent="SubViewportContainer/SubViewport/Skeleton3D" unique_id=2142464915]
+hand_tracker = &"/user/hand_tracker/right"

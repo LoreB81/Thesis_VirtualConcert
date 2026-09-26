@@ -52,14 +52,14 @@ horizontal_alignment = 1
 [node name="btn_host" type="Button" parent="SubViewportContainer/SubViewport/Sfondo" unique_id=500944509]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.31500003
-anchor_top = 0.358
-anchor_right = 0.67200005
-anchor_bottom = 0.508
-offset_left = 139.11996
-offset_top = -22.984009
-offset_right = 139.85596
-offset_bottom = -23.184021
+anchor_left = 0.418
+anchor_top = 0.323
+anchor_right = 0.79200006
+anchor_bottom = 0.45400003
+offset_left = -0.53601074
+offset_top = -0.3040161
+offset_right = 1.6159668
+offset_bottom = 11.807983
 theme_override_colors/font_color = Color(0.3372549, 0, 0, 1)
 theme_override_font_sizes/font_size = 41
 text = "FAI DA HOST"
@@ -91,14 +91,14 @@ text = "Porta"
 
 [node name="Connect" type="Control" parent="SubViewportContainer/SubViewport/Sfondo" unique_id=851289818]
 layout_mode = 1
-anchor_left = 0.15900001
-anchor_top = 0.43100002
-anchor_right = 0.82000005
-anchor_bottom = 0.84000003
-offset_left = 131.83199
-offset_top = 14.711975
-offset_right = 144.35992
-offset_bottom = 46.679993
+anchor_left = 0.273
+anchor_top = 0.45400003
+anchor_right = 0.94500005
+anchor_bottom = 0.91200006
+offset_left = 0.5039978
+offset_top = -0.1920166
+offset_right = 0.35998535
+offset_bottom = 0.023986816
 
 [node name="btn_connect" type="Button" parent="SubViewportContainer/SubViewport/Sfondo/Connect" unique_id=2029248756]
 layout_mode = 1
@@ -107,7 +107,7 @@ anchor_left = 0.24200001
 anchor_top = 0.62600005
 anchor_right = 0.77400005
 anchor_bottom = 0.933
-offset_left = -0.30801392
+offset_left = -21.308014
 offset_top = 0.07800293
 offset_right = -1.1280518
 offset_bottom = -0.14398193

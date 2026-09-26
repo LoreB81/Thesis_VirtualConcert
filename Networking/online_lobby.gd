@@ -10,7 +10,7 @@ const MAX_CONNECTIONS = 20
 
 var players = []
 
-var tutorial = false
+var tutorial = true
 
 var local_name: String = ""
 
