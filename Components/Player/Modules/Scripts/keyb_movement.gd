@@ -1,5 +1,5 @@
 extends Node
-## Componente per gestire il movimento da controller
+## Componente per gestire il movimento da tastiera
 class_name KeyBoardComponent
 
 ## Ritorna il movimento fatto da mouse dell'[param event]

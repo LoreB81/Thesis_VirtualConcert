@@ -5,6 +5,9 @@ class_name AudioElement
 @export var audio_stream: AudioStreamPlayer3D
 
 
+#pos rappresenta la distanza tra il player più vicino e l'AudioElement
+#listener è il primo player istanziato che funge da ascoltatore
+#player è il player più vicino
 func change_audio_stream_pos(pos:Vector3,  listener: CharacterBody3D, player: CharacterBody3D):
 	if audio_stream.playing:
 		if listener !=player:
